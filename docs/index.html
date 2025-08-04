@@ -743,8 +743,8 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    z-index: 1000;
-    pointer-events: none; /* Permette click solo sui pulsanti */
+    z-index: 9999; /* Aumentato per evitare conflitti */
+    pointer-events: auto; /* Cambiato da none ad auto */
 }
 
 .floating-button {
@@ -805,11 +805,16 @@
     .floating-buttons {
         inset: auto 20px 40px auto; /* Ancoraggio robusto: top, right, bottom, left */
         gap: 12px;
+        /* Fix aggiuntivi per mobile */
+        position: fixed !important;
+        z-index: 9999 !important;
+        transform: none !important;
     }
     
     .floating-button, .floating-email {
         width: 55px;
         height: 55px;
+        position: relative !important;
     }
 }
 
@@ -817,11 +822,16 @@
     .floating-buttons {
         inset: auto 15px 60px auto; /* Ancoraggio ancora più sicuro */
         gap: 10px;
+        /* Fix aggiuntivi per mobile */
+        position: fixed !important;
+        z-index: 9999 !important;
+        transform: none !important;
     }
     
     .floating-button, .floating-email {
         width: 50px;
         height: 50px;
+        position: relative !important;
     }
 }
 
@@ -830,11 +840,16 @@
     .floating-buttons {
         inset: auto 10px 80px auto; /* Massimo spazio dal basso */
         gap: 8px;
+        /* Fix aggiuntivi per mobile */
+        position: fixed !important;
+        z-index: 9999 !important;
+        transform: none !important;
     }
     
     .floating-button, .floating-email {
         width: 45px;
         height: 45px;
+        position: relative !important;
     }
 }
     </style>
