@@ -1556,10 +1556,10 @@
     menu.classList.toggle('hidden');
     setTimeout(adjustBodyPadding, 50);
 
-    // Animazione icona hamburger/X
+    // Animazione icona hamburger/X (LOGICA CORRETTA)
     const btn = e.currentTarget;
-    btn.querySelector('.icon-hamburger').classList.toggle('is-hidden', !isHidden);
-    btn.querySelector('.icon-close').classList.toggle('is-hidden', isHidden);
+    btn.querySelector('.icon-hamburger').classList.toggle('is-hidden', isHidden);
+    btn.querySelector('.icon-close').classList.toggle('is-hidden', !isHidden);
 });
 
             // Gestore per i link di navigazione - CORRETTO
