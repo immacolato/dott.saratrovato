@@ -364,7 +364,7 @@
 /* === MEDIA QUERIES OTTIMIZZATE === */
 /* Sostituisci le media query attuali con queste */
 
-/* Mobile (fino a 640px) */
+/* Mobile (fino a 640px) - CORRETTO */
 @media (max-width: 640px) {
     .container {
         padding: 0.5rem;
@@ -376,9 +376,8 @@
         background: rgba(255, 255, 255, 0.95);
         border-radius: 0.5rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
     }
-    
-
     
     #mobile-menu ul {
         flex-direction: column;
@@ -408,7 +407,7 @@
     }
 }
 
-/* Dispositivi mobili e tablet (fino a 1023px) */
+/* Dispositivi mobili e tablet (fino a 1023px) - CORRETTO */
 @media (max-width: 1023px) {
     .top-row {
         display: flex;
@@ -418,24 +417,29 @@
         margin-bottom: 0.5rem;
     }
     
-    .cta-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+    #mobile-menu {
         width: 100%;
         margin-top: 0.5rem;
     }
     
+    #mobile-menu.hidden {
+        display: none;
+    }
 }
 
-/* Desktop (1024px e oltre) */
+/* Desktop (1024px e oltre) - CORRETTO */
 @media (min-width: 1024px) {
     #mobile-menu-button {
         display: none !important;
     }
     
     #mobile-menu {
-        display: block !important; /* Override di hidden */
+        display: block !important;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
     }
     
     #mobile-menu ul {
@@ -451,14 +455,8 @@
         padding: 0.75rem 1.5rem;
     }
     
-    .header-nav, .header-cta {
+    .header-nav {
         width: auto;
-    }
-    
-    .cta-row {
-        display: flex;
-        gap: 0.75rem;
-        margin-top: 0;
     }
 }
 
@@ -732,15 +730,16 @@
     pointer-events: none;
 }
 
-/* WhatsApp, Call e Email Floating Buttons */
+/* WhatsApp, Call e Email Floating Buttons - CORRETTO */
 .floating-buttons {
     position: fixed;
     bottom: 20px;
     right: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
     z-index: 1000;
+    pointer-events: none; /* Permette click solo sui pulsanti */
 }
 
 .floating-button {
@@ -756,6 +755,7 @@
     color: white;
     position: relative;
     overflow: hidden;
+    pointer-events: auto; /* Riabilita click sui singoli pulsanti */
 }
 
 .floating-button:hover {
@@ -766,6 +766,7 @@
 /* WhatsApp - Primario */
 .floating-whatsapp {
     background: linear-gradient(135deg, #25D366, #128C7E);
+    order: 1;
 }
 
 .floating-whatsapp:hover {
@@ -775,29 +776,31 @@
 /* Chiamata - Secondario */
 .floating-call {
     background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    order: 2;
 }
 
 .floating-call:hover {
     background: linear-gradient(135deg, #4338ca, #6d28d9);
 }
 
-/* Email - Terziario (più piccolo) */
+/* Email - Terziario (più piccolo ma centrato) */
 .floating-email {
     background: linear-gradient(135deg, #6b7280, #4b5563);
     width: 50px;
     height: 50px;
+    order: 3;
 }
 
 .floating-email:hover {
     background: linear-gradient(135deg, #4b5563, #374151);
 }
 
-/* Responsive: su mobile i floating button sono ottimizzati */
+/* Responsive ottimizzato */
 @media (max-width: 768px) {
     .floating-buttons {
-        bottom: 15px;
-        right: 15px;
-        gap: 10px;
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
     }
     
     .floating-button {
@@ -811,12 +814,11 @@
     }
 }
 
-/* Fix per evitare overflow su mobile molto piccoli */
 @media (max-width: 480px) {
     .floating-buttons {
-        bottom: 10px;
-        right: 10px;
-        gap: 8px;
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
     }
     
     .floating-button {
@@ -825,8 +827,8 @@
     }
     
     .floating-email {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
     }
 }
     </style>
@@ -1422,9 +1424,9 @@
             </svg>
         </a>
         
-        <!-- Email Button (terziario - più piccolo) -->
+        <!-- Email Button (terziario - più piccolo e centrato) -->
         <a href="mailto:dott.saratrovato@gmail.com" class="floating-button floating-email" title="Scrivimi una email">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
             </svg>
@@ -1536,25 +1538,37 @@
             // Mostra la home page di default
             showPage('home');
 
-            // Gestore per il pulsante del menu mobile
+            // Gestore per il pulsante del menu mobile - CORRETTO
            document.getElementById('mobile-menu-button').addEventListener('click', (e) => {
     e.stopPropagation();
     const menu = document.getElementById('mobile-menu');
+    const isHidden = menu.classList.contains('hidden');
+    
     menu.classList.toggle('hidden');
     setTimeout(adjustBodyPadding, 50);
 
     // Animazione icona hamburger/X
     const btn = e.currentTarget;
-    btn.querySelector('.icon-hamburger').classList.toggle('is-hidden', !menu.classList.contains('hidden'));
-    btn.querySelector('.icon-close').classList.toggle('is-hidden', menu.classList.contains('hidden'));
+    btn.querySelector('.icon-hamburger').classList.toggle('is-hidden', !isHidden);
+    btn.querySelector('.icon-close').classList.toggle('is-hidden', isHidden);
 });
 
-            // Gestore per i link di navigazione
+            // Gestore per i link di navigazione - CORRETTO
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const pageId = link.id.replace('nav-', '');
                     showPage(pageId);
+                    
+                    // Chiudi il menu mobile su dispositivi mobili
+                    const menu = document.getElementById('mobile-menu');
+                    if (window.innerWidth < 1024) {
+                        menu.classList.add('hidden');
+                        // Reset icone
+                        const btn = document.getElementById('mobile-menu-button');
+                        btn.querySelector('.icon-hamburger').classList.remove('is-hidden');
+                        btn.querySelector('.icon-close').classList.add('is-hidden');
+                    }
                 });
             });
             
