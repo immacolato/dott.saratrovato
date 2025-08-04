@@ -74,6 +74,13 @@
                 word-break: break-all !important;
                 overflow-wrap: anywhere !important;
                 display: block !important;
+                white-space: normal !important;
+                max-width: 100% !important;
+            }
+
+            /* Contenitore email senza overflow hidden */
+            .email-container {
+                overflow: visible !important;
             }
         }
 
@@ -981,9 +988,9 @@
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                 </svg>
                             </span>
-                            <div class="min-w-0 flex-1 overflow-hidden">
+                            <div class="min-w-0 flex-1 email-container">
                                 <p class="text-sm text-gray-500 font-medium">Email</p>
-                                <a href="mailto:dott.saratrovato@gmail.com" class="text-base md:text-lg text-indigo-700 font-medium hover:underline block break-words overflow-wrap-anywhere">dott.saratrovato@gmail.com</a>
+                                <a href="mailto:dott.saratrovato@gmail.com" class="text-base md:text-lg text-indigo-700 font-medium hover:underline block break-words overflow-wrap-anywhere word-break-all">dott.saratrovato@gmail.com</a>
                             </div>
                         </div>
                         
