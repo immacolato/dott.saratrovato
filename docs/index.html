@@ -743,7 +743,7 @@
     z-index: 10000;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px; /* Aumentato gap per evitare sovrapposizioni */
 }
 
 .contact-btn {
@@ -769,7 +769,7 @@
 }
 
 .contact-btn:hover {
-    transform: scale(1.1) translateY(-2px);
+    transform: scale(1.05) translateY(-1px); /* Ridotto scale per evitare sovrapposizioni */
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
@@ -838,7 +838,7 @@
     .contact-floating {
         bottom: 16px;
         right: 16px;
-        gap: 10px;
+        gap: 16px; /* Aumentato gap mobile */
     }
     
     .contact-btn {
@@ -856,7 +856,7 @@
     .contact-floating {
         bottom: 20px;
         right: 12px;
-        gap: 8px;
+        gap: 14px; /* Aumentato anche qui */
     }
     
     .contact-btn {
