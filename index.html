@@ -803,10 +803,12 @@
 /* Responsive ottimizzato con fix per taglio */
 @media (max-width: 768px) {
     .floating-buttons {
-        inset: auto 20px 40px auto; /* Ancoraggio robusto: top, right, bottom, left */
-        gap: 12px;
-        /* Fix aggiuntivi per mobile */
         position: fixed !important;
+        bottom: 40px !important;
+        right: 20px !important;
+        top: auto !important;
+        left: auto !important;
+        gap: 12px;
         z-index: 9999 !important;
         transform: none !important;
     }
@@ -820,10 +822,12 @@
 
 @media (max-width: 480px) {
     .floating-buttons {
-        inset: auto 15px 60px auto; /* Ancoraggio ancora più sicuro */
-        gap: 10px;
-        /* Fix aggiuntivi per mobile */
         position: fixed !important;
+        bottom: 60px !important;
+        right: 15px !important;
+        top: auto !important;
+        left: auto !important;
+        gap: 10px;
         z-index: 9999 !important;
         transform: none !important;
     }
@@ -838,10 +842,12 @@
 /* Fix specifico per device molto piccoli */
 @media (max-width: 360px) {
     .floating-buttons {
-        inset: auto 10px 80px auto; /* Massimo spazio dal basso */
-        gap: 8px;
-        /* Fix aggiuntivi per mobile */
         position: fixed !important;
+        bottom: 80px !important;
+        right: 10px !important;
+        top: auto !important;
+        left: auto !important;
+        gap: 8px;
         z-index: 9999 !important;
         transform: none !important;
     }
