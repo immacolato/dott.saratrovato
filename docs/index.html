@@ -440,6 +440,11 @@
         box-shadow: none;
         margin: 0;
         padding: 0;
+        width: auto;
+    }
+    
+    #mobile-menu.hidden {
+        display: block !important; /* Su desktop è sempre visibile */
     }
     
     #mobile-menu ul {
@@ -904,8 +909,8 @@
                         Sono la <strong>Dottoressa Sara Trovato</strong>, psicoterapeuta specializzata in <strong>terapia cognitivo costruttivista</strong> a Torino. Offro supporto per <em>ansia, depressione, stress</em> e percorsi di crescita personale, in un ambiente accogliente e professionale dove potrai ritrovare il tuo equilibrio.
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                        <a onclick="showPage('chisiamo')" class="button">Scopri di più su di me</a>
-                        <a onclick="showPage('contatti')" class="button bg-gray-600 hover:bg-gray-700">Contattami</a>
+                        <a href="#chisiamo" data-page="chisiamo" class="button">Scopri di più su di me</a>
+                        <a href="#contatti" data-page="contatti" class="button bg-gray-600 hover:bg-gray-700">Contattami</a>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
@@ -1359,7 +1364,7 @@
             <div class="bg-indigo-50 border border-indigo-100 p-5 rounded-xl text-center my-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Hai domande sui temi trattati?</h3>
                 <div class="flex justify-center space-x-3">
-                    <a onclick="showPage('contatti')" class="button">Parliamone</a>
+                    <a href="#contatti" data-page="contatti" class="button">Parliamone</a>
                 </div>
             </div>
         </section>
@@ -1439,8 +1444,8 @@
         <div class="container text-center max-w-2xl mx-auto">
             <p class="mb-2 text-base">&copy; 2025 Dottoressa Sara Trovato. Tutti i diritti riservati. <br> Made with ❤️ by Noisy Anxiety</p>
             <p class="text-sm">
-                <a onclick="showPage('privacy')" class="text-blue-300 hover:underline cursor-pointer">Privacy Policy</a> |
-                <a onclick="showPage('cookie')" class="text-blue-300 hover:underline cursor-pointer">Cookie Policy</a>
+                <a href="#privacy" data-page="privacy" class="text-blue-300 hover:underline cursor-pointer">Privacy Policy</a> |
+                <a href="#cookie" data-page="cookie" class="text-blue-300 hover:underline cursor-pointer">Cookie Policy</a>
             </p>
         </div>
     </footer>
@@ -1518,8 +1523,11 @@
             setTimeout(() => map.invalidateSize(), 100);
         }
 
-        // Funzioni del modal (lasciare invariate)
-        function closeModal() { document.getElementById('successModal').style.display = 'none'; }
+        // Funzioni del modal
+        function closeModal() { 
+            document.getElementById('successModal').style.display = 'none'; 
+        }
+        
         function showSuccessModal(event) {
             event.preventDefault();
             const form = event.target;
@@ -1574,11 +1582,10 @@
             });
             
             // Gestore per i link interni (es. pulsanti "Scopri di più")
-            document.querySelectorAll('a[onclick^="showPage"]').forEach(link => {
-                const pageId = link.getAttribute('onclick').match(/'([^']+)'/)[1];
-                link.removeAttribute('onclick'); // Rimuovi l'attributo inline
+            document.querySelectorAll('a[data-page]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
                     showPage(pageId);
                 });
             });
@@ -1650,161 +1657,6 @@
             }
         }
     </style>
-
-    <script>
-        // === GESTIONE MENU MOBILE ===
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const button = document.getElementById('mobile-menu-button');
-            const hamburger = button.querySelector('.icon-hamburger');
-            const close = button.querySelector('.icon-close');
-            
-            // Toggle menu visibility
-            menu.classList.toggle('hidden');
-            
-            // Toggle icons
-            if (menu.classList.contains('hidden')) {
-                hamburger.classList.remove('is-hidden');
-                close.classList.add('is-hidden');
-            } else {
-                hamburger.classList.add('is-hidden');
-                close.classList.remove('is-hidden');
-            }
-        }
-
-        // === GESTIONE NAVIGAZIONE ===
-        function showPage(pageId) {
-            // Nascondi tutte le pagine
-            document.querySelectorAll('.page-content').forEach(page => {
-                page.classList.remove('active-page');
-            });
-            
-            // Mostra la pagina richiesta
-            const targetPage = document.getElementById(pageId + '-page');
-            if (targetPage) {
-                targetPage.classList.add('active-page');
-            }
-            
-            // Aggiorna la navigazione attiva
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            const activeLink = document.getElementById('nav-' + pageId);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-            
-            // Chiudi il menu mobile se aperto
-            const menu = document.getElementById('mobile-menu');
-            if (!menu.classList.contains('hidden')) {
-                toggleMobileMenu();
-            }
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-
-        // === GESTIONE PADDING BODY ===
-        function adjustBodyPadding() {
-            const header = document.querySelector('header');
-            if (header) {
-                const headerHeight = header.offsetHeight;
-                document.body.style.paddingTop = headerHeight + 'px';
-            }
-        }
-
-        // === EVENT LISTENERS ===
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inizializzazione
-            adjustBodyPadding();
-            showPage('home');
-            
-            // Menu mobile button
-            const menuButton = document.getElementById('mobile-menu-button');
-            if (menuButton) {
-                menuButton.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggleMobileMenu();
-                });
-            }
-            
-            // Navigation links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.id.replace('nav-', '');
-                    showPage(pageId);
-                });
-            });
-            
-            // Chiudi menu quando si clicca fuori
-            document.addEventListener('click', function(e) {
-                const menu = document.getElementById('mobile-menu');
-                const button = document.getElementById('mobile-menu-button');
-                
-                if (!menu.classList.contains('hidden') && 
-                    !menu.contains(e.target) && 
-                    !button.contains(e.target)) {
-                    toggleMobileMenu();
-                }
-            });
-            
-            // Resize listener
-            window.addEventListener('resize', adjustBodyPadding);
-        });
-
-        // === MODAL SUCCESS ===
-        function showSuccessModal(event) {
-            event.preventDefault();
-            
-            // Simulazione invio form
-            const form = event.target;
-            const formData = new FormData(form);
-            
-            // Mostra il modal
-            document.getElementById('successModal').style.display = 'block';
-            
-            // Reset form
-            form.reset();
-            
-            return false;
-        }
-        
-        function closeSuccessModal() {
-            document.getElementById('successModal').style.display = 'none';
-        }
-
-        // === MAPPA ===
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inizializza la mappa solo se esiste il container
-            const mapContainer = document.getElementById('map');
-            if (mapContainer) {
-                // Coordinate di Torino, Via Maria Vittoria 40 Bis
-                const lat = 45.0703;
-                const lng = 7.6869;
-                
-                const map = L.map('map').setView([lat, lng], 15);
-                
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-                
-                // Marker personalizzato
-                const marker = L.marker([lat, lng]).addTo(map);
-                marker.bindPopup(`
-                    <div class="custom-popup">
-                        <strong>Studio Dott.ssa Sara Trovato</strong><br>
-                        Via Maria Vittoria 40 Bis<br>
-                        10123 Torino (TO)<br>
-                        <br>
-                        📞 <a href="tel:+393896437358">389 643 7358</a><br>
-                        ✉️ <a href="mailto:dott.saratrovato@gmail.com">dott.saratrovato@gmail.com</a>
-                    </div>
-                `);
-            }
-        });
-    </script>
 
 </body>
 </html>
