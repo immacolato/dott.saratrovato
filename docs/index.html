@@ -1199,7 +1199,7 @@
 
 /* Sposta i bottoni floating verso l'alto quando il cookie banner è visibile */
 .contact-floating.cookie-banner-visible {
-    bottom: 200px; /* Sposta sopra il banner cookie */
+    bottom: 160px; /* Ridotto per banner più compatto */
 }
 
 .contact-btn {
@@ -3019,9 +3019,13 @@
     </script>
 
     <!-- GDPR Cookie Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-50 transform translate-y-full transition-transform duration-500">
-        <div class="container mx-auto">
-            <div class="flex flex-col gap-4">
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-3 z-50 transform translate-y-full transition-transform duration-500">
+        <div class="container mx-auto max-w-4xl relative">
+            <!-- Pulsante chiudi -->
+            <button id="close-cookie-banner" class="absolute -top-1 right-0 text-gray-400 hover:text-white text-lg font-bold w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-700 transition-colors" title="Chiudi banner (rifiuta cookie non necessari)">
+                ×
+            </button>
+            <div class="flex flex-col gap-3">
                 <div class="text-sm">
                     <p>🍪 Questo sito utilizza cookie per migliorare l'esperienza utente e per analisi statistiche.</p>
                 </div>
@@ -3048,7 +3052,7 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-2">
                     <div class="flex flex-col sm:flex-row gap-2 sm:justify-between sm:items-center">
                         <!-- Personalizza cookie -->
                         <button id="customize-cookies" class="text-xs underline hover:no-underline">
@@ -3056,13 +3060,13 @@
                         </button>
                         
                         <div class="flex gap-2 flex-wrap justify-center sm:justify-end">
-                            <button id="accept-cookies" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[100px]">
+                            <button id="accept-cookies" class="bg-indigo-600 hover:bg-indigo-700 px-3 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[90px]">
                                 Accetta tutti
                             </button>
-                            <button id="reject-cookies" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[100px]">
+                            <button id="reject-cookies" class="bg-gray-600 hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[90px]">
                                 Solo necessari
                             </button>
-                            <button id="save-preferences" class="hidden bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[100px]">
+                            <button id="save-preferences" class="hidden bg-green-600 hover:bg-green-700 px-3 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[90px]">
                                 Salva preferenze
                             </button>
                         </div>
@@ -3148,6 +3152,7 @@
             const rejectBtn = document.getElementById('reject-cookies');
             const customizeBtn = document.getElementById('customize-cookies');
             const savePrefsBtn = document.getElementById('save-preferences');
+            const closeBannerBtn = document.getElementById('close-cookie-banner');
             const cookieDetails = document.getElementById('cookie-details');
             const analyticsToggle = document.getElementById('analytics-toggle');
             const marketingToggle = document.getElementById('marketing-toggle');
@@ -3164,12 +3169,32 @@
                 }
             }
             
+            // Funzione per chiudere il banner (rifiuta cookie)
+            function closeCookieBanner() {
+                setCookieConsent({
+                    necessary: true,
+                    analytics: false,
+                    marketing: false,
+                    preferences: false
+                });
+                cookieBanner.classList.add('translate-y-full');
+                setTimeout(updateFloatingButtonsPosition, 500);
+            }
+            
             if (!cookieChoice) {
                 // Mostra il banner dopo 2 secondi
                 setTimeout(() => {
                     cookieBanner.classList.remove('translate-y-full');
                     updateFloatingButtonsPosition();
                 }, 2000);
+                
+                // Aggiungi event listener per chiudere cliccando fuori dal banner
+                document.addEventListener('click', function(event) {
+                    const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                    if (bannerIsVisible && !cookieBanner.contains(event.target)) {
+                        closeCookieBanner();
+                    }
+                });
             } else {
                 // Se ha già dato il consenso, carica i servizi necessari
                 loadGoogleAnalytics();
@@ -3188,6 +3213,11 @@
             // Personalizza cookie
             if (customizeBtn) {
                 customizeBtn.addEventListener('click', toggleCookieCustomization);
+            }
+            
+            // Pulsante X per chiudere il banner
+            if (closeBannerBtn) {
+                closeBannerBtn.addEventListener('click', closeCookieBanner);
             }
             
             // Accetta tutti
