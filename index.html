@@ -37,7 +37,7 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "MedicalOrganization",
+        "@type": ["LocalBusiness", "MedicalOrganization"],
         "name": "Studio di Psicoterapia Dott.ssa Sara Trovato",
         "alternateName": "Sara Trovato Psicoterapeuta",
         "description": "Psicoterapeuta specializzata in terapia cognitivo costruttivista a Torino. Supporto professionale per ansia, depressione, stress, difficoltà relazionali e crescita personale. Consulenze individuali, di coppia e online.",
@@ -151,28 +151,6 @@
             "Psychology",
             "Psychotherapy"
         ],
-        "availableService": [
-            {
-                "@type": "MedicalTherapy",
-                "name": "Psicoterapia Cognitivo Costruttivista",
-                "description": "Terapia cognitivo costruttivista per il trattamento di disturbi psicologici"
-            },
-            {
-                "@type": "MedicalTherapy", 
-                "name": "Terapia Individuale",
-                "description": "Percorsi terapeutici personalizzati per il singolo individuo"
-            },
-            {
-                "@type": "MedicalTherapy",
-                "name": "Terapia di Coppia", 
-                "description": "Supporto terapeutico per le relazioni di coppia"
-            },
-            {
-                "@type": "MedicalTherapy",
-                "name": "Supporto per Adolescenti",
-                "description": "Accompagnamento psicologico specifico per adolescenti"
-            }
-        ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Servizi di Psicoterapia",
@@ -199,6 +177,14 @@
                         "@type": "Service",
                         "name": "Consulenza Online",
                         "description": "Sessioni terapeutiche via videochiamata per maggiore comodità e flessibilità"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Supporto per Adolescenti",
+                        "description": "Accompagnamento psicologico specifico per adolescenti"
                     }
                 }
             ]
