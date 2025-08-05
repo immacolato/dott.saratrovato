@@ -3211,8 +3211,26 @@
                 updateCookieSettingsTab();
             }
             
-            // Funzione per chiudere il banner (solo nasconde, non salva)
+            // Funzione per chiudere il banner con logica intelligente
             function closeCookieBanner() {
+                // Se le opzioni personalizzate sono visibili, salva lo stato corrente degli switch
+                const customizationIsVisible = !cookieDetails.classList.contains('hidden');
+                
+                if (customizationIsVisible) {
+                    // Salva le scelte correnti degli switch
+                    const preferences = {
+                        necessary: true,
+                        analytics: analyticsToggle ? analyticsToggle.checked : false,
+                        marketing: marketingToggle ? marketingToggle.checked : false,
+                        preferences: false
+                    };
+                    setCookieConsent(preferences);
+                } else {
+                    // Se non ha personalizzato nulla, comportamento di default (rifiuta)
+                    rejectCookies();
+                    return; // Evita il doppio salvataggio
+                }
+                
                 cookieBanner.classList.add('translate-y-full');
                 setTimeout(() => {
                     updateFloatingButtonsPosition();
@@ -3232,7 +3250,12 @@
                     marketing: false,
                     preferences: false
                 });
-                closeCookieBanner();
+                
+                cookieBanner.classList.add('translate-y-full');
+                setTimeout(() => {
+                    updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
+                }, 500);
             }
             
             if (!cookieChoice) {
@@ -3253,7 +3276,9 @@
                             !cookieBanner.contains(event.target) && 
                             !event.target.closest('#cookie-banner') &&
                             !event.target.closest('#cookie-settings-tab')) {
-                            rejectCookies();
+                            
+                            // Usa la stessa logica intelligente della X
+                            closeCookieBanner();
                         }
                     });
                 }, 2100); // Leggermente dopo che il banner diventa visibile
