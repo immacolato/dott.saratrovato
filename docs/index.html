@@ -3082,7 +3082,7 @@
     </div>
 
     <!-- Linguetta Cookie Settings - Sempre visibile -->
-    <div id="cookie-settings-tab" class="fixed bottom-20 left-4 z-40 hidden">
+    <div id="cookie-settings-tab" class="fixed bottom-0 left-4 z-40 hidden">
         <button id="open-cookie-settings" class="bg-gray-900 hover:bg-gray-800 text-white px-4 py-3 rounded-t-lg shadow-lg transition-all duration-300 text-sm font-medium border-2 border-gray-700 border-b-0 hover:border-gray-600" title="Gestisci preferenze cookie">
             <svg class="w-4 h-4 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
@@ -3147,7 +3147,6 @@
 
         // Funzione per salvare le preferenze cookie
         function setCookieConsent(categories) {
-            console.log('Salvando nel localStorage:', categories); // Debug
             localStorage.setItem('cookieConsent', JSON.stringify(categories));
             localStorage.setItem('cookieChoice', 'set');
             
@@ -3202,7 +3201,6 @@
             function reopenCookieBanner() {
                 // Ripristina le preferenze salvate nei toggle
                 const currentConsent = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
-                console.log('Riaprendo banner con preferenze:', currentConsent); // Debug
                 
                 if (analyticsToggle) analyticsToggle.checked = currentConsent.analytics || false;
                 if (marketingToggle) marketingToggle.checked = currentConsent.marketing || false;
@@ -3215,6 +3213,10 @@
             
             // Funzione per chiudere il banner (rifiuta cookie)
             function closeCookieBanner() {
+                // Reset dei toggle prima di salvare
+                if (analyticsToggle) analyticsToggle.checked = false;
+                if (marketingToggle) marketingToggle.checked = false;
+                
                 setCookieConsent({
                     necessary: true,
                     analytics: false,
@@ -3257,6 +3259,13 @@
                 const isHidden = cookieDetails.classList.contains('hidden');
                 const newText = isHidden ? 'Personalizza cookie' : 'Nascondi opzioni';
                 if (customizeBtn) customizeBtn.textContent = newText;
+                
+                // Se stiamo nascondendo le opzioni, reset dei toggle ai valori salvati
+                if (isHidden) {
+                    const currentConsent = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
+                    if (analyticsToggle) analyticsToggle.checked = currentConsent.analytics || false;
+                    if (marketingToggle) marketingToggle.checked = currentConsent.marketing || false;
+                }
                 
                 // Aggiorna posizione bottoni floating quando personalizzazione cambia
                 updateFloatingButtonsPosition();
@@ -3317,10 +3326,6 @@
                     marketing: marketingToggle.checked,
                     preferences: false
                 };
-                
-                console.log('Salvando preferenze personalizzate:', preferences); // Debug
-                console.log('Analytics toggle checked:', analyticsToggle.checked); // Debug
-                console.log('Marketing toggle checked:', marketingToggle.checked); // Debug
                 
                 setCookieConsent(preferences);
                 cookieBanner.classList.add('translate-y-full');
