@@ -3211,8 +3211,17 @@
                 updateCookieSettingsTab();
             }
             
-            // Funzione per chiudere il banner (rifiuta cookie)
+            // Funzione per chiudere il banner (solo nasconde, non salva)
             function closeCookieBanner() {
+                cookieBanner.classList.add('translate-y-full');
+                setTimeout(() => {
+                    updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
+                }, 500);
+            }
+            
+            // Funzione per rifiutare cookie (solo necessari)
+            function rejectCookies() {
                 // Reset dei toggle prima di salvare
                 if (analyticsToggle) analyticsToggle.checked = false;
                 if (marketingToggle) marketingToggle.checked = false;
@@ -3223,11 +3232,7 @@
                     marketing: false,
                     preferences: false
                 });
-                cookieBanner.classList.add('translate-y-full');
-                setTimeout(() => {
-                    updateFloatingButtonsPosition();
-                    updateCookieSettingsTab();
-                }, 500);
+                closeCookieBanner();
             }
             
             if (!cookieChoice) {
@@ -3238,13 +3243,20 @@
                     updateCookieSettingsTab();
                 }, 2000);
                 
-                // Aggiungi event listener per chiudere cliccando fuori dal banner
-                document.addEventListener('click', function(event) {
-                    const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
-                    if (bannerIsVisible && !cookieBanner.contains(event.target)) {
-                        closeCookieBanner();
-                    }
-                });
+                // Aggiungi event listener per chiudere cliccando fuori dal banner con un piccolo delay
+                setTimeout(() => {
+                    document.addEventListener('click', function(event) {
+                        const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                        
+                        // Verifica se il click è fuori dal banner e dai suoi elementi interattivi
+                        if (bannerIsVisible && 
+                            !cookieBanner.contains(event.target) && 
+                            !event.target.closest('#cookie-banner') &&
+                            !event.target.closest('#cookie-settings-tab')) {
+                            rejectCookies();
+                        }
+                    });
+                }, 2100); // Leggermente dopo che il banner diventa visibile
             } else {
                 // Se ha già dato il consenso, mostra la linguetta e carica i servizi
                 updateCookieSettingsTab();
@@ -3304,18 +3316,7 @@
             
             // Solo necessari
             rejectBtn.addEventListener('click', function() {
-                setCookieConsent({
-                    necessary: true,
-                    analytics: false,
-                    marketing: false,
-                    preferences: false
-                });
-                cookieBanner.classList.add('translate-y-full');
-                // Aggiorna posizione bottoni floating e linguetta dopo animazione
-                setTimeout(() => {
-                    updateFloatingButtonsPosition();
-                    updateCookieSettingsTab();
-                }, 500);
+                rejectCookies();
             });
             
             // Salva preferenze personalizzate
