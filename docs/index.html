@@ -3033,6 +3033,13 @@
                             <div class="w-9 h-5 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
                         </label>
                     </div>
+                    <div class="flex items-center justify-between">
+                        <span>Cookie marketing (Meta Pixel)</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="marketing-toggle" class="sr-only peer">
+                            <div class="w-9 h-5 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="flex flex-col sm:flex-row gap-2 justify-between">
@@ -3068,20 +3075,38 @@
         // Funzione per caricare Google Analytics solo se accettato
         function loadGoogleAnalytics() {
             if (getCookieConsent('analytics')) {
-                // Qui inseriresti il codice di Google Analytics
                 console.log('Google Analytics caricato');
                 
-                // Esempio di implementazione GA4:
-                /*
+                // Implementazione GA4 - SOSTITUISCI 'GA_MEASUREMENT_ID' con il tuo ID reale
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'GA_MEASUREMENT_ID');
+                gtag('config', 'GA_MEASUREMENT_ID'); // CAMBIA QUESTO con il tuo ID (es: G-XXXXXXXXXX)
                 
                 const script = document.createElement('script');
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'; // CAMBIA ANCHE QUESTO
+                script.async = true;
                 document.head.appendChild(script);
-                */
+            }
+        }
+
+        // Funzione per caricare Meta Pixel (Facebook) solo se accettato
+        function loadMetaPixel() {
+            if (getCookieConsent('marketing')) {
+                console.log('Meta Pixel caricato');
+                
+                // Implementazione Meta Pixel - SOSTITUISCI 'YOUR_PIXEL_ID' con il tuo Pixel ID
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                
+                fbq('init', 'YOUR_PIXEL_ID'); // CAMBIA QUESTO con il tuo Pixel ID
+                fbq('track', 'PageView');
             }
         }
 
@@ -3100,8 +3125,11 @@
             if (categories.analytics) {
                 loadGoogleAnalytics();
             }
+            if (categories.marketing) {
+                loadMetaPixel();
+            }
             
-            // Altre implementazioni per marketing, preferences, etc.
+            // Altre implementazioni per preferences, etc.
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -3112,6 +3140,7 @@
             const savePrefsBtn = document.getElementById('save-preferences');
             const cookieDetails = document.getElementById('cookie-details');
             const analyticsToggle = document.getElementById('analytics-toggle');
+            const marketingToggle = document.getElementById('marketing-toggle');
             
             // Controlla se l'utente ha già scelto
             const cookieChoice = localStorage.getItem('cookieChoice');
@@ -3124,6 +3153,7 @@
             } else {
                 // Se ha già dato il consenso, carica i servizi necessari
                 loadGoogleAnalytics();
+                loadMetaPixel();
             }
             
             // Personalizza cookie
@@ -3160,7 +3190,7 @@
                 setCookieConsent({
                     necessary: true,
                     analytics: analyticsToggle.checked,
-                    marketing: false,
+                    marketing: marketingToggle.checked,
                     preferences: false
                 });
                 cookieBanner.classList.add('translate-y-full');
