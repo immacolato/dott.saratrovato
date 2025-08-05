@@ -37,7 +37,7 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": ["LocalBusiness", "HealthAndBeautyBusiness", "MedicalOrganization"],
+        "@type": ["LocalBusiness", "MedicalOrganization"],
         "name": "Studio di Psicoterapia Dott.ssa Sara Trovato",
         "alternateName": "Sara Trovato Psicoterapeuta",
         "description": "Psicoterapeuta specializzata in terapia cognitivo costruttivista a Torino. Supporto professionale per ansia, depressione, stress, difficoltà relazionali e crescita personale. Consulenze individuali, di coppia e online.",
@@ -53,9 +53,21 @@
             "jobTitle": "Psicoterapeuta Cognitivo Costruttivista",
             "description": "Dottoressa in Psicologia specializzata in Psicoterapia Cognitivo Costruttivista",
             "hasCredential": [
-                "Laurea in Psicologia",
-                "Specializzazione in Psicoterapia Cognitivo Costruttivista",
-                "Iscrizione all'Albo degli Psicologi del Piemonte"
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Laurea in Psicologia",
+                    "credentialCategory": "degree"
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Specializzazione in Psicoterapia Cognitivo Costruttivista",
+                    "credentialCategory": "certification"
+                },
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Iscrizione all'Albo degli Psicologi del Piemonte",
+                    "credentialCategory": "license"
+                }
             ],
             "knowsAbout": [
                 "Psicoterapia Cognitivo Costruttivista",
@@ -67,7 +79,10 @@
                 "Burnout",
                 "Traumi Psicologici"
             ],
-            "alumniOf": "Università di Torino",
+            "alumniOf": {
+                "@type": "Organization",
+                "name": "Università di Torino"
+            },
             "workLocation": {
                 "@type": "Place",
                 "address": {
@@ -99,7 +114,13 @@
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "dayOfWeek": [
+                    "http://schema.org/Monday",
+                    "http://schema.org/Tuesday", 
+                    "http://schema.org/Wednesday",
+                    "http://schema.org/Thursday",
+                    "http://schema.org/Friday"
+                ],
                 "opens": "09:00",
                 "closes": "19:00"
             }
@@ -126,24 +147,31 @@
                 "name": "Collegno"
             }
         ],
-        "serviceType": [
-            "Psicoterapia Cognitivo Costruttivista",
-            "Terapia Individuale",
-            "Terapia di Coppia",
-            "Psicoterapia Familiare",
-            "Supporto per Adolescenti",
-            "Gestione Ansia e Attacchi di Panico",
-            "Trattamento Depressione",
-            "Gestione dello Stress e Burnout",
-            "Supporto per Traumi Psicologici",
-            "Terapia Online",
-            "Consulenza Psicologica",
-            "Supporto per Bassa Autostima",
-            "Difficoltà Relazionali"
-        ],
         "medicalSpecialty": [
             "Psychology",
             "Psychotherapy"
+        ],
+        "availableService": [
+            {
+                "@type": "MedicalTherapy",
+                "name": "Psicoterapia Cognitivo Costruttivista",
+                "description": "Terapia cognitivo costruttivista per il trattamento di disturbi psicologici"
+            },
+            {
+                "@type": "MedicalTherapy", 
+                "name": "Terapia Individuale",
+                "description": "Percorsi terapeutici personalizzati per il singolo individuo"
+            },
+            {
+                "@type": "MedicalTherapy",
+                "name": "Terapia di Coppia", 
+                "description": "Supporto terapeutico per le relazioni di coppia"
+            },
+            {
+                "@type": "MedicalTherapy",
+                "name": "Supporto per Adolescenti",
+                "description": "Accompagnamento psicologico specifico per adolescenti"
+            }
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
@@ -189,17 +217,6 @@
                 "result": {
                     "@type": "Reservation",
                     "name": "Prenotazione Consulenza Psicologica"
-                }
-            },
-            {
-                "@type": "ContactAction",
-                "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": "tel:+393896437358",
-                    "actionPlatform": [
-                        "http://schema.org/DesktopWebPlatform", 
-                        "http://schema.org/MobileWebPlatform"
-                    ]
                 }
             }
         ],
