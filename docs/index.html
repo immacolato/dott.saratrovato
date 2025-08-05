@@ -3077,14 +3077,14 @@
             if (getCookieConsent('analytics')) {
                 console.log('Google Analytics caricato');
                 
-                // Implementazione GA4 - SOSTITUISCI 'GA_MEASUREMENT_ID' con il tuo ID reale
+                // Implementazione GA4 con ID reale
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'GA_MEASUREMENT_ID'); // CAMBIA QUESTO con il tuo ID (es: G-XXXXXXXXXX)
+                gtag('config', 'G-0N59K37F5G');
                 
                 const script = document.createElement('script');
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'; // CAMBIA ANCHE QUESTO
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0N59K37F5G';
                 script.async = true;
                 document.head.appendChild(script);
             }
