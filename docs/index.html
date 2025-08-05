@@ -1252,6 +1252,10 @@
                     Servizi
                     <span class="underline"></span>
                 </a></li>
+                <li><a id="nav-faq" class="nav-link">
+                    FAQ
+                    <span class="underline"></span>
+                </a></li>
                 <li><a id="nav-contatti" class="nav-link">
                     Contatti
                     <span class="underline"></span>
@@ -1499,6 +1503,301 @@
                         "Dopo anni di difficoltà nelle relazioni, finalmente ho capito i pattern che mi portavano sempre negli stessi problemi. Il percorso terapeutico è stato illuminante."
                         <p class="mt-2 text-right text-sm text-gray-500">— Cliente da 1 anno</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Page -->
+        <section id="faq-page" class="page-content">
+            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl mb-8 border border-indigo-100">
+                <p class="text-lg text-center text-gray-700 font-medium">
+                    "Ogni domanda è un passo verso la comprensione" 
+                    <span class="block mt-2 text-sm text-indigo-600">Le risposte che cerchi per iniziare il tuo percorso</span>
+                </p>
+            </div>
+            
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center">Domande Frequenti</h2>
+            <p class="text-lg text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                Ho raccolto le domande più comuni che ricevo dai miei pazienti. Se non trovi la risposta che cerchi, non esitare a contattarmi direttamente.
+            </p>
+
+            <!-- FAQ Accordion -->
+            <div class="max-w-4xl mx-auto space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Quanto dura una seduta di psicoterapia?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700">
+                            Ogni seduta ha una durata standard di <strong>50 minuti</strong>. Questo tempo è studiato per permettere un approfondimento adeguato degli argomenti trattati, mantenendo al contempo un ritmo sostenibile per il paziente. La prima seduta può durare fino a <strong>60 minuti</strong> per permettere una conoscenza più approfondita.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Qual è il costo delle sedute?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            Il costo di una seduta individuale è di <strong>€70</strong>. Per la terapia di coppia il costo è di <strong>€90</strong> a seduta.
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Prima consulenza:</strong> €70 (individuale) / €90 (coppia)</li>
+                            <li>• <strong>Sedute online:</strong> Stesso costo delle sedute in presenza</li>
+                            <li>• <strong>Modalità di pagamento:</strong> Contanti, bonifico bancario, carta</li>
+                            <li>• <strong>Fatturazione:</strong> Rilascio regolare fattura per eventuali rimborsi assicurativi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Come si svolge la prima seduta?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            La prima seduta è un momento importante di <strong>conoscenza reciproca</strong>. Durante questo incontro:
+                        </p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>• <strong>Ascolto attivo:</strong> Ti ascolterò per comprendere i tuoi bisogni e le tue aspettative</li>
+                            <li>• <strong>Anamnesi:</strong> Raccoglieremo insieme la tua storia personale e familiare</li>
+                            <li>• <strong>Obiettivi:</strong> Definiremo insieme gli obiettivi del percorso terapeutico</li>
+                            <li>• <strong>Metodo:</strong> Ti spiegherò il mio approccio terapeutico cognitivo-costruttivista</li>
+                            <li>• <strong>Pianificazione:</strong> Stabiliremo frequenza e modalità degli incontri</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            Non c'è alcun obbligo di continuare dopo la prima seduta. È importante che tu ti senta a tuo agio e che percepisca che possiamo lavorare bene insieme.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Con che frequenza si svolgono le sedute?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            La frequenza delle sedute viene personalizzata in base alle tue esigenze e al tipo di problematica:
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Fase iniziale:</strong> Solitamente una volta a settimana per creare continuità</li>
+                            <li>• <strong>Fase intermedia:</strong> Ogni 10-15 giorni a seconda dei progressi</li>
+                            <li>• <strong>Fase di consolidamento:</strong> Una volta al mese per mantenere i risultati</li>
+                            <li>• <strong>Situazioni acute:</strong> Anche due volte a settimana se necessario</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            La frequenza può essere modificata in qualsiasi momento in base ai tuoi bisogni e alla tua disponibilità.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Quanto dura un percorso di psicoterapia?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            La durata del percorso è <strong>altamente personalizzata</strong> e dipende da diversi fattori:
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Consulenze brevi:</strong> 3-6 sedute per situazioni specifiche</li>
+                            <li>• <strong>Percorsi medi:</strong> 6-12 mesi per difficoltà moderate</li>
+                            <li>• <strong>Percorsi approfonditi:</strong> 1-2 anni per cambiamenti strutturali</li>
+                            <li>• <strong>Supporto occasionale:</strong> Sedute di mantenimento al bisogno</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            Ogni percorso è unico. Monitoriamo costantemente i progressi e rivalutiamo gli obiettivi insieme, in piena trasparenza.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Offrite sedute online?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            <strong>Sì, offro sedute di psicoterapia online</strong> tramite piattaforme sicure e professionali:
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Piattaforme utilizzate:</strong> Zoom, Skype, Google Meet (a tua scelta)</li>
+                            <li>• <strong>Stessa efficacia:</strong> Le sedute online hanno la stessa validità terapeutica</li>
+                            <li>• <strong>Flessibilità:</strong> Ideali per chi ha difficoltà negli spostamenti</li>
+                            <li>• <strong>Privacy garantita:</strong> Connessioni crittografate e ambiente riservato</li>
+                            <li>• <strong>Costo invariato:</strong> Stesso prezzo delle sedute in presenza</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            È possibile alternare sedute in presenza e online in base alle tue esigenze del momento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Come posso disdire o spostare un appuntamento?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            Comprendo che possano sorgere imprevisti. La mia politica di cancellazione è flessibile ma strutturata:
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Preavviso 24h:</strong> Cancellazione gratuita con almeno 24 ore di anticipo</li>
+                            <li>• <strong>Preavviso 12-24h:</strong> Possibile spostamento senza costi aggiuntivi</li>
+                            <li>• <strong>Meno di 12h:</strong> Potrebbe essere addebitato il 50% della seduta</li>
+                            <li>• <strong>Emergenze:</strong> Valutazione caso per caso con comprensione</li>
+                            <li>• <strong>Contatto:</strong> WhatsApp, SMS o chiamata per comunicazioni urgenti</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            L'obiettivo è mantenere un servizio di qualità per tutti, nel rispetto reciproco.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Cosa differenzia l'approccio cognitivo-costruttivista?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            L'approccio <strong>cognitivo-costruttivista</strong> si basa su alcuni principi fondamentali:
+                        </p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>• <strong>Focus sul presente:</strong> Lavoriamo principalmente su ciò che accade qui e ora</li>
+                            <li>• <strong>Pensieri e comportamenti:</strong> Esploriamo come pensieri e azioni influenzano le emozioni</li>
+                            <li>• <strong>Collaborazione attiva:</strong> Sei protagonista attivo del tuo percorso di cambiamento</li>
+                            <li>• <strong>Strategie pratiche:</strong> Sviluppiamo strumenti concreti da utilizzare nella vita quotidiana</li>
+                            <li>• <strong>Orientamento agli obiettivi:</strong> Ogni intervento ha finalità chiare e misurabili</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            Questo approccio è scientificamente validato ed efficace per ansia, depressione, stress e difficoltà relazionali.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Posso portare accompagnatori alle sedute?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            La presenza di accompagnatori dipende dalla situazione specifica:
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Terapia individuale:</strong> Generalmente si svolge in privato per garantire riservatezza</li>
+                            <li>• <strong>Prima seduta:</strong> Possibile presenza di un familiare se richiesto</li>
+                            <li>• <strong>Minori:</strong> Spesso coinvolgo i genitori in parte del percorso</li>
+                            <li>• <strong>Terapia familiare:</strong> Partecipazione di più membri della famiglia</li>
+                            <li>• <strong>Situazioni specifiche:</strong> Valutiamo insieme caso per caso</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            L'importante è che tutti si sentano a proprio agio e che l'intervento sia efficace.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition-colors duration-200" onclick="toggleFAQ(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-900">Come viene garantita la privacy e la riservatezza?</h3>
+                            <svg class="faq-icon w-5 h-5 text-indigo-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4">
+                        <p class="text-gray-700 mb-3">
+                            La <strong>riservatezza è un pilastro fondamentale</strong> della mia pratica professionale:
+                        </p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• <strong>Segreto professionale:</strong> Vincolato dal Codice Deontologico degli Psicologi</li>
+                            <li>• <strong>GDPR compliance:</strong> Rispetto rigoroso della normativa sulla privacy</li>
+                            <li>• <strong>Dati sicuri:</strong> Archivio protetto e accesso limitato alle informazioni</li>
+                            <li>• <strong>Studio riservato:</strong> Ambiente discreto e privacy garantita</li>
+                            <li>• <strong>Consenso informato:</strong> Trasparenza completa su uso e conservazione dei dati</li>
+                        </ul>
+                        <p class="text-gray-700 mt-3">
+                            Tutto ciò che condividi rimane strettamente confidenziale, tranne nei rari casi previsti dalla legge per la tutela della persona.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA alla fine delle FAQ -->
+            <div class="bg-indigo-50 border border-indigo-100 p-6 rounded-xl text-center my-12 max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Non hai trovato la risposta che cercavi?</h3>
+                <p class="text-gray-600 mb-6">Sarò felice di rispondere a qualsiasi altra domanda durante una breve chiamata conoscitiva gratuita.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                    <a href="https://wa.me/393896437358?text=Ciao%20Dott.ssa%20Trovato,%20ho%20letto%20le%20FAQ%20ma%20avrei%20alcune%20domande%20specifiche" 
+                       class="cta-primary-btn">
+                        <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                        <span>Scrivimi su WhatsApp</span>
+                    </a>
+                    <a href="tel:+393896437358" class="cta-secondary-btn">
+                        <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <span>Chiamami</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1940,6 +2239,45 @@
 
         // Aggiorna il padding del body al ridimensionamento della finestra
         window.addEventListener('resize', adjustBodyPadding);
+
+        // FAQ Accordion Functionality
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = button.querySelector('.faq-icon');
+            const isOpen = !answer.classList.contains('hidden');
+            
+            // Chiudi tutte le altre FAQ
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    const otherIcon = item.querySelector('.faq-icon');
+                    otherAnswer.classList.add('hidden');
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle della FAQ corrente
+            if (isOpen) {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Gestione navigazione FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            // Aggiungi gestore per il link FAQ nel menu
+            const faqNavLink = document.getElementById('nav-faq');
+            if (faqNavLink) {
+                faqNavLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showPage('faq');
+                });
+            }
+        });
     </script>
 
 </body>
