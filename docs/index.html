@@ -3175,8 +3175,42 @@
             const cookieSettingsTab = document.getElementById('cookie-settings-tab');
             const openCookieSettingsBtn = document.getElementById('open-cookie-settings');
             
-            // Controlla se l'utente ha già scelto
-            const cookieChoice = localStorage.getItem('cookieChoice');
+            // Funzione per attivare/disattivare l'event listener del click fuori
+            let clickOutsideListener = null;
+            
+            function enableClickOutside() {
+                // Rimuovi il listener esistente se presente
+                if (clickOutsideListener) {
+                    document.removeEventListener('click', clickOutsideListener);
+                }
+                
+                // Crea nuovo listener
+                clickOutsideListener = function(event) {
+                    const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                    
+                    // Verifica se il click è fuori dal banner e dai suoi elementi interattivi
+                    if (bannerIsVisible && 
+                        !cookieBanner.contains(event.target) && 
+                        !event.target.closest('#cookie-banner') &&
+                        !event.target.closest('#cookie-settings-tab')) {
+                        
+                        // Usa la stessa logica intelligente della X
+                        closeCookieBanner();
+                    }
+                };
+                
+                // Aggiungi il nuovo listener con un piccolo delay
+                setTimeout(() => {
+                    document.addEventListener('click', clickOutsideListener);
+                }, 100);
+            }
+            
+            function disableClickOutside() {
+                if (clickOutsideListener) {
+                    document.removeEventListener('click', clickOutsideListener);
+                    clickOutsideListener = null;
+                }
+            }
             
             // Funzione per gestire lo spostamento dei bottoni floating
             function updateFloatingButtonsPosition() {
@@ -3209,6 +3243,9 @@
                 cookieBanner.classList.remove('translate-y-full');
                 updateFloatingButtonsPosition();
                 updateCookieSettingsTab();
+                
+                // Riattiva il click fuori dal banner
+                enableClickOutside();
             }
             
             // Funzione per chiudere il banner con logica intelligente
@@ -3236,6 +3273,9 @@
                     updateFloatingButtonsPosition();
                     updateCookieSettingsTab();
                 }, 500);
+                
+                // Disattiva il click fuori dal banner
+                disableClickOutside();
             }
             
             // Funzione per rifiutare cookie (solo necessari)
@@ -3256,7 +3296,13 @@
                     updateFloatingButtonsPosition();
                     updateCookieSettingsTab();
                 }, 500);
+                
+                // Disattiva il click fuori dal banner
+                disableClickOutside();
             }
+            
+            // Controlla se l'utente ha già scelto
+            const cookieChoice = localStorage.getItem('cookieChoice');
             
             if (!cookieChoice) {
                 // Mostra il banner dopo 2 secondi
@@ -3264,24 +3310,10 @@
                     cookieBanner.classList.remove('translate-y-full');
                     updateFloatingButtonsPosition();
                     updateCookieSettingsTab();
+                    
+                    // Attiva il click fuori dal banner dopo che diventa visibile
+                    enableClickOutside();
                 }, 2000);
-                
-                // Aggiungi event listener per chiudere cliccando fuori dal banner con un piccolo delay
-                setTimeout(() => {
-                    document.addEventListener('click', function(event) {
-                        const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
-                        
-                        // Verifica se il click è fuori dal banner e dai suoi elementi interattivi
-                        if (bannerIsVisible && 
-                            !cookieBanner.contains(event.target) && 
-                            !event.target.closest('#cookie-banner') &&
-                            !event.target.closest('#cookie-settings-tab')) {
-                            
-                            // Usa la stessa logica intelligente della X
-                            closeCookieBanner();
-                        }
-                    });
-                }, 2100); // Leggermente dopo che il banner diventa visibile
             } else {
                 // Se ha già dato il consenso, mostra la linguetta e carica i servizi
                 updateCookieSettingsTab();
@@ -3337,6 +3369,9 @@
                     updateFloatingButtonsPosition();
                     updateCookieSettingsTab();
                 }, 500);
+                
+                // Disattiva il click fuori dal banner
+                disableClickOutside();
             });
             
             // Solo necessari
@@ -3360,6 +3395,9 @@
                     updateFloatingButtonsPosition();
                     updateCookieSettingsTab();
                 }, 500);
+                
+                // Disattiva il click fuori dal banner
+                disableClickOutside();
             });
         });
     </script>
