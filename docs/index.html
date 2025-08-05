@@ -1202,6 +1202,11 @@
     bottom: 160px; /* Ridotto per banner più compatto */
 }
 
+/* Sposta ancora più in alto quando il banner è personalizzato (più alto) */
+.contact-floating.cookie-customization-visible {
+    bottom: 240px; /* Più spazio per il banner espanso */
+}
+
 .contact-btn {
     width: 56px;
     height: 56px;
@@ -3076,6 +3081,16 @@
         </div>
     </div>
 
+    <!-- Linguetta Cookie Settings - Sempre visibile -->
+    <div id="cookie-settings-tab" class="fixed bottom-20 left-4 z-40 hidden">
+        <button id="open-cookie-settings" class="bg-gray-800 hover:bg-gray-700 text-white px-3 py-2 rounded-t-lg shadow-lg transition-all duration-300 text-xs font-medium border-t border-l border-r border-gray-600" title="Gestisci preferenze cookie">
+            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+            </svg>
+            Cookie
+        </button>
+    </div>
+
     <!-- Cookie Banner JavaScript -->
     <script>
         // Configurazione categorie cookie
@@ -3157,6 +3172,8 @@
             const analyticsToggle = document.getElementById('analytics-toggle');
             const marketingToggle = document.getElementById('marketing-toggle');
             const contactFloating = document.querySelector('.contact-floating');
+            const cookieSettingsTab = document.getElementById('cookie-settings-tab');
+            const openCookieSettingsBtn = document.getElementById('open-cookie-settings');
             
             // Controlla se l'utente ha già scelto
             const cookieChoice = localStorage.getItem('cookieChoice');
@@ -3164,9 +3181,33 @@
             // Funzione per gestire lo spostamento dei bottoni floating
             function updateFloatingButtonsPosition() {
                 const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                const customizationIsVisible = !cookieDetails.classList.contains('hidden');
+                
                 if (contactFloating) {
-                    contactFloating.classList.toggle('cookie-banner-visible', bannerIsVisible);
+                    contactFloating.classList.toggle('cookie-banner-visible', bannerIsVisible && !customizationIsVisible);
+                    contactFloating.classList.toggle('cookie-customization-visible', bannerIsVisible && customizationIsVisible);
                 }
+            }
+            
+            // Funzione per mostrare/nascondere la linguetta
+            function updateCookieSettingsTab() {
+                const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                if (cookieSettingsTab) {
+                    cookieSettingsTab.classList.toggle('hidden', bannerIsVisible);
+                }
+            }
+            
+            // Funzione per riaprire il banner
+            function reopenCookieBanner() {
+                // Ripristina le preferenze salvate nei toggle
+                const currentConsent = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
+                if (analyticsToggle) analyticsToggle.checked = currentConsent.analytics || false;
+                if (marketingToggle) marketingToggle.checked = currentConsent.marketing || false;
+                
+                // Mostra il banner
+                cookieBanner.classList.remove('translate-y-full');
+                updateFloatingButtonsPosition();
+                updateCookieSettingsTab();
             }
             
             // Funzione per chiudere il banner (rifiuta cookie)
@@ -3178,7 +3219,10 @@
                     preferences: false
                 });
                 cookieBanner.classList.add('translate-y-full');
-                setTimeout(updateFloatingButtonsPosition, 500);
+                setTimeout(() => {
+                    updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
+                }, 500);
             }
             
             if (!cookieChoice) {
@@ -3186,6 +3230,7 @@
                 setTimeout(() => {
                     cookieBanner.classList.remove('translate-y-full');
                     updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
                 }, 2000);
                 
                 // Aggiungi event listener per chiudere cliccando fuori dal banner
@@ -3196,7 +3241,8 @@
                     }
                 });
             } else {
-                // Se ha già dato il consenso, carica i servizi necessari
+                // Se ha già dato il consenso, mostra la linguetta e carica i servizi
+                updateCookieSettingsTab();
                 loadGoogleAnalytics();
                 loadMetaPixel();
             }
@@ -3208,6 +3254,9 @@
                 const isHidden = cookieDetails.classList.contains('hidden');
                 const newText = isHidden ? 'Personalizza cookie' : 'Nascondi opzioni';
                 if (customizeBtn) customizeBtn.textContent = newText;
+                
+                // Aggiorna posizione bottoni floating quando personalizzazione cambia
+                updateFloatingButtonsPosition();
             }
             
             // Personalizza cookie
@@ -3220,6 +3269,11 @@
                 closeBannerBtn.addEventListener('click', closeCookieBanner);
             }
             
+            // Linguetta per riaprire il banner
+            if (openCookieSettingsBtn) {
+                openCookieSettingsBtn.addEventListener('click', reopenCookieBanner);
+            }
+            
             // Accetta tutti
             acceptBtn.addEventListener('click', function() {
                 setCookieConsent({
@@ -3229,8 +3283,11 @@
                     preferences: true
                 });
                 cookieBanner.classList.add('translate-y-full');
-                // Aggiorna posizione bottoni floating dopo animazione
-                setTimeout(updateFloatingButtonsPosition, 500);
+                // Aggiorna posizione bottoni floating e linguetta dopo animazione
+                setTimeout(() => {
+                    updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
+                }, 500);
             });
             
             // Solo necessari
@@ -3242,8 +3299,11 @@
                     preferences: false
                 });
                 cookieBanner.classList.add('translate-y-full');
-                // Aggiorna posizione bottoni floating dopo animazione
-                setTimeout(updateFloatingButtonsPosition, 500);
+                // Aggiorna posizione bottoni floating e linguetta dopo animazione
+                setTimeout(() => {
+                    updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
+                }, 500);
             });
             
             // Salva preferenze personalizzate
@@ -3255,8 +3315,11 @@
                     preferences: false
                 });
                 cookieBanner.classList.add('translate-y-full');
-                // Aggiorna posizione bottoni floating dopo animazione
-                setTimeout(updateFloatingButtonsPosition, 500);
+                // Aggiorna posizione bottoni floating e linguetta dopo animazione
+                setTimeout(() => {
+                    updateFloatingButtonsPosition();
+                    updateCookieSettingsTab();
+                }, 500);
             });
         });
     </script>
