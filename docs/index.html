@@ -3321,7 +3321,7 @@
             
             // Funzione per mostrare/nascondere la linguetta
             function updateCookieSettingsTab() {
-                const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full') && !cookieBanner.classList.contains('hidden');
                 if (cookieSettingsTab) {
                     // Mostra la linguetta quando il banner NON è visibile
                     cookieSettingsTab.classList.toggle('hidden', bannerIsVisible);
@@ -3338,6 +3338,7 @@
                 
                 // Mostra il banner
                 cookieBanner.classList.remove('translate-y-full');
+                cookieBanner.classList.remove('hidden');
                 updateFloatingButtonsPosition();
                 updateCookieSettingsTab();
                 
