@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://saratrovatopsicoterapia.it/sitemap.xml
+
+# Ottimizzazioni per i bot
+Crawl-delay: 1
+
+# Permetti l'accesso alle immagini per i motori di ricerca
+Allow: /assets/images/
+Allow: /assets/images/logos/
+
+# Blocca l'accesso ai file di sistema (se presenti)
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.log$
