@@ -3119,7 +3119,7 @@
     </script>
 
     <!-- GDPR Cookie Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white z-50 transform translate-y-full transition-transform duration-500">
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white z-50 transform translate-y-full transition-transform duration-500 hidden">
         <div class="container mx-auto max-w-4xl relative p-2 md:p-3">
             <!-- Pulsante chiudi -->
             <button id="close-cookie-banner" class="absolute -top-1 right-1 text-gray-400 hover:text-white text-lg font-bold w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-full hover:bg-gray-700 transition-colors text-xs md:text-lg" title="Chiudi banner (rifiuta cookie non necessari)">
@@ -3416,6 +3416,7 @@
             if (!cookieChoice) {
                 // Mostra il banner dopo 2 secondi
                 setTimeout(() => {
+                    cookieBanner.classList.remove('hidden');
                     cookieBanner.classList.remove('translate-y-full');
                     updateFloatingButtonsPosition();
                     updateCookieSettingsTab();
