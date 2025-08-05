@@ -1199,12 +1199,12 @@
 
 /* Sposta i bottoni floating verso l'alto quando il cookie banner è visibile */
 .contact-floating.cookie-banner-visible {
-    bottom: 160px; /* Ridotto per banner più compatto */
+    bottom: 140px; /* Ridotto ulteriormente per mobile */
 }
 
 /* Sposta ancora più in alto quando il banner è personalizzato (più alto) */
 .contact-floating.cookie-customization-visible {
-    bottom: 240px; /* Più spazio per il banner espanso */
+    bottom: 200px; /* Ridotto per banner più compatto */
 }
 
 .contact-btn {
@@ -1404,6 +1404,35 @@
     .cta-icon {
         width: 20px;
         height: 20px;
+    }
+}
+
+/* === COOKIE BANNER MOBILE OPTIMIZATIONS === */
+@media (max-width: 768px) {
+    #cookie-banner {
+        padding: 0.5rem !important;
+    }
+    
+    #cookie-banner .container {
+        padding: 0.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    #cookie-details {
+        font-size: 0.75rem !important;
+    }
+    
+    #cookie-banner button {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.75rem !important;
+    }
+    
+    #close-cookie-banner {
+        right: 0.25rem !important;
+        top: 0.25rem !important;
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        font-size: 1rem !important;
     }
 }
 
@@ -3024,54 +3053,54 @@
     </script>
 
     <!-- GDPR Cookie Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-3 z-50 transform translate-y-full transition-transform duration-500">
-        <div class="container mx-auto max-w-4xl relative">
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white z-50 transform translate-y-full transition-transform duration-500">
+        <div class="container mx-auto max-w-4xl relative p-2 md:p-3">
             <!-- Pulsante chiudi -->
-            <button id="close-cookie-banner" class="absolute -top-1 right-0 text-gray-400 hover:text-white text-lg font-bold w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-700 transition-colors" title="Chiudi banner (rifiuta cookie non necessari)">
+            <button id="close-cookie-banner" class="absolute -top-1 right-1 text-gray-400 hover:text-white text-lg font-bold w-5 h-5 md:w-6 md:h-6 flex items-center justify-center rounded-full hover:bg-gray-700 transition-colors text-xs md:text-lg" title="Chiudi banner (rifiuta cookie non necessari)">
                 ×
             </button>
-            <div class="flex flex-col gap-3">
-                <div class="text-sm">
+            <div class="flex flex-col gap-2 md:gap-3">
+                <div class="text-xs md:text-sm">
                     <p>🍪 Questo sito utilizza cookie per migliorare l'esperienza utente e per analisi statistiche.</p>
                 </div>
                 
                 <!-- Opzioni base (nascoste per default) -->
-                <div id="cookie-details" class="hidden text-xs space-y-2">
+                <div id="cookie-details" class="hidden text-xs space-y-1 md:space-y-2">
                     <div class="flex items-center justify-between">
                         <span>Cookie tecnici (necessari)</span>
-                        <span class="text-green-400">Sempre attivi</span>
+                        <span class="text-green-400 text-xs">Sempre attivi</span>
                     </div>
                     <div class="flex items-center justify-between">
                         <span>Cookie analytics (Google Analytics)</span>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" id="analytics-toggle" class="sr-only peer">
-                            <div class="w-9 h-5 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                            <div class="w-8 h-4 md:w-9 md:h-5 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 md:after:h-4 md:after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
                         </label>
                     </div>
                     <div class="flex items-center justify-between">
                         <span>Cookie marketing (Meta Pixel)</span>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" id="marketing-toggle" class="sr-only peer">
-                            <div class="w-9 h-5 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                            <div class="w-8 h-4 md:w-9 md:h-5 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 md:after:h-4 md:after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
                         </label>
                     </div>
                 </div>
                 
-                <div class="flex flex-col gap-2">
-                    <div class="flex flex-col sm:flex-row gap-2 sm:justify-between sm:items-center">
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <div class="flex flex-col sm:flex-row gap-1 sm:gap-2 sm:justify-between sm:items-center">
                         <!-- Personalizza cookie -->
                         <button id="customize-cookies" class="text-xs underline hover:no-underline">
                             Personalizza cookie
                         </button>
                         
-                        <div class="flex gap-2 flex-wrap justify-center sm:justify-end">
-                            <button id="accept-cookies" class="bg-indigo-600 hover:bg-indigo-700 px-3 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[90px]">
+                        <div class="flex gap-1 md:gap-2 flex-wrap justify-center sm:justify-end">
+                            <button id="accept-cookies" class="bg-indigo-600 hover:bg-indigo-700 px-2 py-1 md:px-3 md:py-2 rounded text-xs md:text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[80px] md:min-w-[90px]">
                                 Accetta tutti
                             </button>
-                            <button id="reject-cookies" class="bg-gray-600 hover:bg-gray-700 px-3 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[90px]">
+                            <button id="reject-cookies" class="bg-gray-600 hover:bg-gray-700 px-2 py-1 md:px-3 md:py-2 rounded text-xs md:text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[80px] md:min-w-[90px]">
                                 Solo necessari
                             </button>
-                            <button id="save-preferences" class="hidden bg-green-600 hover:bg-green-700 px-3 py-2 rounded text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[90px]">
+                            <button id="save-preferences" class="hidden bg-green-600 hover:bg-green-700 px-2 py-1 md:px-3 md:py-2 rounded text-xs md:text-sm font-medium transition-colors flex-1 sm:flex-none min-w-[80px] md:min-w-[90px]">
                                 Salva preferenze
                             </button>
                         </div>
