@@ -1194,6 +1194,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px; /* Aumentato gap per evitare sovrapposizioni */
+    transition: bottom 0.5s ease; /* Transizione fluida per lo spostamento */
+}
+
+/* Sposta i bottoni floating verso l'alto quando il cookie banner è visibile */
+.contact-floating.cookie-banner-visible {
+    bottom: 200px; /* Sposta sopra il banner cookie */
 }
 
 .contact-btn {
@@ -3014,7 +3020,7 @@
 
     <!-- GDPR Cookie Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 z-50 transform translate-y-full transition-transform duration-500">
-        <div class="container mx-auto pr-20 sm:pr-4">
+        <div class="container mx-auto">
             <div class="flex flex-col gap-4">
                 <div class="text-sm">
                     <p>🍪 Questo sito utilizza cookie per migliorare l'esperienza utente e per analisi statistiche.</p>
@@ -3043,16 +3049,9 @@
                 </div>
                 
                 <div class="flex flex-col gap-3">
-                    <!-- Su mobile, personalizza cookie in alto per evitare conflitti -->
-                    <div class="flex justify-center sm:hidden">
-                        <button id="customize-cookies" class="text-xs underline hover:no-underline text-center">
-                            Personalizza cookie
-                        </button>
-                    </div>
-                    
                     <div class="flex flex-col sm:flex-row gap-2 sm:justify-between sm:items-center">
-                        <!-- Personalizza cookie solo su desktop -->
-                        <button id="customize-cookies-desktop" class="hidden sm:block text-xs underline hover:no-underline">
+                        <!-- Personalizza cookie -->
+                        <button id="customize-cookies" class="text-xs underline hover:no-underline">
                             Personalizza cookie
                         </button>
                         
@@ -3148,19 +3147,28 @@
             const acceptBtn = document.getElementById('accept-cookies');
             const rejectBtn = document.getElementById('reject-cookies');
             const customizeBtn = document.getElementById('customize-cookies');
-            const customizeBtnDesktop = document.getElementById('customize-cookies-desktop');
             const savePrefsBtn = document.getElementById('save-preferences');
             const cookieDetails = document.getElementById('cookie-details');
             const analyticsToggle = document.getElementById('analytics-toggle');
             const marketingToggle = document.getElementById('marketing-toggle');
+            const contactFloating = document.querySelector('.contact-floating');
             
             // Controlla se l'utente ha già scelto
             const cookieChoice = localStorage.getItem('cookieChoice');
+            
+            // Funzione per gestire lo spostamento dei bottoni floating
+            function updateFloatingButtonsPosition() {
+                const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
+                if (contactFloating) {
+                    contactFloating.classList.toggle('cookie-banner-visible', bannerIsVisible);
+                }
+            }
             
             if (!cookieChoice) {
                 // Mostra il banner dopo 2 secondi
                 setTimeout(() => {
                     cookieBanner.classList.remove('translate-y-full');
+                    updateFloatingButtonsPosition();
                 }, 2000);
             } else {
                 // Se ha già dato il consenso, carica i servizi necessari
@@ -3175,15 +3183,11 @@
                 const isHidden = cookieDetails.classList.contains('hidden');
                 const newText = isHidden ? 'Personalizza cookie' : 'Nascondi opzioni';
                 if (customizeBtn) customizeBtn.textContent = newText;
-                if (customizeBtnDesktop) customizeBtnDesktop.textContent = newText;
             }
             
-            // Personalizza cookie (entrambi i pulsanti)
+            // Personalizza cookie
             if (customizeBtn) {
                 customizeBtn.addEventListener('click', toggleCookieCustomization);
-            }
-            if (customizeBtnDesktop) {
-                customizeBtnDesktop.addEventListener('click', toggleCookieCustomization);
             }
             
             // Accetta tutti
@@ -3195,6 +3199,8 @@
                     preferences: true
                 });
                 cookieBanner.classList.add('translate-y-full');
+                // Aggiorna posizione bottoni floating dopo animazione
+                setTimeout(updateFloatingButtonsPosition, 500);
             });
             
             // Solo necessari
@@ -3206,6 +3212,8 @@
                     preferences: false
                 });
                 cookieBanner.classList.add('translate-y-full');
+                // Aggiorna posizione bottoni floating dopo animazione
+                setTimeout(updateFloatingButtonsPosition, 500);
             });
             
             // Salva preferenze personalizzate
@@ -3217,6 +3225,8 @@
                     preferences: false
                 });
                 cookieBanner.classList.add('translate-y-full');
+                // Aggiorna posizione bottoni floating dopo animazione
+                setTimeout(updateFloatingButtonsPosition, 500);
             });
         });
     </script>
