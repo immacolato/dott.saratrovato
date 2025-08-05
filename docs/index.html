@@ -3323,6 +3323,7 @@
             function updateCookieSettingsTab() {
                 const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
                 if (cookieSettingsTab) {
+                    // Mostra la linguetta quando il banner NON è visibile
                     cookieSettingsTab.classList.toggle('hidden', bannerIsVisible);
                 }
             }
