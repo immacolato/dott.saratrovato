@@ -3268,6 +3268,11 @@
                     return; // Evita il doppio salvataggio
                 }
                 
+                // Nascondi le opzioni personalizzate e reset dei pulsanti
+                cookieDetails.classList.add('hidden');
+                savePrefsBtn.classList.add('hidden');
+                if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
+                
                 cookieBanner.classList.add('translate-y-full');
                 setTimeout(() => {
                     updateFloatingButtonsPosition();
@@ -3290,6 +3295,11 @@
                     marketing: false,
                     preferences: false
                 });
+                
+                // Nascondi le opzioni personalizzate e reset dei pulsanti
+                cookieDetails.classList.add('hidden');
+                savePrefsBtn.classList.add('hidden');
+                if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
                 
                 cookieBanner.classList.add('translate-y-full');
                 setTimeout(() => {
@@ -3323,17 +3333,17 @@
             
             // Funzione per gestire personalizzazione cookie
             function toggleCookieCustomization() {
-                cookieDetails.classList.toggle('hidden');
-                savePrefsBtn.classList.toggle('hidden');
-                const isHidden = cookieDetails.classList.contains('hidden');
-                const newText = isHidden ? 'Personalizza cookie' : 'Nascondi opzioni';
-                if (customizeBtn) customizeBtn.textContent = newText;
+                const isCurrentlyHidden = cookieDetails.classList.contains('hidden');
                 
-                // Se stiamo nascondendo le opzioni, reset dei toggle ai valori salvati
-                if (isHidden) {
-                    const currentConsent = JSON.parse(localStorage.getItem('cookieConsent') || '{}');
-                    if (analyticsToggle) analyticsToggle.checked = currentConsent.analytics || false;
-                    if (marketingToggle) marketingToggle.checked = currentConsent.marketing || false;
+                if (isCurrentlyHidden) {
+                    // Mostra le opzioni personalizzate
+                    cookieDetails.classList.remove('hidden');
+                    savePrefsBtn.classList.remove('hidden');
+                    if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
+                } else {
+                    // Se le opzioni sono già visibili, non fare nulla
+                    // L'utente deve usare X, click fuori, o "Salva preferenze"
+                    return;
                 }
                 
                 // Aggiorna posizione bottoni floating quando personalizzazione cambia
@@ -3363,6 +3373,12 @@
                     marketing: true,
                     preferences: true
                 });
+                
+                // Nascondi le opzioni personalizzate e reset dei pulsanti
+                cookieDetails.classList.add('hidden');
+                savePrefsBtn.classList.add('hidden');
+                if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
+                
                 cookieBanner.classList.add('translate-y-full');
                 // Aggiorna posizione bottoni floating e linguetta dopo animazione
                 setTimeout(() => {
@@ -3389,6 +3405,12 @@
                 };
                 
                 setCookieConsent(preferences);
+                
+                // Nascondi le opzioni personalizzate e reset dei pulsanti
+                cookieDetails.classList.add('hidden');
+                savePrefsBtn.classList.add('hidden');
+                if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
+                
                 cookieBanner.classList.add('translate-y-full');
                 // Aggiorna posizione bottoni floating e linguetta dopo animazione
                 setTimeout(() => {
