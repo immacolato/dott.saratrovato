@@ -1,0 +1,39 @@
+/* Performance Optimization for Core Web Vitals */
+
+/* Preload critical resources */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Optimize Cumulative Layout Shift (CLS) */
+.header-logo img {
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1;
+}
+
+/* Optimize Largest Contentful Paint (LCP) */
+.hero-image {
+    content-visibility: auto;
+    contain-intrinsic-size: 600px 400px;
+}
+
+/* Critical CSS inlining hints */
+.above-fold {
+    contain: layout style paint;
+}
+
+/* Optimize First Input Delay (FID) */
+.interactive-element {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Image optimization */
+img {
+    loading: lazy;
+    decoding: async;
+}
+
+img.critical {
+    loading: eager;
+    fetchpriority: high;
+}

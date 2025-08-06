@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Studio Psicoterapia Dott.ssa Sara Trovato",
+  "priceRange": "€70-€90",
+  "paymentAccepted": "Cash, Bank Transfer",
+  "currenciesAccepted": "EUR",
+  "description": "Psicoterapeuta specializzata in terapia cognitivo costruttivista a Torino",
+  "url": "https://saratrovatopsicoterapia.it",
+  "telephone": "+39-389-6437358",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Maria Vittoria 40 Bis",
+    "addressLocality": "Torino",
+    "addressRegion": "Piemonte", 
+    "postalCode": "10123",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.0650343,
+    "longitude": 7.6922580
+  },
+  "openingHours": "Mo-Fr 09:00-19:00"
+}
