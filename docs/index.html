@@ -1193,29 +1193,29 @@
     z-index: 10000;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Aumentato gap per evitare sovrapposizioni */
+    gap: 12px; /* Ridotto gap per compattezza */
     transition: bottom 0.5s ease; /* Transizione fluida per lo spostamento */
 }
 
 /* Sposta i bottoni floating verso l'alto quando il cookie banner è visibile */
 .contact-floating.cookie-banner-visible {
-    bottom: 140px; /* Ridotto ulteriormente per mobile */
+    bottom: 100px; /* Bilanciato per non andare troppo in alto */
 }
 
 /* Sposta ancora più in alto quando il banner è personalizzato (più alto) */
 .contact-floating.cookie-customization-visible {
-    bottom: 280px; /* Aumentato ulteriormente per iPhone */
+    bottom: 200px; /* Ridotto per bilanciare meglio */
 }
 
 /* === OTTIMIZZAZIONI SPECIFICHE PER IPHONE === */
 /* iPhone 15, 14, 13, 12 Pro (390px) */
 @media (max-width: 430px) and (max-height: 932px) {
     .contact-floating.cookie-banner-visible {
-        bottom: 160px;
+        bottom: 90px; /* Ridotto per evitare di andare troppo in alto */
     }
     
     .contact-floating.cookie-customization-visible {
-        bottom: 320px; /* Spazio extra per iPhone */
+        bottom: 180px; /* Bilanciato per iPhone */
     }
     
     #cookie-banner .container {
@@ -1227,11 +1227,11 @@
 /* iPhone SE e dispositivi compatti */
 @media (max-width: 375px) {
     .contact-floating.cookie-banner-visible {
-        bottom: 150px;
+        bottom: 85px; /* Ridotto per dispositivi compatti */
     }
     
     .contact-floating.cookie-customization-visible {
-        bottom: 300px;
+        bottom: 170px; /* Bilanciato */
     }
 }
 
@@ -1327,7 +1327,7 @@
     .contact-floating {
         bottom: 16px;
         right: 16px;
-        gap: 16px; /* Aumentato gap mobile */
+        gap: 10px; /* Ridotto gap mobile per maggiore compattezza */
     }
     
     .contact-btn {
@@ -1345,7 +1345,7 @@
     .contact-floating {
         bottom: 20px;
         right: 12px;
-        gap: 14px; /* Aumentato anche qui */
+        gap: 8px; /* Gap molto ridotto per schermi piccoli */
     }
     
     .contact-btn {
@@ -1499,22 +1499,6 @@
     button[id*="cookies"] {
         padding: 0.5rem 1rem !important;
         font-size: 0.8rem !important;
-    }
-}
-
-/* === BOTTONE TORNA SU === */
-#back-to-top {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-}
-
-/* Mobile ottimizzazioni per il bottone torna su */
-@media (max-width: 768px) {
-    #back-to-top {
-        bottom: 5rem; /* Posiziona sopra i bottoni floating */
-        right: 1rem;
-        width: 3rem;
-        height: 3rem;
     }
 }
 
@@ -2867,6 +2851,13 @@
 
     <!-- Floating Contact Buttons -->
     <div class="contact-floating">
+        <!-- Bottone Torna Su - PRIMO POSTO -->
+        <button id="back-to-top" class="contact-btn bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 invisible translate-y-4 flex items-center justify-center group" title="Torna in alto">
+            <svg class="w-6 h-6 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+            </svg>
+        </button>
+        
         <a href="https://wa.me/393896437358?text=Ciao%20Dott.ssa%20Trovato,%20vorrei%20informazioni%20per%20una%20consulenza" 
            class="contact-btn whatsapp-btn" 
            title="Contattami su WhatsApp"
@@ -2892,13 +2883,6 @@
             </svg>
         </a>
     </div>
-
-    <!-- Bottone Torna Su -->
-    <button id="back-to-top" class="fixed bottom-20 right-4 z-50 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 invisible translate-y-4 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center group" title="Torna in alto">
-        <svg class="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-        </svg>
-    </button>
 
     <!-- Footer con informazioni legali e contatti -->
     <footer class="bg-gray-900 text-white py-4 mt-12">
@@ -3362,10 +3346,17 @@
             function updateFloatingButtonsPosition() {
                 const bannerIsVisible = !cookieBanner.classList.contains('translate-y-full');
                 const customizationIsVisible = !cookieDetails.classList.contains('hidden');
+                const backToTopBtn = document.getElementById('back-to-top');
                 
                 if (contactFloating) {
                     contactFloating.classList.toggle('cookie-banner-visible', bannerIsVisible && !customizationIsVisible);
                     contactFloating.classList.toggle('cookie-customization-visible', bannerIsVisible && customizationIsVisible);
+                }
+                
+                // Gestisce anche il bottone torna su
+                if (backToTopBtn) {
+                    backToTopBtn.classList.toggle('cookie-banner-visible', bannerIsVisible && !customizationIsVisible);
+                    backToTopBtn.classList.toggle('cookie-customization-visible', bannerIsVisible && customizationIsVisible);
                 }
             }
             
