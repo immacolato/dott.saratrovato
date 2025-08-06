@@ -1,0 +1,1019 @@
+/* === RESET E STILI BASE === */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f0f4f8 0%, #edf2ff 100%);
+    color: #334155;
+    /* Il padding-top viene calcolato dinamicamente con JS */
+    padding-top: 80px; /* Valore ridotto per mobile */
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding-top: 100px; /* Valore normale per desktop */
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Layout components */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* === MIGLIORAMENTI MOBILE === */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.75rem;
+    }
+    
+    /* Titoli più piccoli su mobile */
+    h1 { font-size: 2rem !important; }
+    h2 { font-size: 1.75rem !important; }
+    h3 { font-size: 1.5rem !important; }
+    
+    /* Sezioni con meno padding su mobile */
+    section {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Bottoni più compatti su mobile */
+    .button {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Form più compatti */
+    .grid.gap-6 {
+        gap: 1rem !important;
+    }
+    
+    /* Email sempre visibile e leggibile su mobile - esclusi floating buttons */
+    a[href^="mailto:"]:not(.contact-btn) {
+        font-size: 0.875rem !important;
+        line-height: 1.25 !important;
+        word-break: break-all !important;
+        overflow-wrap: anywhere !important;
+        display: block !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+
+    /* Contenitore email senza overflow hidden */
+    .email-container {
+        overflow: visible !important;
+    }
+}
+
+/* === HEADER (Corretto e Responsive) === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px) saturate(1.5);
+    -webkit-backdrop-filter: blur(8px) saturate(1.5);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    transition: all 0.3s ease;
+    padding: 0.5rem 0; /* Ridotto padding su mobile */
+}
+
+header .container {
+    display: flex;
+    flex-direction: column; /* Mobile-first: tutto in colonna */
+    align-items: center;
+    gap: 0.5rem; /* Ridotto gap su mobile */
+    padding: 0.5rem 1rem; /* Ridotto padding interno */
+}
+
+/* Stili per Desktop (schermi più grandi di 1024px) */
+@media (min-width: 1024px) {
+    header {
+        padding: 1rem 0; /* Padding normale su desktop */
+    }
+    header .container {
+        flex-direction: row; /* Su desktop, torna in riga */
+        justify-content: space-between;
+        gap: 1rem; /* Gap normale su desktop */
+        padding: 1rem;
+    }
+}
+
+.header-logo { display: flex; align-items: center; gap: 0.5rem; }
+.header-nav { width: 100%; }
+.header-nav ul { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 0.5rem; /* Ridotto gap tra i link su mobile */
+    flex-wrap: wrap; 
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 1024px) {
+    .header-logo { gap: 1rem; }
+    .header-nav ul { gap: 1rem; }
+    .header-nav { width: auto; }
+}
+
+/* Effetto hover per il pulsante di menu */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #334155;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Rimuovi l'underline esistente */
+.nav-link .underline {
+    display: none;
+}
+
+/* Stile per link attivo con effetto glassmorphism */
+.nav-link.active {
+    color: #4f46e5;
+    background: rgba(99, 102, 241, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 0 12px rgba(99, 102,241, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Effetto hover */
+.nav-link:hover:not(.active) {
+    background: rgba(226, 232, 240, 0.3);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+/* === CONTENUTO PRINCIPALE === */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Stile per le sezioni principali */
+section {
+    padding: 2.5rem; /* Aumentato il padding per un migliore respiro */
+    margin-bottom: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo bianco semi-trasparente */
+    border-radius: 1.25rem; /* Molto arrotondato */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Ombra più grande e morbida */
+    backdrop-filter: blur(5px); /* Effetto sfocato per un look moderno */
+    -webkit-backdrop-filter: blur(5px); /* Per compatibilità Safari */
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    width: 400px;
+}
+
+/* Utility classes */
+.button {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(to right, #6366f1, #8b5cf6); /* Gradiente viola/porpora */
+    color: white;
+    border-radius: 0.75rem; /* Più arrotondato */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(99, 102,241, 0.3); /* Ombra più pronunciata */
+    cursor: pointer;
+}
+
+.button:hover {
+    background: linear-gradient(to right, #4f46e5, #7c3aed); /* Gradiente più scuro al passaggio del mouse */
+    transform: translateY(-2px); /* Effetto leggero di sollevamento */
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+}
+
+.button.button-white {
+    background: white; /* Sfondo bianco invece del gradiente */
+    color: #4f46e5; /* Colore indaco per il testo */
+    border: 1px solid rgba(99, 102, 241, 0.2); /* Bordo leggero */
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.1); /* Ombra più leggera */
+}
+
+.button.button-white:hover {
+    background: #f9fafb; /* Sfondo leggermente grigio al passaggio del mouse */
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.15); /* Ombra più pronunciata */
+    color: #4338ca; /* Indaco più scuro al passaggio del mouse */
+}
+
+.page-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.page-content.active-page {
+    display: block;
+    opacity: 1;
+}
+
+/* Stile per il popup della mappa */
+.custom-popup .leaflet-popup-content {
+    margin: 10px;
+    line-height: 1.6;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    padding: 5px;
+}
+
+/* Subtitle color update */
+.text-indigo-600 {
+    color: #6b7dc7 !important;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Fix spacing issues */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.75rem;
+    }
+    
+    .grid {
+        gap: 1rem;
+    }
+}
+
+/* === MEDIA QUERIES OTTIMIZZATE === */
+/* Mobile (fino a 640px) - CORRETTO */
+@media (max-width: 640px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    #mobile-menu {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+    
+    #mobile-menu ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    #mobile-menu li {
+        margin: 0.25rem 0;
+    }
+    
+    #mobile-menu .nav-link {
+        display: block;
+        padding: 0.75rem;
+        text-align: center;
+    }
+}
+
+/* Tablet (641px - 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .container {
+        padding: 0.75rem;
+    }
+    
+    .cta-row {
+        max-width: 500px;
+        margin: 0.5rem auto 0;
+    }
+}
+
+/* Dispositivi mobili e tablet (fino a 1023px) - CORRETTO */
+@media (max-width: 1023px) {
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    #mobile-menu {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    #mobile-menu.hidden {
+        display: none;
+    }
+}
+
+/* Desktop (1024px e oltre) - CORRETTO */
+@media (min-width: 1024px) {
+    #mobile-menu-button {
+        display: none !important;
+    }
+    
+    #mobile-menu {
+        display: block !important;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+    }
+    
+    #mobile-menu.hidden {
+        display: block !important; /* Su desktop è sempre visibile */
+    }
+    
+    #mobile-menu ul {
+        flex-direction: row !important;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .header-nav {
+        width: auto;
+    }
+}
+
+/* Effetto hover sui box */
+.group:hover {
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Form input con floating label */
+.peer:focus ~ label,
+.peer:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem) scale(0.75);
+    color: #4f46e5;
+}
+
+/* Animazioni aggiuntive */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-animate-in {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.contact-stagger > * {
+    opacity: 0;
+}
+
+.contact-stagger > *:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.1s forwards; }
+.contact-stagger > *:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.2s forwards; }
+.contact-stagger > *:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+.contact-stagger > *:nth-child(4) { animation: fadeInUp 0.5s ease-out 0.4s forwards; }
+
+/* Stile per il marker personalizzato */
+.custom-marker-icon {
+    background: transparent;
+    border: none;
+}
+
+/* Animazione personalizzata per il ping del marker */
+@keyframes markerPing {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(2);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.marker-ping {
+    animation: markerPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Ottimizzazione mobile per header */
+@media (max-width: 640px) {
+    .mobile-optimized {
+        padding: 0.5rem;
+    }
+    
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .cta-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .cta-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        text-align: center;
+        gap: 0.25rem;
+    }
+    
+    .cta-button.primary {
+        background-color: #16a34a !important; /* green-600 */
+        color: white !important;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+    
+    .cta-button.secondary {
+        background-color: #f3f4f6 !important; /* gray-100 */
+        color: #4b5563 !important; /* gray-600 */
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+    
+    /* Stile menu mobile quando aperto */
+    #mobile-menu {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin: 0.25rem 0;
+    }
+    
+    #mobile-menu ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    #mobile-menu li {
+        margin: 0.25rem 0;
+    }
+    
+    #mobile-menu .nav-link {
+        display: block;
+        padding: 0.75rem;
+        text-align: center;
+    }
+}
+
+/* Stile per la visualizzazione desktop */
+@media (min-width: 1024px) {
+    /* Nascondi il pulsante hamburger su desktop */
+    #mobile-menu-button {
+        display: none;
+    }
+    
+    /* Mostra sempre il menu di navigazione su desktop */
+    #mobile-menu {
+        display: block !important; /* Override di hidden */
+    }
+    
+    /* Stile orizzontale per il menu desktop */
+    #mobile-menu ul {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    /* Dimensioni corrette per header su desktop */
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Larghezza corretta per nav e cta */
+    .header-nav, .header-cta {
+        width: auto;
+    }
+}
+
+/* Ottimizzazione layout per diverse dimensioni schermo */
+@media (max-width: 1023px) {
+    #nav-menu {
+        display: none; /* Nascosto di default su mobile */
+    }
+    
+    .top-row {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cta-row {
+        margin-top: 0;
+    }
+    
+    header .container {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* === BOTTONI CTA (GLOBALI) === */
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.cta-button.primary {
+    background-color: #16a34a; /* green-600 */
+    color: white;
+}
+
+.cta-button.secondary {
+    background-color: #f3f4f6; /* gray-100 */
+    color: #4b5563; /* gray-600 */
+}
+
+.cta-button.primary:hover {
+    background-color: #15803d; /* green-700 */
+}
+
+.cta-button.secondary:hover {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #1f2937; /* gray-800 */
+}
+
+/* Fix per le icone SVG nei pulsanti CTA */
+.cta-button svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.cta-button {
+    white-space: nowrap;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Migliore centraggio su mobile */
+@media (max-width: 640px) {
+    .cta-button {
+        justify-content: center !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+}
+
+.icon-hamburger, .icon-close {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: auto;
+}
+
+.icon-hamburger.is-hidden, .icon-close.is-hidden {
+    opacity: 0;
+    transform: scale(0.7) rotate(90deg);
+    pointer-events: none;
+}
+
+/* === FLOATING CONTACT BUTTONS - MOBILE OPTIMIZED === */
+.contact-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Ridotto gap per compattezza */
+    transition: bottom 0.5s ease; /* Transizione fluida per lo spostamento */
+}
+
+/* Sposta i bottoni floating verso l'alto quando il cookie banner è visibile */
+.contact-floating.cookie-banner-visible {
+    bottom: 100px; /* Bilanciato per non andare troppo in alto */
+}
+
+/* Sposta ancora più in alto quando il banner è personalizzato (più alto) */
+.contact-floating.cookie-customization-visible {
+    bottom: 200px; /* Ridotto per bilanciare meglio */
+}
+
+/* === OTTIMIZZAZIONI SPECIFICHE PER IPHONE === */
+/* iPhone 15, 14, 13, 12 Pro (390px) */
+@media (max-width: 430px) and (max-height: 932px) {
+    .contact-floating.cookie-banner-visible {
+        bottom: 160px; /* Aumentato per evitare sovrapposizione con banner */
+    }
+    
+    .contact-floating.cookie-customization-visible {
+        bottom: 270px; /* Aumentato per banner personalizzazione */
+    }
+    
+    #cookie-banner .container {
+        padding: 1rem !important;
+        margin: 0 0.5rem !important;
+    }
+}
+
+/* iPhone SE e dispositivi compatti */
+@media (max-width: 375px) {
+    .contact-floating.cookie-banner-visible {
+        bottom: 150px; /* Ulteriormente aumentato per iPhone SE */
+    }
+    
+    .contact-floating.cookie-customization-visible {
+        bottom: 260px; /* Aumentato significativamente per banner personalizzazione */
+    }
+}
+
+.contact-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    /* Protezione da interferenze CSS */
+    font-size: inherit !important;
+    line-height: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: nowrap !important;
+    max-width: none !important;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05) translateY(-1px); /* Ridotto scale per evitare sovrapposizioni */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.contact-btn:active {
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+/* Effetto pulse per WhatsApp */
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover::before {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.1; }
+}
+
+.contact-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E, #075E54);
+}
+
+.phone-btn {
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+}
+
+.phone-btn:hover {
+    background: linear-gradient(135deg, #7C3AED, #5B21B6);
+}
+
+.email-btn {
+    background: linear-gradient(135deg, #6B7280, #4B5563);
+}
+
+.email-btn:hover {
+    background: linear-gradient(135deg, #4B5563, #374151);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .contact-floating {
+        bottom: 16px;
+        right: 16px;
+        gap: 10px; /* Ridotto gap mobile per maggiore compattezza */
+    }
+    
+    .contact-btn {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .contact-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-floating {
+        bottom: 20px;
+        right: 12px;
+        gap: 8px; /* Gap molto ridotto per schermi piccoli */
+    }
+    
+    .contact-btn {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .contact-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* CTA Section Buttons */
+.cta-primary-btn, .cta-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-height: 48px;
+    gap: 8px;
+    flex: 1;
+    max-width: 200px;
+}
+
+.cta-primary-btn {
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.cta-primary-btn:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #5b21b6 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.cta-secondary-btn {
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+}
+
+.cta-secondary-btn:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cta-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Mobile optimizations for CTA */
+@media (max-width: 640px) {
+    .cta-primary-btn, .cta-secondary-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+        gap: 6px;
+        max-width: none;
+        width: 100%;
+    }
+    
+    .cta-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-primary-btn, .cta-secondary-btn {
+        padding: 16px 24px;
+        font-size: 16px;
+        min-height: 52px;
+    }
+    
+    .cta-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* === COOKIE BANNER MOBILE OPTIMIZATIONS === */
+@media (max-width: 768px) {
+    #cookie-banner {
+        padding: 0.5rem !important;
+    }
+    
+    #cookie-banner .container {
+        padding: 0.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    #cookie-details {
+        font-size: 0.75rem !important;
+    }
+    
+    #cookie-banner button {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.75rem !important;
+    }
+    
+    #close-cookie-banner {
+        right: 0.25rem !important;
+        top: 0.25rem !important;
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* === OTTIMIZZAZIONI SPECIFICHE COOKIE BANNER PER IPHONE === */
+@media (max-width: 430px) {
+    #cookie-banner {
+        margin: 0 0.5rem 0.5rem 0.5rem !important;
+        border-radius: 1rem !important;
+    }
+    
+    #cookie-banner .container {
+        padding: 0.75rem !important;
+        max-width: none !important;
+    }
+    
+    #close-cookie-banner {
+        right: 0.5rem !important;
+        top: -0.25rem !important;
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        font-size: 1.1rem !important;
+        background: rgba(55, 65, 81, 0.1) !important;
+        border-radius: 50% !important;
+    }
+    
+    #cookie-details {
+        margin-top: 0.5rem !important;
+        padding-top: 0.5rem !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    .flex.gap-1.md\\:gap-2 {
+        gap: 0.75rem !important;
+    }
+    
+    button[id*="cookies"] {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Cookie Settings Tab - Linguetta sempre visibile */
+#cookie-settings-tab {
+    z-index: 40;
+    transition: all 0.5s ease;
+}
+
+#cookie-settings-tab button {
+    background-color: rgb(88 28 135); /* indigo-900 */
+    border: none;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    position: relative;
+}
+
+#cookie-settings-tab button::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* inizia leggermente sotto il pulsante per sincronizzare */
+    left: 0;
+    right: 0;
+    height: 2px; /* altezza iniziale minima per evitare il ritardo */
+    background-color: rgb(88 28 135); /* stesso colore del pulsante */
+    transition: all 0.3s ease; /* stessa transizione del pulsante principale */
+    border-radius: 0; /* bordi completamente dritti per l'estensione */
+    z-index: -1; /* posiziona dietro il pulsante */
+}
+
+#cookie-settings-tab button:hover {
+    background-color: rgb(67 56 202); /* indigo-800 */
+    transform: translateY(-2px);
+}
+
+#cookie-settings-tab button:hover::before {
+    height: 10px; /* altezza dell'estensione aumentata per eliminare il vuoto */
+    bottom: -10px; /* sposta più in basso per creare l'effetto estensione pronunciato */
+    background-color: rgb(67 56 202); /* stesso colore del pulsante hover */
+    transform: translateY(-2px); /* sincronizza il movimento con il pulsante */
+}
+
+/* Animazione per la comparsa ritardata della linguetta */
+#cookie-settings-tab.delayed-appear {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: slideUpDelayed 0.5s ease 1s forwards;
+}
+
+@keyframes slideUpDelayed {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
