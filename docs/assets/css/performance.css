@@ -27,13 +27,14 @@
     transform: translateZ(0);
 }
 
-/* Image optimization */
+/* Image optimization - CSS only properties */
 img {
-    loading: lazy;
-    decoding: async;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
+/* Critical images get priority */
 img.critical {
-    loading: eager;
-    fetchpriority: high;
+    will-change: contents;
 }
