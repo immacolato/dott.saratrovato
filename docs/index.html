@@ -2845,7 +2845,7 @@
     <!-- Footer con informazioni legali e contatti -->
     <footer class="bg-gray-900 text-white py-4 mt-12">
         <div class="container text-center max-w-2xl mx-auto">
-            <p class="mb-2 text-base">&copy; 2025 Dottoressa Sara Trovato. Tutti i diritti riservati. <br> Made with ❤️ by Noisy Anxiety</p>
+            <p class="mb-2 text-base">&copy; 2025 Dottoressa Sara Trovato. Tutti i diritti riservati. <br> Iscritta all'Albo degli Psicologi della Regione Sicilia n°10486 <br> Made with ❤️ by Noisy Anxiety</p>
             <p class="text-sm">
                 <a href="#privacy" data-page="privacy" class="text-blue-300 hover:underline cursor-pointer">Privacy Policy</a> |
                 <a href="#cookie" data-page="cookie" class="text-blue-300 hover:underline cursor-pointer">Cookie Policy</a>
@@ -3438,11 +3438,12 @@
                     // Mostra le opzioni personalizzate
                     cookieDetails.classList.remove('hidden');
                     savePrefsBtn.classList.remove('hidden');
-                    if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
+                    if (customizeBtn) customizeBtn.textContent = 'Nascondi opzioni';
                 } else {
-                    // Se le opzioni sono già visibili, non fare nulla
-                    // L'utente deve usare X, click fuori, o "Salva preferenze"
-                    return;
+                    // Nascondi le opzioni personalizzate
+                    cookieDetails.classList.add('hidden');
+                    savePrefsBtn.classList.add('hidden');
+                    if (customizeBtn) customizeBtn.textContent = 'Personalizza cookie';
                 }
                 
                 // Aggiorna posizione bottoni floating quando personalizzazione cambia
