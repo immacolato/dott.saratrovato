@@ -108,7 +108,21 @@ header .container {
     }
 }
 
-.header-logo { display: flex; align-items: center; gap: 0.5rem; }
+.header-logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Effetto hover per tutto il contenitore del logo */
+.header-logo:hover {
+    background: rgba(99, 102, 241, 0.05);
+    transform: translateY(-1px);
+}
 .header-nav { width: 100%; }
 .header-nav ul { 
     display: flex; 

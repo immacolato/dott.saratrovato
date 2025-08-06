@@ -1,0 +1,69 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradiente principale -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente secondario -->
+    <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente per il centro -->
+    <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
+      <stop offset="70%" style="stop-color:#F8FAFC;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#E2E8F0;stop-opacity:0.3" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Cerchio di base -->
+  <circle cx="60" cy="60" r="55" fill="url(#primaryGradient)" stroke="#E2E8F0" stroke-width="2"/>
+  
+  <!-- Forme simboliche per la crescita personale -->
+  <!-- Montagna stilizzata (rappresenta la scalata verso il benessere) -->
+  <path d="M25 75 L40 45 L50 55 L70 35 L85 50 L95 75 Z" 
+        fill="url(#secondaryGradient)" 
+        opacity="0.7"/>
+  
+  <!-- Sentiero di crescita -->
+  <path d="M25 75 Q40 70 50 75 T75 70 Q85 72 95 75" 
+        stroke="#FFFFFF" 
+        stroke-width="2" 
+        fill="none" 
+        opacity="0.8"/>
+  
+  <!-- Elementi circolari concentrici (rappresentano l'autoconsapevolezza) -->
+  <circle cx="60" cy="60" r="35" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="60" cy="60" r="25" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Simbolo centrale - figura umana stilizzata in crescita -->
+  <g transform="translate(60,60)">
+    <!-- Corpo centrale -->
+    <circle cx="0" cy="-8" r="6" fill="url(#centerGradient)"/>
+    <path d="M0 -2 L0 15" stroke="#4F46E5" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Braccia aperte (simbolo di accoglienza e apertura) -->
+    <path d="M-12 5 L0 8 L12 5" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Gambe stabili -->
+    <path d="M0 15 L-6 25" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M0 15 L6 25" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Elementi decorativi - particelle di luce/energia positiva -->
+  <circle cx="30" cy="35" r="2" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="85" cy="40" r="1.5" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="35" cy="85" r="1.5" fill="#FFFFFF" opacity="0.5"/>
+  <circle cx="88" cy="80" r="2" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- Piccole stelle/scintille -->
+  <g fill="#FFFFFF" opacity="0.4">
+    <path d="M45 25 L46 27 L48 26 L46 28 L45 30 L44 28 L42 26 L44 27 Z"/>
+    <path d="M78 25 L79 27 L81 26 L79 28 L78 30 L77 28 L75 26 L77 27 Z"/>
+    <path d="M25 55 L26 57 L28 56 L26 58 L25 60 L24 58 L22 56 L24 57 Z"/>
+  </g>
+</svg>
