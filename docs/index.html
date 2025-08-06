@@ -1502,6 +1502,22 @@
     }
 }
 
+/* === BOTTONE TORNA SU === */
+#back-to-top {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Mobile ottimizzazioni per il bottone torna su */
+@media (max-width: 768px) {
+    #back-to-top {
+        bottom: 5rem; /* Posiziona sopra i bottoni floating */
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -2877,6 +2893,13 @@
         </a>
     </div>
 
+    <!-- Bottone Torna Su -->
+    <button id="back-to-top" class="fixed bottom-20 right-4 z-50 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 invisible translate-y-4 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center group" title="Torna in alto">
+        <svg class="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
     <!-- Footer con informazioni legali e contatti -->
     <footer class="bg-gray-900 text-white py-4 mt-12">
         <div class="container text-center max-w-2xl mx-auto">
@@ -3045,6 +3068,33 @@
 
         // Aggiorna il padding del body al ridimensionamento della finestra
         window.addEventListener('resize', adjustBodyPadding);
+
+        // === BOTTONE TORNA SU ===
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        // Mostra/nasconde il bottone in base allo scroll
+        function toggleBackToTop() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 300) { // Mostra dopo 300px di scroll
+                backToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                backToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+                backToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+            }
+        }
+        
+        // Event listener per lo scroll
+        window.addEventListener('scroll', toggleBackToTop);
+        
+        // Click per tornare in alto
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         // FAQ Accordion Functionality
         function toggleFAQ(button) {
