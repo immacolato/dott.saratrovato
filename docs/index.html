@@ -2943,9 +2943,26 @@
             }).catch(() => alert('Si è verificato un errore.'));
         }
 
+        // Funzione per gestire la visibilità del menu in base alla dimensione schermo
+        function handleMenuVisibility() {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            
+            if (window.innerWidth >= 1024) {
+                // Desktop: mostra sempre il menu
+                menu.classList.remove('hidden');
+                if (button) button.style.display = 'none';
+            } else {
+                // Mobile: nasconde il menu di default
+                menu.classList.add('hidden');
+                if (button) button.style.display = 'flex';
+            }
+        }
+
         // Event listener principale che si avvia al caricamento della pagina
         document.addEventListener('DOMContentLoaded', () => {
             adjustBodyPadding();
+            handleMenuVisibility(); // Gestisci visibilità menu al caricamento
 
             // Mostra la home page di default
             showPage('home');
@@ -3009,7 +3026,10 @@
         });
 
         // Aggiorna il padding del body al ridimensionamento della finestra
-        window.addEventListener('resize', adjustBodyPadding);
+        window.addEventListener('resize', () => {
+            adjustBodyPadding();
+            handleMenuVisibility(); // Gestisci visibilità menu anche al ridimensionamento
+        });
 
         // === BOTTONE TORNA SU ===
         const backToTopBtn = document.getElementById('back-to-top');
