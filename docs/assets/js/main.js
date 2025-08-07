@@ -57,9 +57,8 @@ function showPage(pageId) {
             }
             button.setAttribute('aria-expanded', 'false');
             
-            // Rimuovi effetto blur dal body
-            document.body.classList.remove('menu-open-blur');
-            document.body.style.paddingRight = '';
+            // Reset completo stili body per garantire scroll funzionante
+            resetBodyStyles();
             
             setTimeout(adjustBodyPadding, 50);
         }
@@ -306,6 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // La chiusura del menu è già gestita in showPage() con chiusura immediata
     }
     
+    // Funzione utility per reset completo stili body - Risolve problemi di scroll
+    function resetBodyStyles() {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        document.body.classList.remove('menu-open-blur');
+        // Reset qualsiasi altra proprietà che potrebbe interferire con lo scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.bottom = '';
+    }
+    
     function closeMobileMenu(immediate = false) {
         if (!mobileMenu.classList.contains('hidden')) {
             if (immediate) {
@@ -325,6 +337,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
+                
+                // Reset completo stili body per chiusura immediata
+                resetBodyStyles();
             } else {
                 // CHIUSURA ANIMATA FLUIDA - per chiusura manuale
                 
@@ -356,10 +371,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
             }
             
-            // Ripristina lo scroll del body immediatamente
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
-            document.body.classList.remove('menu-open-blur');
+            // Ripristina lo scroll del body immediatamente per evitare blocchi
+            resetBodyStyles();
             
             // Regola body padding dopo l'animazione
             setTimeout(() => adjustBodyPadding(), 160);
