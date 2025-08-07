@@ -310,35 +310,42 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function closeMobileMenu() {
         if (!mobileMenu.classList.contains('hidden')) {
-            // CHIUSURA ISTANTANEA - nessun timeout o ritardo
+            // CHIUSURA ANIMATA VELOCE - sincronizzata con CSS
             
             // Cambia icone immediatamente
             iconClose.classList.add('is-hidden');
             iconHamburger.classList.remove('is-hidden');
             
-            // Applica classe closing e nascondi immediatamente
+            // Avvia animazione di chiusura
             mobileMenu.classList.add('closing');
             mobileMenu.classList.remove('open');
-            mobileMenu.classList.add('hidden');
             
-            // Chiudi overlay immediatamente
+            // Chiudi overlay con animazione sincronizzata
             if (mobileMenuOverlay) {
+                mobileMenuOverlay.classList.add('closing');
                 mobileMenuOverlay.classList.remove('open');
-                mobileMenuOverlay.classList.add('hidden');
             }
             
-            // Rimuovi classe closing dopo averla applicata
-            mobileMenu.classList.remove('closing');
+            // Dopo l'animazione (150ms), nascondi completamente
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('closing');
+                
+                if (mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.add('hidden');
+                    mobileMenuOverlay.classList.remove('closing');
+                }
+            }, 150); // Coordinato con la durata CSS
             
             mobileMenuButton.setAttribute('aria-expanded', 'false');
             
-            // Ripristina lo scroll del body e rimuovi effetto blur immediatamente
+            // Ripristina lo scroll del body immediatamente
             document.body.style.overflow = '';
             document.body.style.paddingRight = '';
             document.body.classList.remove('menu-open-blur');
             
-            // Nessun setTimeout per adjustBodyPadding
-            adjustBodyPadding();
+            // Regola body padding dopo l'animazione
+            setTimeout(() => adjustBodyPadding(), 160);
         }
     }
     
