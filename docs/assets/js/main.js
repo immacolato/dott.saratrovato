@@ -140,8 +140,10 @@ function toggleFAQ(button) {
         if (item !== faqItem) {
             const otherAnswer = item.querySelector('.faq-answer');
             const otherIcon = item.querySelector('.faq-icon');
+            const otherButton = item.querySelector('.faq-question');
             otherAnswer.classList.add('hidden');
             otherIcon.style.transform = 'rotate(0deg)';
+            otherButton.classList.remove('active'); // Rimuovi classe active
         }
     });
     
@@ -149,9 +151,11 @@ function toggleFAQ(button) {
     if (isOpen) {
         answer.classList.add('hidden');
         icon.style.transform = 'rotate(0deg)';
+        button.classList.remove('active'); // Rimuovi classe active
     } else {
         answer.classList.remove('hidden');
         icon.style.transform = 'rotate(180deg)';
+        button.classList.add('active'); // Aggiungi classe active
     }
 }
 
