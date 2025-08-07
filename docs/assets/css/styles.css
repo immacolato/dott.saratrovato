@@ -377,9 +377,12 @@ section {
     #mobile-menu {
         margin-top: 0.5rem;
         padding: 0.5rem;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.6); /* Stesso livello di trasparenza dell'header */
+        backdrop-filter: blur(8px) saturate(1.5); /* Stesso effetto blur dell'header */
+        -webkit-backdrop-filter: blur(8px) saturate(1.5);
         border-radius: 0.5rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(226, 232, 240, 0.7); /* Stesso bordo dell'header */
         width: 100%;
         pointer-events: auto;
         /* Migliora la transizione: solo quando visibile */
@@ -652,7 +655,10 @@ section {
     
     /* Stile menu mobile quando aperto */
     #mobile-menu {
-        background: white;
+        background: rgba(255, 255, 255, 0.6); /* Stesso livello di trasparenza dell'header */
+        backdrop-filter: blur(8px) saturate(1.5); /* Stesso effetto blur dell'header */
+        -webkit-backdrop-filter: blur(8px) saturate(1.5);
+        border: 1px solid rgba(226, 232, 240, 0.7); /* Stesso bordo dell'header */
         border-radius: 0.5rem;
         padding: 0.5rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -789,8 +795,8 @@ section {
     position: relative;
     width: 40px;  /* Aumentato per area di tap migliore */
     height: 40px; /* Aumentato per area di tap migliore */
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent; /* Completamente trasparente */
+    border: none; /* Rimosso completamente il bordo */
     cursor: pointer;
     z-index: 200;
     overflow: hidden; 
@@ -799,15 +805,47 @@ section {
     font-size: 0;
     border-radius: 8px; /* Angoli più arrotondati */
     transition: all 0.2s ease;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 /* Hover effect per il bottone migliorato */
 #mobile-menu-button:hover {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.1); /* Hover molto leggero e quasi trasparente */
     transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Quando il menu è aperto, rendi la X più visibile con sfondo scuro */
+#mobile-menu-button[aria-expanded="true"] {
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo scuro per far risaltare la X */
+    backdrop-filter: blur(8px) saturate(1.5); /* Stesso effetto blur dell'header */
+    -webkit-backdrop-filter: blur(8px) saturate(1.5);
+}
+
+#mobile-menu-button[aria-expanded="true"]:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Leggermente più scuro al hover */
+    transform: scale(1.05);
+}
+
+/* Colore delle icone quando il menu è aperto */
+#mobile-menu-button[aria-expanded="true"] .icon-close svg {
+    stroke: white; /* X bianca su sfondo scuro */
+}
+
+/* Effetto blur sul contenuto quando il menu mobile è aperto */
+body.menu-open-blur main {
+    filter: blur(3px);
+    transition: filter 0.3s ease;
+}
+
+body.menu-open-blur .contact-floating {
+    filter: blur(3px);
+    transition: filter 0.3s ease;
+}
+
+/* Assicura che l'header e il menu mobile non abbiano blur */
+body.menu-open-blur header,
+body.menu-open-blur #mobile-menu,
+body.menu-open-blur #mobile-menu-overlay {
+    filter: none;
 }
 
 .icon-hamburger, .icon-close {

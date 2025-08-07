@@ -55,6 +55,11 @@ function showPage(pageId) {
                 if (overlay) overlay.classList.add('hidden');
             }, 320);
             button.setAttribute('aria-expanded', 'false');
+            
+            // Rimuovi effetto blur dal body e padding compensativo
+            document.body.classList.remove('menu-open-blur');
+            document.body.style.paddingRight = '';
+            
             setTimeout(adjustBodyPadding, 50);
         }
     }
@@ -243,6 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenuOverlay.classList.remove('hidden');
             setTimeout(() => mobileMenuOverlay.classList.add('open'), 10);
             mobileMenuButton.setAttribute('aria-expanded', 'true');
+            
+            // Calcola la larghezza della scrollbar prima di nasconderla
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            
+            // Blocca lo scroll del body e aggiungi effetto blur al contenuto
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = `${scrollbarWidth}px`; // Compensa la scrollbar
+            document.body.classList.add('menu-open-blur');
         } else {
             // Mostra hamburger e nascondi X
             iconClose.classList.add('is-hidden');
@@ -256,6 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuOverlay.classList.add('hidden');
             }, 320); // Timeout coordinato con la transizione CSS
             mobileMenuButton.setAttribute('aria-expanded', 'false');
+            
+            // Ripristina lo scroll del body e rimuovi effetto blur
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = ''; // Rimuovi il padding compensativo
+            document.body.classList.remove('menu-open-blur');
         }
         
         setTimeout(adjustBodyPadding, 50);
@@ -300,6 +318,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             setTimeout(() => mobileMenu.classList.add('hidden'), 320);
             mobileMenuButton.setAttribute('aria-expanded', 'false');
+            
+            // Ripristina lo scroll del body e rimuovi effetto blur
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = ''; // Rimuovi il padding compensativo
+            document.body.classList.remove('menu-open-blur');
+            
             setTimeout(adjustBodyPadding, 50);
         }
     }
@@ -676,3 +700,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Aggiorna il padding del body al ridimensionamento della finestra
 window.addEventListener('resize', adjustBodyPadding);
+
+// Chiudi menu mobile su resize se si passa a desktop e ripristina scroll
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        closeMobileMenu();
+    }
+});
+
+// Chiudi menu mobile con tasto Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        closeMobileMenu();
+    }
+});
