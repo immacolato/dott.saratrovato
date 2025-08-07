@@ -531,11 +531,13 @@ section {
     }
     
     /* Quando il menu si chiude, nascondi immediatamente senza transizione */
-    #mobile-menu.closing {
-        transform: translateY(-20px);
-        opacity: 0;
-        pointer-events: none;
+    #mobile-menu.closing,
+    #mobile-menu.closing.hidden {
+        transform: translateY(-20px) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
         transition: none !important; /* Rimozione immediata senza transizione */
+        display: none !important; /* Nascondi immediatamente dal DOM */
     }
 }
 

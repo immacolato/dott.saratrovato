@@ -256,23 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.paddingRight = `${scrollbarWidth}px`; // Compensa la scrollbar
             document.body.classList.add('menu-open-blur');
         } else {
-            // Mostra hamburger e nascondi X
-            iconClose.classList.add('is-hidden');
-            iconHamburger.classList.remove('is-hidden');
-            
-            // Nascondi menu e overlay
-            mobileMenu.classList.remove('open');
-            mobileMenuOverlay.classList.remove('open');
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuOverlay.classList.add('hidden');
-            }, 320); // Timeout coordinato con la transizione CSS
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-            
-            // Ripristina lo scroll del body e rimuovi effetto blur
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = ''; // Rimuovi il padding compensativo
-            document.body.classList.remove('menu-open-blur');
+            // CHIUSURA IMMEDIATA - Usa la funzione ottimizzata
+            closeMobileMenu();
         }
         
         setTimeout(adjustBodyPadding, 50);
@@ -325,13 +310,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function closeMobileMenu() {
         if (!mobileMenu.classList.contains('hidden')) {
-            // Aggiungi classe "closing" per animazione immediata
-            mobileMenu.classList.add('closing');
-            mobileMenu.classList.remove('open');
+            // CHIUSURA ISTANTANEA - nessun timeout o ritardo
             
             // Cambia icone immediatamente
             iconClose.classList.add('is-hidden');
             iconHamburger.classList.remove('is-hidden');
+            
+            // Applica classe closing e nascondi immediatamente
+            mobileMenu.classList.add('closing');
+            mobileMenu.classList.remove('open');
+            mobileMenu.classList.add('hidden');
             
             // Chiudi overlay immediatamente
             if (mobileMenuOverlay) {
@@ -339,11 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuOverlay.classList.add('hidden');
             }
             
-            // Nascondi il menu dopo un brevissimo ritardo per permettere l'animazione CSS
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('closing');
-            }, 50); // Molto più veloce
+            // Rimuovi classe closing dopo averla applicata
+            mobileMenu.classList.remove('closing');
             
             mobileMenuButton.setAttribute('aria-expanded', 'false');
             
@@ -352,7 +337,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.paddingRight = '';
             document.body.classList.remove('menu-open-blur');
             
-            setTimeout(adjustBodyPadding, 25); // Più veloce
+            // Nessun setTimeout per adjustBodyPadding
+            adjustBodyPadding();
         }
     }
     
