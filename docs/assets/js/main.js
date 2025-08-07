@@ -232,8 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconHamburger = mobileMenuButton.querySelector('.icon-hamburger');
     const iconClose = mobileMenuButton.querySelector('.icon-close');
     
-    mobileMenuButton.addEventListener('click', (e) => {
-        e.stopPropagation();
+    function toggleMobileMenu() {
         const isHidden = mobileMenu.classList.contains('hidden');
         
         // Animazione sincrona delle icone
@@ -277,6 +276,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         setTimeout(adjustBodyPadding, 50);
+    }
+    
+    // Event listener per il pulsante principale
+    mobileMenuButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+    });
+    
+    // Event listener specifici per le icone per assicurare funzionamento anche con click diretto
+    iconHamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+    });
+    
+    iconClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
     });
 
     // Chiudi menu mobile cliccando sull'overlay
