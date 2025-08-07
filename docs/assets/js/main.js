@@ -330,13 +330,21 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setupNavigationLinks();
     
-    // Gestore per i link interni (es. pulsanti "Scopri di più")
+    // Gestore per i link interni (es. pulsanti "Scopri di più", logo)
     document.querySelectorAll('a[data-page]').forEach(link => {
+        // Event listener per click normale
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const pageId = link.getAttribute('data-page');
             showPage(pageId);
         });
+        
+        // Event listener aggiuntivo per touch su mobile per migliorare la responsività
+        link.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            const pageId = link.getAttribute('data-page');
+            showPage(pageId);
+        }, { passive: false });
     });
 
     // Chiude il menu se si clicca fuori

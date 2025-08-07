@@ -54,6 +54,12 @@ img {
         padding: 0.75rem;
     }
     
+    /* Logo con area di tap ottimizzata per mobile */
+    .header-logo {
+        padding: 0.75rem 1rem; /* Padding maggiore su mobile per facilità di tap */
+        min-height: 48px; /* Area di tap ancora più grande su mobile */
+    }
+    
     /* Titoli più piccoli su mobile */
     h1 { font-size: 2rem !important; }
     h2 { font-size: 1.75rem !important; }
@@ -164,8 +170,15 @@ header .container {
     gap: 0.5rem; 
     text-decoration: none;
     border-radius: 12px;
-    padding: 0.25rem 0.75rem; /* Ridotto padding per look più compatto */
+    padding: 0.5rem 0.75rem; /* Aumentato padding per area di tap migliore su mobile */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Miglioramenti per touch mobile */
+    min-height: 44px; /* Area minima di tap raccomandati da Apple/Google */
+    min-width: 44px;
+    position: relative;
+    z-index: 10; /* Assicura che sia sopra altri elementi */
+    -webkit-tap-highlight-color: rgba(99, 102, 241, 0.1); /* Feedback visivo su iOS */
+    touch-action: manipulation; /* Migliora la responsività del touch */
 }
 
 /* Effetto hover tipo bottone che si alza con ombra - Solo per dispositivi non touch */
@@ -183,9 +196,16 @@ header .container {
 /* Effetto attivo per dispositivi touch */
 @media (hover: none) and (pointer: coarse) {
     .header-logo:active {
-        background: rgba(99, 102, 241, 0.04);
-        transform: scale(0.98);
+        background: rgba(99, 102, 241, 0.08); /* Aumentato l'opacità per feedback più visibile */
+        transform: scale(0.96); /* Scala leggermente ridotta per feedback tattile */
         transition: all 0.1s ease;
+    }
+    
+    /* Migliora il feedback su tap per dispositivi touch */
+    .header-logo {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
     }
 }
 .header-nav { width: 100%; }
