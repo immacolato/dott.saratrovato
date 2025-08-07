@@ -57,8 +57,12 @@ function showPage(pageId) {
             }
             button.setAttribute('aria-expanded', 'false');
             
-            // Reset completo stili body per garantire scroll funzionante
-            resetBodyStyles();
+            // CRITICO: Reset completo stili body per garantire scroll funzionante
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.classList.remove('menu-open-blur');
             
             setTimeout(adjustBodyPadding, 50);
         }
@@ -338,8 +342,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
                 
-                // Reset completo stili body per chiusura immediata
-                resetBodyStyles();
+                // CRITICO: Reset completo stili body per chiusura immediata
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.classList.remove('menu-open-blur');
             } else {
                 // CHIUSURA ANIMATA FLUIDA - per chiusura manuale
                 
@@ -371,8 +379,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
             }
             
-            // Ripristina lo scroll del body immediatamente per evitare blocchi
-            resetBodyStyles();
+            // CRITICO: Ripristina lo scroll del body immediatamente per evitare blocchi
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.classList.remove('menu-open-blur');
             
             // Regola body padding dopo l'animazione
             setTimeout(() => adjustBodyPadding(), 160);
