@@ -530,20 +530,20 @@ section {
         transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1); /* Apertura leggermente più lenta */
     }
     
-    /* Quando il menu si chiude, animazione veloce e sincronizzata */
+    /* Quando il menu si chiude, animazione fluida come l'apertura ma al contrario */
     #mobile-menu.closing,
     #mobile-menu.closing.hidden {
-        transform: translateY(-15px) !important; /* Movimento più leggero */
+        transform: translateY(-20px) !important; /* Stesso movimento dell'apertura */
         opacity: 0 !important;
         pointer-events: none !important;
-        transition: transform 0.15s ease-out, opacity 0.15s ease-out !important; /* Animazione veloce ma visibile */
+        transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.25s cubic-bezier(0.4,0,0.2,1) !important; /* Stessa velocità e curva dell'apertura */
     }
     
-    /* Overlay chiusura veloce sincronizzata */
+    /* Overlay chiusura fluida sincronizzata */
     #mobile-menu-overlay.closing {
         opacity: 0 !important;
         pointer-events: none !important;
-        transition: opacity 0.15s ease-out !important; /* Stessa durata del menu */
+        transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1) !important; /* Sincronizzato con il menu */
     }
 }
 

@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function closeMobileMenu() {
         if (!mobileMenu.classList.contains('hidden')) {
-            // CHIUSURA ANIMATA VELOCE - sincronizzata con CSS
+            // CHIUSURA ANIMATA FLUIDA - sincronizzata con CSS come l'apertura
             
             // Cambia icone immediatamente
             iconClose.classList.add('is-hidden');
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuOverlay.classList.remove('open');
             }
             
-            // Dopo l'animazione (150ms), nascondi completamente
+            // Dopo l'animazione (250ms), nascondi completamente
             setTimeout(() => {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('closing');
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     mobileMenuOverlay.classList.add('hidden');
                     mobileMenuOverlay.classList.remove('closing');
                 }
-            }, 150); // Coordinato con la durata CSS
+            }, 250); // Coordinato con la durata CSS dell'apertura per fluidità
             
             mobileMenuButton.setAttribute('aria-expanded', 'false');
             
