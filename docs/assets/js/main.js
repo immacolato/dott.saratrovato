@@ -34,29 +34,30 @@ function showPage(pageId) {
         document.title = `Dott.ssa Sara Trovato - ${activeLink.textContent.trim()}`;
     }
 
-    // Chiudi il menu mobile e mostra subito l'hamburger
+    // Chiudi il menu mobile immediatamente durante la navigazione per migliore UX
     const mobileMenu = document.getElementById('mobile-menu');
-    const button = document.getElementById('mobile-menu-button');
-    const overlay = document.getElementById('mobile-menu-overlay');
     if (window.innerWidth < 1024 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        // Chiusura immediata durante navigazione - evita menu in sospeso
+        const button = document.getElementById('mobile-menu-button');
+        const overlay = document.getElementById('mobile-menu-overlay');
         const iconHamburger = button?.querySelector('.icon-hamburger');
         const iconClose = button?.querySelector('.icon-close');
         
         if (iconHamburger && iconClose) {
-            // Ripristina le icone
+            // Ripristina le icone immediatamente
             iconClose.classList.add('is-hidden');
             iconHamburger.classList.remove('is-hidden');
             
-            // Chiudi menu
-            mobileMenu.classList.remove('open');
-            if (overlay) overlay.classList.remove('open');
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-                if (overlay) overlay.classList.add('hidden');
-            }, 320);
+            // Chiudi tutto immediatamente senza animazione
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('open', 'closing');
+            if (overlay) {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('open', 'closing');
+            }
             button.setAttribute('aria-expanded', 'false');
             
-            // Rimuovi effetto blur dal body e padding compensativo
+            // Rimuovi effetto blur dal body
             document.body.classList.remove('menu-open-blur');
             document.body.style.paddingRight = '';
             
@@ -256,8 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.paddingRight = `${scrollbarWidth}px`; // Compensa la scrollbar
             document.body.classList.add('menu-open-blur');
         } else {
-            // CHIUSURA IMMEDIATA - Usa la funzione ottimizzata
-            closeMobileMenu();
+            // CHIUSURA ANIMATA - Per chiusura manuale del menu (click su hamburger)
+            closeMobileMenu(false); // false = animazione fluida
         }
         
         setTimeout(adjustBodyPadding, 50);
@@ -283,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Chiudi menu mobile cliccando sull'overlay
     if (mobileMenuOverlay) {
         mobileMenuOverlay.addEventListener('click', () => {
-            closeMobileMenu();
+            closeMobileMenu(false); // false = animazione fluida per click overlay
         });
     }
 
@@ -302,42 +303,58 @@ document.addEventListener('DOMContentLoaded', () => {
         const pageId = this.id.replace('nav-', '');
         showPage(pageId);
         
-        // Chiudi il menu mobile su dispositivi mobili
-        if (window.innerWidth < 1024) {
-            closeMobileMenu();
-        }
+        // La chiusura del menu è già gestita in showPage() con chiusura immediata
     }
     
-    function closeMobileMenu() {
+    function closeMobileMenu(immediate = false) {
         if (!mobileMenu.classList.contains('hidden')) {
-            // CHIUSURA ANIMATA FLUIDA - sincronizzata con CSS come l'apertura
-            
-            // Cambia icone immediatamente
-            iconClose.classList.add('is-hidden');
-            iconHamburger.classList.remove('is-hidden');
-            
-            // Avvia animazione di chiusura
-            mobileMenu.classList.add('closing');
-            mobileMenu.classList.remove('open');
-            
-            // Chiudi overlay con animazione sincronizzata
-            if (mobileMenuOverlay) {
-                mobileMenuOverlay.classList.add('closing');
-                mobileMenuOverlay.classList.remove('open');
-            }
-            
-            // Dopo l'animazione (250ms), nascondi completamente
-            setTimeout(() => {
+            if (immediate) {
+                // CHIUSURA IMMEDIATA per navigazione - migliore UX
+                
+                // Cambia icone immediatamente
+                iconClose.classList.add('is-hidden');
+                iconHamburger.classList.remove('is-hidden');
+                
+                // Nascondi tutto immediatamente senza animazione
                 mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('closing');
+                mobileMenu.classList.remove('open', 'closing');
                 
                 if (mobileMenuOverlay) {
                     mobileMenuOverlay.classList.add('hidden');
-                    mobileMenuOverlay.classList.remove('closing');
+                    mobileMenuOverlay.classList.remove('open', 'closing');
                 }
-            }, 250); // Coordinato con la durata CSS dell'apertura per fluidità
-            
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            } else {
+                // CHIUSURA ANIMATA FLUIDA - per chiusura manuale
+                
+                // Cambia icone immediatamente
+                iconClose.classList.add('is-hidden');
+                iconHamburger.classList.remove('is-hidden');
+                
+                // Avvia animazione di chiusura
+                mobileMenu.classList.add('closing');
+                mobileMenu.classList.remove('open');
+                
+                // Chiudi overlay con animazione sincronizzata
+                if (mobileMenuOverlay) {
+                    mobileMenuOverlay.classList.add('closing');
+                    mobileMenuOverlay.classList.remove('open');
+                }
+                
+                // Dopo l'animazione (250ms), nascondi completamente
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('closing');
+                    
+                    if (mobileMenuOverlay) {
+                        mobileMenuOverlay.classList.add('hidden');
+                        mobileMenuOverlay.classList.remove('closing');
+                    }
+                }, 250); // Coordinato con la durata CSS dell'apertura per fluidità
+                
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
             
             // Ripristina lo scroll del body immediatamente
             document.body.style.overflow = '';
@@ -400,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 !mobileMenuButton.contains(e.target) && 
                 (!mobileMenuOverlay || !mobileMenuOverlay.contains(e.target))) {
                 
-                closeMobileMenu();
+                closeMobileMenu(false); // false = animazione fluida per click fuori
             }
         }
     });
@@ -756,13 +773,13 @@ window.addEventListener('resize', adjustBodyPadding);
 // Chiudi menu mobile su resize se si passa a desktop e ripristina scroll
 window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-        closeMobileMenu();
+        closeMobileMenu(true); // true = immediato per resize finestra
     }
 });
 
 // Chiudi menu mobile con tasto Escape
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-        closeMobileMenu();
+        closeMobileMenu(false); // false = animazione fluida per tasto Escape
     }
 });
