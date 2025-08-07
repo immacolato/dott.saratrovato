@@ -336,6 +336,12 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const pageId = link.getAttribute('data-page');
+            
+            // Feedback visivo immediato per tutti i dispositivi
+            if (link.classList.contains('header-logo')) {
+                addTapFeedback(link);
+            }
+            
             showPage(pageId);
         });
         
@@ -343,9 +349,26 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('touchend', (e) => {
             e.preventDefault();
             const pageId = link.getAttribute('data-page');
+            
+            // Feedback visivo specifico per touch
+            if (link.classList.contains('header-logo')) {
+                addTapFeedback(link);
+            }
+            
             showPage(pageId);
         }, { passive: false });
     });
+
+    // Funzione per aggiungere feedback visivo al tap
+    function addTapFeedback(element) {
+        // Aggiungi classe per feedback visivo
+        element.classList.add('tap-feedback');
+        
+        // Rimuovi la classe dopo l'animazione
+        setTimeout(() => {
+            element.classList.remove('tap-feedback');
+        }, 300);
+    }
 
     // Chiude il menu se si clicca fuori
     document.addEventListener('click', (e) => {

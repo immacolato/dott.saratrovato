@@ -181,6 +181,14 @@ header .container {
     touch-action: manipulation; /* Migliora la responsività del touch */
 }
 
+/* Classe per feedback visivo programmato */
+.header-logo.tap-feedback {
+    background: rgba(99, 102, 241, 0.12) !important;
+    transform: scale(0.95) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4) !important;
+    transition: all 0.15s ease !important;
+}
+
 /* Effetto hover tipo bottone che si alza con ombra - Solo per dispositivi non touch */
 @media (hover: hover) and (pointer: fine) {
     .header-logo:hover {
@@ -196,16 +204,44 @@ header .container {
 /* Effetto attivo per dispositivi touch */
 @media (hover: none) and (pointer: coarse) {
     .header-logo:active {
-        background: rgba(99, 102, 241, 0.08); /* Aumentato l'opacità per feedback più visibile */
-        transform: scale(0.96); /* Scala leggermente ridotta per feedback tattile */
-        transition: all 0.1s ease;
+        background: rgba(99, 102, 241, 0.15); /* Opacità molto aumentata per feedback più visibile */
+        transform: scale(0.94); /* Scala più ridotta per feedback tattile più evidente */
+        transition: all 0.2s ease; /* Transizione più lenta per vedere l'effetto */
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3); /* Ombra per feedback aggiuntivo */
     }
     
-    /* Migliora il feedback su tap per dispositivi touch */
+    /* Animazione di "ripple" per touch feedback più visibile */
     .header-logo {
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Effetto "ripple" con pseudo-elemento */
+    .header-logo::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(99, 102, 241, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: -1;
+    }
+    
+    /* Attivazione dell'effetto ripple al tap */
+    .header-logo:active::after {
+        width: 100px;
+        height: 100px;
+        opacity: 1;
+        transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
     }
 }
 .header-nav { width: 100%; }
