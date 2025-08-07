@@ -1,3 +1,9 @@
+/* Forza SVG icone hamburger/X a occupare tutto il contenitore per transizione visibile */
+.icon-hamburger svg, .icon-close svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 /* === RESET E STILI BASE === */
 body {
     margin: 0;
@@ -375,6 +381,9 @@ section {
         border-radius: 0.5rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         width: 100%;
+        pointer-events: auto;
+        /* Migliora la transizione: solo quando visibile */
+        will-change: transform, opacity;
     }
     
     #mobile-menu ul {
@@ -388,8 +397,64 @@ section {
     
     #mobile-menu .nav-link {
         display: block;
-        padding: 0.25rem; /* Ulteriormente ridotto per header più sottile */
+        padding: 0.75rem 0.5rem;
         text-align: center;
+        font-size: 1.15rem;
+        background: transparent;
+        transition: background 0.2s, border-color 0.2s;
+        position: relative;
+    }
+    #mobile-menu .nav-link:not(:last-child)::after {
+        content: '';
+        display: block;
+        margin: 0.5rem auto 0 auto;
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(90deg, #e5e7eb 0%, #c7d2fe 100%);
+        opacity: 0.7;
+        border-radius: 1px;
+    }
+    #mobile-menu .nav-link:active {
+        background: #f3f4f6;
+    }
+
+    /* Overlay scuro dietro il menu mobile */
+    #mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(30, 41, 59, 0.35); /* blu scuro trasparente */
+        z-index: 99;
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+        pointer-events: none;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+    #mobile-menu-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    #mobile-menu-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Animazione slide-in menu mobile migliorata */
+    #mobile-menu {
+        transform: translateY(-20px); /* Movimento più naturale */
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+        will-change: transform, opacity; /* Ottimizzazione per le animazioni */
+        z-index: 101; /* Assicura che stia sopra l'overlay */
+    }
+    #mobile-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 
@@ -539,7 +604,7 @@ section {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem; /* Ridotto per header più compatto */
     }
     
     .cta-row {
@@ -719,17 +784,73 @@ section {
     }
 }
 
-.icon-hamburger, .icon-close {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-    transition: opacity 0.3s, transform 0.3s;
-    pointer-events: auto;
+/* Miglioramento animazione hamburger/X - MOBILE OTTIMIZZATO */
+#mobile-menu-button {
+    position: relative;
+    width: 40px;  /* Aumentato per area di tap migliore */
+    height: 40px; /* Aumentato per area di tap migliore */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 200;
+    overflow: hidden; 
+    padding: 6px;     
+    box-sizing: border-box;
+    font-size: 0;
+    border-radius: 8px; /* Angoli più arrotondati */
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
-.icon-hamburger.is-hidden, .icon-close.is-hidden {
+/* Hover effect per il bottone migliorato */
+#mobile-menu-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.icon-hamburger, .icon-close {
+    position: absolute;
+    top: 6px;    /* Allineato al padding aumentato */
+    left: 6px;   /* Allineato al padding aumentato */
+    width: 28px; /* Dimensione effettiva dell'icona aumentata */
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none; /* Solo il button gestore i click */
+}
+
+/* Stato nascosto per hamburger */
+.icon-hamburger.is-hidden {
     opacity: 0;
-    transform: scale(0.7) rotate(90deg);
-    pointer-events: none;
+    transform: scale(0.8) rotate(45deg);
+    transition-delay: 0s;
+}
+
+/* Stato nascosto per X */
+.icon-close.is-hidden {
+    opacity: 0;
+    transform: scale(0.8) rotate(-45deg);
+    transition-delay: 0s;
+}
+
+/* Stato visibile */
+.icon-hamburger:not(.is-hidden), .icon-close:not(.is-hidden) {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    transition-delay: 0s;
+}
+
+/* SVG all'interno delle icone */
+.icon-hamburger svg, .icon-close svg {
+    width: 24px;  /* Aumentato per migliore visibilità */
+    height: 24px;
+    stroke-width: 2.5; /* Leggermente più spesso per migliore visibilità */
 }
 
 /* === FLOATING CONTACT BUTTONS - MOBILE OPTIMIZED === */

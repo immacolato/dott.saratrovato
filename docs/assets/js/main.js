@@ -37,11 +37,26 @@ function showPage(pageId) {
     // Chiudi il menu mobile e mostra subito l'hamburger
     const mobileMenu = document.getElementById('mobile-menu');
     const button = document.getElementById('mobile-menu-button');
-    if (window.innerWidth < 1024 && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        button.querySelector('.icon-hamburger').classList.remove('is-hidden');
-        button.querySelector('.icon-close').classList.add('is-hidden');
-        setTimeout(adjustBodyPadding, 50);
+    const overlay = document.getElementById('mobile-menu-overlay');
+    if (window.innerWidth < 1024 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        const iconHamburger = button?.querySelector('.icon-hamburger');
+        const iconClose = button?.querySelector('.icon-close');
+        
+        if (iconHamburger && iconClose) {
+            // Ripristina le icone
+            iconClose.classList.add('is-hidden');
+            iconHamburger.classList.remove('is-hidden');
+            
+            // Chiudi menu
+            mobileMenu.classList.remove('open');
+            if (overlay) overlay.classList.remove('open');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                if (overlay) overlay.classList.add('hidden');
+            }, 320);
+            button.setAttribute('aria-expanded', 'false');
+            setTimeout(adjustBodyPadding, 50);
+        }
     }
 
     window.scrollTo(0, 0);
@@ -205,39 +220,91 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostra la home page di default
     showPage('home');
 
-    // Gestore per il pulsante del menu mobile - CORRETTO
-    document.getElementById('mobile-menu-button').addEventListener('click', (e) => {
+    // Gestore per il pulsante del menu mobile - ANIMAZIONE MIGLIORATA
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const iconHamburger = mobileMenuButton.querySelector('.icon-hamburger');
+    const iconClose = mobileMenuButton.querySelector('.icon-close');
+    
+    mobileMenuButton.addEventListener('click', (e) => {
         e.stopPropagation();
-        const menu = document.getElementById('mobile-menu');
-        const isHidden = menu.classList.contains('hidden');
+        const isHidden = mobileMenu.classList.contains('hidden');
         
-        menu.classList.toggle('hidden');
-        setTimeout(adjustBodyPadding, 50);
-
-        // Animazione icona hamburger/X (LOGICA CORRETTA)
-        const btn = e.currentTarget;
-        btn.querySelector('.icon-hamburger').classList.toggle('is-hidden', isHidden);
-        btn.querySelector('.icon-close').classList.toggle('is-hidden', !isHidden);
-    });
-
-    // Gestore per i link di navigazione - CORRETTO
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pageId = link.id.replace('nav-', '');
-            showPage(pageId);
+        // Animazione sincrona delle icone
+        if (isHidden) {
+            // Nascondi hamburger e mostra X
+            iconHamburger.classList.add('is-hidden');
+            iconClose.classList.remove('is-hidden');
             
-            // Chiudi il menu mobile su dispositivi mobili
-            const menu = document.getElementById('mobile-menu');
-            if (window.innerWidth < 1024) {
-                menu.classList.add('hidden');
-                // Reset icone
-                const btn = document.getElementById('mobile-menu-button');
-                btn.querySelector('.icon-hamburger').classList.remove('is-hidden');
-                btn.querySelector('.icon-close').classList.add('is-hidden');
-            }
-        });
+            // Mostra menu e overlay
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => mobileMenu.classList.add('open'), 10); // Piccolo delay per la transizione CSS
+            mobileMenuOverlay.classList.remove('hidden');
+            setTimeout(() => mobileMenuOverlay.classList.add('open'), 10);
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+        } else {
+            // Mostra hamburger e nascondi X
+            iconClose.classList.add('is-hidden');
+            iconHamburger.classList.remove('is-hidden');
+            
+            // Nascondi menu e overlay
+            mobileMenu.classList.remove('open');
+            mobileMenuOverlay.classList.remove('open');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuOverlay.classList.add('hidden');
+            }, 320); // Timeout coordinato con la transizione CSS
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
+        
+        setTimeout(adjustBodyPadding, 50);
     });
+
+    // Chiudi menu mobile cliccando sull'overlay
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    }
+
+    // Gestore per i link di navigazione - CORRETTO E MIGLIORATO
+    function setupNavigationLinks() {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            // Rimuovi eventuali listener esistenti
+            link.removeEventListener('click', handleNavLinkClick);
+            // Aggiungi il nuovo listener
+            link.addEventListener('click', handleNavLinkClick);
+        });
+    }
+    
+    function handleNavLinkClick(e) {
+        e.preventDefault();
+        const pageId = this.id.replace('nav-', '');
+        showPage(pageId);
+        
+        // Chiudi il menu mobile su dispositivi mobili
+        if (window.innerWidth < 1024) {
+            closeMobileMenu();
+        }
+    }
+    
+    function closeMobileMenu() {
+        if (!mobileMenu.classList.contains('hidden')) {
+            iconClose.classList.add('is-hidden');
+            iconHamburger.classList.remove('is-hidden');
+            mobileMenu.classList.remove('open');
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.classList.remove('open');
+                setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 320);
+            }
+            setTimeout(() => mobileMenu.classList.add('hidden'), 320);
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            setTimeout(adjustBodyPadding, 50);
+        }
+    }
+    
+    setupNavigationLinks();
     
     // Gestore per i link interni (es. pulsanti "Scopri di più")
     document.querySelectorAll('a[data-page]').forEach(link => {
@@ -250,15 +317,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Chiude il menu se si clicca fuori
     document.addEventListener('click', (e) => {
-        const menu = document.getElementById('mobile-menu');
-        const button = document.getElementById('mobile-menu-button');
-        if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !button.contains(e.target)) {
-            menu.classList.add('hidden');
-            setTimeout(adjustBodyPadding, 50);
-
-            // Ripristina icona hamburger/X con animazione
-            button.querySelector('.icon-hamburger').classList.remove('is-hidden');
-            button.querySelector('.icon-close').classList.add('is-hidden');
+        // Chiudi menu mobile se clic fuori da menu, hamburger e overlay
+        if (window.innerWidth < 1024) {
+            if (!mobileMenu.classList.contains('hidden') && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuButton.contains(e.target) && 
+                (!mobileMenuOverlay || !mobileMenuOverlay.contains(e.target))) {
+                
+                closeMobileMenu();
+            }
         }
     });
 
