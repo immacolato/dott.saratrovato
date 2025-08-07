@@ -498,7 +498,7 @@ section {
         background: rgba(30, 41, 59, 0.35); /* blu scuro trasparente */
         z-index: 99;
         opacity: 0;
-        transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+        transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1); /* Transizione più veloce per sincronia */
         pointer-events: none;
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
@@ -506,10 +506,12 @@ section {
     #mobile-menu-overlay.open {
         opacity: 1;
         pointer-events: auto;
+        transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1); /* Apertura leggermente più lenta */
     }
     #mobile-menu-overlay.hidden {
         opacity: 0;
         pointer-events: none;
+        transition: none !important; /* Chiusura immediata */
     }
 
     /* Animazione slide-in menu mobile migliorata */
@@ -517,7 +519,7 @@ section {
         transform: translateY(-20px); /* Movimento più naturale */
         opacity: 0;
         pointer-events: none;
-        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+        transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.25s cubic-bezier(0.4,0,0.2,1); /* Transizioni più veloci e sincronizzate */
         will-change: transform, opacity; /* Ottimizzazione per le animazioni */
         z-index: 101; /* Assicura che stia sopra l'overlay */
     }
@@ -525,6 +527,15 @@ section {
         transform: translateY(0);
         opacity: 1;
         pointer-events: auto;
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1); /* Apertura leggermente più lenta */
+    }
+    
+    /* Quando il menu si chiude, nascondi immediatamente senza transizione */
+    #mobile-menu.closing {
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: none !important; /* Rimozione immediata senza transizione */
     }
 }
 

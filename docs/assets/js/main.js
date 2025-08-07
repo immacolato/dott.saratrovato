@@ -309,22 +309,34 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function closeMobileMenu() {
         if (!mobileMenu.classList.contains('hidden')) {
+            // Aggiungi classe "closing" per animazione immediata
+            mobileMenu.classList.add('closing');
+            mobileMenu.classList.remove('open');
+            
+            // Cambia icone immediatamente
             iconClose.classList.add('is-hidden');
             iconHamburger.classList.remove('is-hidden');
-            mobileMenu.classList.remove('open');
+            
+            // Chiudi overlay immediatamente
             if (mobileMenuOverlay) {
                 mobileMenuOverlay.classList.remove('open');
-                setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 320);
+                mobileMenuOverlay.classList.add('hidden');
             }
-            setTimeout(() => mobileMenu.classList.add('hidden'), 320);
+            
+            // Nascondi il menu dopo un brevissimo ritardo per permettere l'animazione CSS
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('closing');
+            }, 50); // Molto più veloce
+            
             mobileMenuButton.setAttribute('aria-expanded', 'false');
             
-            // Ripristina lo scroll del body e rimuovi effetto blur
+            // Ripristina lo scroll del body e rimuovi effetto blur immediatamente
             document.body.style.overflow = '';
-            document.body.style.paddingRight = ''; // Rimuovi il padding compensativo
+            document.body.style.paddingRight = '';
             document.body.classList.remove('menu-open-blur');
             
-            setTimeout(adjustBodyPadding, 50);
+            setTimeout(adjustBodyPadding, 25); // Più veloce
         }
     }
     
