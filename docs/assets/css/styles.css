@@ -5,12 +5,12 @@ body {
     background: linear-gradient(135deg, #f0f4f8 0%, #edf2ff 100%);
     color: #334155;
     /* Il padding-top viene calcolato dinamicamente con JS */
-    padding-top: 70px; /* Ridotto per header più compatto */
+    padding-top: 100px; /* Aumentato per compensare header compatto */
 }
 
 @media (min-width: 1024px) {
     body {
-        padding-top: 85px; /* Ridotto anche per desktop */
+        padding-top: 120px; /* Aumentato anche per desktop */
     }
 }
 

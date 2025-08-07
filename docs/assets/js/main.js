@@ -1,10 +1,11 @@
 // Funzione per gestire il padding dinamico del body
 function adjustBodyPadding() {
-    const header = document.querySelector('header');
-    if (header) {
-        const headerHeight = header.offsetHeight;
-        document.body.style.paddingTop = `${headerHeight}px`;
-    }
+    // TEMPORANEAMENTE DISABILITATO per permettere CSS statico più compatto
+    // const header = document.querySelector('header');
+    // if (header) {
+    //     const headerHeight = header.offsetHeight;
+    //     document.body.style.paddingTop = `${headerHeight}px`;
+    // }
 }
 
 // Funzione per mostrare una pagina e gestire lo stato attivo
