@@ -318,6 +318,31 @@ header .container {
     -webkit-backdrop-filter: blur(3px);
 }
 
+/* Effetto pulsazione elegante per desktop - solo su schermi grandi */
+@media (min-width: 1024px) {
+    .nav-link {
+        position: relative;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link.active {
+        animation: navBorderPulse 3s ease-in-out infinite;
+    }
+}
+
+/* Animazione di pulsazione del bordo per il nav-link attivo */
+@keyframes navBorderPulse {
+    0%, 100% { 
+        border-color: rgba(139, 92, 246, 0.3);
+        box-shadow: 0 0 8px rgba(139, 92, 246, 0.2);
+    }
+    50% { 
+        border-color: rgba(139, 92, 246, 0.7);
+        box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
+    }
+}
+
 /* === CONTENUTO PRINCIPALE === */
 main {
     position: relative;
