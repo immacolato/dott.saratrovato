@@ -311,34 +311,45 @@ header .container {
     border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
-/* Effetto hover */
+/* Effetto hover migliorato con pulsazione */
 .nav-link:hover:not(.active) {
-    background: rgba(226, 232, 240, 0.3);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: rgba(226, 232, 240, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
+    animation: navHoverPulse 2s ease-in-out infinite;
+}
+
+/* Animazione di pulsazione per l'hover */
+@keyframes navHoverPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(139, 92, 246, 0.2);
+    }
+    50% { 
+        transform: scale(1.02);
+        box-shadow: 0 0 16px rgba(139, 92, 246, 0.3);
+    }
 }
 
 /* Effetto pulsazione elegante per desktop - solo su schermi grandi */
 @media (min-width: 1024px) {
     .nav-link {
         position: relative;
-        border: 2px solid transparent;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
     }
     
     .nav-link.active {
-        animation: navBorderPulse 3s ease-in-out infinite;
+        animation: navBorderPulse 4s ease-in-out infinite;
     }
 }
 
-/* Animazione di pulsazione del bordo per il nav-link attivo */
+/* Animazione di pulsazione per il nav-link attivo */
 @keyframes navBorderPulse {
     0%, 100% { 
-        border-color: rgba(139, 92, 246, 0.3);
         box-shadow: 0 0 8px rgba(139, 92, 246, 0.2);
     }
     50% { 
-        border-color: rgba(139, 92, 246, 0.7);
         box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
     }
 }
