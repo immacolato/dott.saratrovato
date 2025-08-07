@@ -479,7 +479,7 @@ section {
         display: block;
         margin: 0.15rem auto 0 auto;
         width: 85%;
-        height: 1px;
+        height: 2px;
         background: linear-gradient(90deg, 
             transparent 0%, 
             rgba(226, 232, 240, 0.4) 15%, 
@@ -489,9 +489,29 @@ section {
             rgba(226, 232, 240, 0.4) 85%, 
             transparent 100%);
         opacity: 0.8;
-        border-radius: 3px;
+        border-radius: 50px;
         position: relative;
         box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1);
+        animation: separatorPulse 7s ease-in-out infinite;
+        /* Forma a labbra con clip-path */
+        clip-path: ellipse(50% 100% at 50% 50%);
+        transform-origin: center;
+    }
+    
+    /* Animazione di pulsazione lenta per i separatori a forma di labbra */
+    @keyframes separatorPulse {
+        0%, 100% { 
+            opacity: 0.6;
+            transform: scaleX(0.9) scaleY(0.8);
+            box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1);
+            clip-path: ellipse(50% 80% at 50% 50%);
+        }
+        50% { 
+            opacity: 1;
+            transform: scaleX(1) scaleY(1.2);
+            box-shadow: 0 1px 6px rgba(139, 92, 246, 0.3);
+            clip-path: ellipse(50% 100% at 50% 50%);
+        }
     }
     #mobile-menu .nav-link:active {
         background: #f3f4f6;
