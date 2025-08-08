@@ -1,11 +1,104 @@
 // Funzione per gestire il padding dinamico del body
 function adjustBodyPadding() {
-    // TEMPORANEAMENTE DISABILITATO per permettere CSS statico più compatto
     // const header = document.querySelector('header');
     // if (header) {
     //     const headerHeight = header.offsetHeight;
     //     document.body.style.paddingTop = `${headerHeight}px`;
     // }
+}
+
+// Funzione per aggiungere interattività alla timeline
+function setupTimelineInteractivity() {
+    const timelineItems = document.querySelectorAll('.timeline-item-mobile, .timeline-item');
+    const timelineInfoBox = document.getElementById('timeline-info');
+    const timelineInfoContent = document.getElementById('timeline-info-content');
+    
+    // Definisci le informazioni dettagliate per ogni step
+    const timelineSteps = {
+        1: {
+            title: "Primo Incontro - Conoscenza Reciproca",
+            content: "Durante questo primo incontro ci prendiamo il tempo necessario per conoscerci. Ti ascolto senza giudizio mentre mi racconti la tua storia, le tue preoccupazioni e cosa ti ha portato a cercare supporto psicologico. Insieme valutiamo se il mio approccio può esserti d'aiuto e se c'è una buona sintonia per iniziare un percorso."
+        },
+        2: {
+            title: "Definizione Obiettivi - Il Tuo Piano Personalizzato",
+            content: "Sulla base di quanto emerso nel primo incontro, lavoriamo insieme per definire obiettivi chiari e realistici. Creo un piano terapeutico personalizzato che rispetti i tuoi tempi e le tue esigenze specifiche. Questo è il momento in cui disegniamo la 'mappa' del nostro viaggio insieme."
+        },
+        3: {
+            title: "Lavoro Attivo - Strumenti e Tecniche",
+            content: "È la fase centrale del percorso, dove utilizziamo tecniche cognitive costruttiviste per lavorare sui pensieri, emozioni e comportamenti. Ogni seduta è un passo verso i tuoi obiettivi, con esercizi pratici, homework terapeutici e un supporto costante per sviluppare nuove competenze."
+        },
+        4: {
+            title: "Consolidamento - Rafforziamo i Progressi",
+            content: "Quando iniziamo a vedere i primi miglioramenti, lavoriamo per consolidare i progressi raggiunti. Ti aiuto a sviluppare strategie per mantenere i cambiamenti positivi nel tempo e a prepararti ad affrontare autonomamente le sfide future."
+        },
+        5: {
+            title: "Autonomia - Indipendenza e Crescita",
+            content: "L'obiettivo finale è la tua autonomia. A questo punto hai acquisito gli strumenti necessari per gestire le situazioni difficili da solo/a. Il percorso si conclude gradualmente, ma la porta rimane sempre aperta per eventuali 'sedute di richiamo' se dovessi averne bisogno."
+        }
+    };
+    
+    timelineItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const step = this.getAttribute('data-step');
+            const stepInfo = timelineSteps[step];
+            
+            if (stepInfo && timelineInfoBox && timelineInfoContent) {
+                timelineInfoContent.innerHTML = `
+                    <h3 class="text-xl font-semibold text-indigo-800 mb-3">${stepInfo.title}</h3>
+                    <p class="text-gray-700 leading-relaxed">${stepInfo.content}</p>
+                `;
+                
+                timelineInfoBox.classList.remove('hidden');
+                
+                // Scroll smooth verso il box informativo
+                setTimeout(() => {
+                    timelineInfoBox.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 100);
+            }
+        });
+        
+        // Aggiungi effetto hover migliorato
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+        });
+    });
+    
+    // Gestisci anche i dot della timeline desktop
+    const timelineDots = document.querySelectorAll('.timeline-dot');
+    timelineDots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const parentItem = this.closest('.timeline-item');
+            if (parentItem) {
+                const step = parentItem.getAttribute('data-step');
+                const stepInfo = timelineSteps[step];
+                
+                if (stepInfo && timelineInfoBox && timelineInfoContent) {
+                    timelineInfoContent.innerHTML = `
+                        <h3 class="text-xl font-semibold text-indigo-800 mb-3">${stepInfo.title}</h3>
+                        <p class="text-gray-700 leading-relaxed">${stepInfo.content}</p>
+                    `;
+                    
+                    timelineInfoBox.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        timelineInfoBox.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'nearest' 
+                        });
+                    }, 100);
+                }
+            }
+        });
+    });
 }
 
 // Funzione per mostrare una pagina e gestire lo stato attivo
@@ -232,6 +325,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mostra la home page di default
     showPage('home');
+    
+    // Inizializza l'interattività della timeline
+    setupTimelineInteractivity();
 
     // Gestore per il pulsante del menu mobile - ANIMAZIONE MIGLIORATA
     const mobileMenuButton = document.getElementById('mobile-menu-button');
