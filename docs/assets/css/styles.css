@@ -2795,7 +2795,7 @@ body.menu-open-blur #mobile-menu-overlay {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 2rem;
     min-height: 550px;
 }
@@ -2803,7 +2803,7 @@ body.menu-open-blur #mobile-menu-overlay {
 .contact-form-column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 1.5rem 2rem;
     min-height: 550px;
 }
@@ -2813,6 +2813,7 @@ body.menu-open-blur #mobile-menu-overlay {
     display: flex !important;
     align-items: center !important;
     margin-bottom: 0.75rem !important;
+    min-height: 3rem !important; /* Altezza minima uniforme */
 }
 
 .contact-item:last-child {
@@ -2826,14 +2827,53 @@ body.menu-open-blur #mobile-menu-overlay {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-right: 0.75rem;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+/* Icona titolo contatti stessa dimensione delle altre */
+.contact-info-column h3 .bg-indigo-100 {
+    background: white !important;
+    padding: 0.5rem !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    margin-right: 0.75rem !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+/* Icona titolo "Scrivimi" stessa dimensione delle altre */
+.contact-form-column h3 .bg-indigo-100 {
+    background: white !important;
+    padding: 0.5rem !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    margin-right: 0.75rem !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
 }
 
 .contact-text {
     flex: 1;
     min-width: 0;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.contact-text p {
+    margin: 0 !important;
+    line-height: 1.5 !important;
 }
 
 /* Mappa perfettamente bilanciata */
