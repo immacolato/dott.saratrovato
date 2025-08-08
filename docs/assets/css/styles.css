@@ -635,6 +635,24 @@ section {
         margin-right: auto;
     }
     
+    /* OVERRIDE SPECIFICO PER FAQ - Forza allineamento a sinistra SOLO dei contenuti delle risposte */
+    section#faq-page .faq-answer p,
+    section#faq-page .faq-answer ul,
+    section#faq-page .faq-answer li,
+    section#faq-page .faq-answer span,
+    section#faq-page .faq-answer strong {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+        max-width: none !important;
+    }
+    
+    /* Mantieni il centraggio dei contenitori delle FAQ */
+    section#faq-page .max-w-4xl {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
     /* Layout specifico per sezioni con contenuto misto */
     .section-with-sidebar {
         display: grid;
@@ -2401,6 +2419,7 @@ body.menu-open-blur #mobile-menu-overlay {
         grid-template-columns: 1fr 1.2fr; /* Colonna destra leggermente più grande */
         gap: 2.5rem;
         align-items: start;
+        grid-auto-rows: min-content; /* Consente righe compatte per migliore allineamento */
         max-width: 1400px;
         margin: 0 auto;
     }
@@ -2469,6 +2488,7 @@ body.menu-open-blur #mobile-menu-overlay {
     /* Colonna destra - Contenuti interattivi */
     .therapy-right-column {
         padding-left: 1.5rem;
+        align-self: start; /* Forza l'allineamento all'inizio della riga */
     }
     
     /* Box "Come ti aiuto" migliorato */
@@ -2655,27 +2675,92 @@ body.menu-open-blur #mobile-menu-overlay {
         box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15) !important;
     }
     
-    /* Per tablet grandi (1024px-1199px), usiamo grid 2 colonne per i box */
-    @media (min-width: 1024px) {
-        .grid.lg\\:grid-cols-2 {
-            gap: 1.5rem;
-        }
-        
-        .help-box-tablet,
-        .benefits-box-tablet {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    /* Forza sempre colonna singola tra 768 e 1199px SOLO nella sezione terapia per i box "Come/Cosa" */
+    .therapy-content-container .grid.grid-cols-1 {
+        grid-template-columns: 1fr !important;
     }
-    
-    /* Per tablet piccoli (768px-1023px), tutto in colonna */
-    @media (max-width: 1023px) {
-        .grid.lg\\:grid-cols-2 {
-            grid-template-columns: 1fr !important;
-            gap: 1rem;
-        }
+}
+
+/* FAQ: SOLUZIONE DEFINITIVA - Forza allineamento a sinistra nel contenitore FAQ */
+/* Questa regola ha la massima priorità possibile e sovrascrive qualsiasi classe Tailwind */
+#faq-page .max-w-4xl.mx-auto.space-y-4.text-left,
+#faq-page .max-w-4xl.mx-auto.space-y-4.text-left *,
+section#faq-page div.max-w-4xl.mx-auto.space-y-4.text-left,
+section#faq-page div.max-w-4xl.mx-auto.space-y-4.text-left * {
+    text-align: left !important;
+    text-align-last: left !important;
+    direction: ltr !important;
+}
+
+/* FAQ: FORZA allineamento testo a sinistra su TUTTI i dispositivi - Regola super-specifica */
+/* Regola principale per tutte le risposte FAQ - MASSIMA SPECIFICITÀ */
+div.faq-item div.faq-answer,
+div.faq-item div.faq-answer p,
+div.faq-item div.faq-answer ul,
+div.faq-item div.faq-answer li,
+div.faq-item div.faq-answer span,
+div.faq-item div.faq-answer strong,
+section#faq-page div.faq-item div.faq-answer,
+section#faq-page div.faq-item div.faq-answer p,
+section#faq-page div.faq-item div.faq-answer ul,
+section#faq-page div.faq-item div.faq-answer li,
+section#faq-page div.faq-item div.faq-answer span,
+section#faq-page div.faq-item div.faq-answer strong {
+    text-align: left !important;
+    text-align-last: left !important;
+    direction: ltr !important;
+}
+
+/* Regola universale per qualsiasi elemento all'interno delle risposte FAQ */
+div.faq-item div.faq-answer *,
+section#faq-page div.faq-item div.faq-answer * {
+    text-align: left !important;
+    text-align-last: left !important;
+    direction: ltr !important;
+}
+
+/* Override specifico per classi Tailwind che potrebbero forzare il centro */
+.text-center div.faq-answer,
+.text-center div.faq-answer *,
+[class*="text-center"] div.faq-answer,
+[class*="text-center"] div.faq-answer *,
+.max-w-4xl div.faq-answer,
+.max-w-4xl div.faq-answer *,
+.mx-auto div.faq-answer,
+.mx-auto div.faq-answer * {
+    text-align: left !important;
+    text-align-last: left !important;
+    direction: ltr !important;
+}
+
+/* Regola ultra-specifica per qualsiasi contenitore padre che potrebbe influenzare le FAQ */
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer,
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer p,
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer ul,
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer li,
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer span,
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer strong,
+section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer * {
+    text-align: left !important;
+    text-align-last: left !important;
+    direction: ltr !important;
+}
+
+/* Assicura che le testimonianze mantengano il loro allineamento corretto */
+.testimonial-text.content-left-mobile,
+.testimonial-text.content-left-mobile * {
+    text-align: left !important;
+}
+
+/* Media query per confermare su tutti i dispositivi */
+@media screen {
+    div.faq-item div.faq-answer,
+    div.faq-item div.faq-answer *,
+    section#faq-page div.faq-item div.faq-answer,
+    section#faq-page div.faq-item div.faq-answer * {
+        text-align: left !important;
+        text-align-last: left !important;
+        direction: ltr !important;
     }
 }
 
