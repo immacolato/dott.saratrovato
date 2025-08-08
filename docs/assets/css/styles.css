@@ -2221,7 +2221,7 @@ body.menu-open-blur #mobile-menu-overlay {
 }
 
 /* === MIGLIORAMENTI DESKTOP === */
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     /* Migliore spaziatura per le card del percorso terapeutico */
     .timeline-item {
         margin-bottom: 3rem;
@@ -2298,19 +2298,19 @@ body.menu-open-blur #mobile-menu-overlay {
         text-align: center;
     }
     
-    /* === LAYOUT DESKTOP MIGLIORATO PER SEZIONE TERAPIA === */
+    /* === LAYOUT DESKTOP GRANDE (≥1200px) - Grid a 2 colonne === */
     
     /* Sezione principale terapia cognitivo costruttivista */
     .therapy-section-desktop {
-        padding: 4rem 0 !important;
-        margin-bottom: 3rem !important;
+        padding: 2.5rem 0 !important;
+        margin-bottom: 2rem !important;
     }
     
     /* Grid layout ottimizzato per desktop */
     .therapy-grid-desktop {
         display: grid;
         grid-template-columns: 1fr 1.2fr; /* Colonna destra leggermente più grande */
-        gap: 4rem;
+        gap: 2.5rem;
         align-items: start;
         max-width: 1400px;
         margin: 0 auto;
@@ -2318,29 +2318,29 @@ body.menu-open-blur #mobile-menu-overlay {
     
     /* Colonna sinistra - Testo principale */
     .therapy-left-column {
-        padding-right: 2rem;
+        padding-right: 1.5rem;
     }
     
     .therapy-left-column h1 {
-        font-size: 2.5rem !important;
+        font-size: 2.25rem !important;
         line-height: 1.2 !important;
-        margin-bottom: 2rem !important;
+        margin-bottom: 1.5rem !important;
         color: #1f2937;
         font-weight: 700;
     }
     
     .therapy-left-column .subtitle {
-        font-size: 1.25rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 2rem !important;
+        font-size: 1.125rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
         color: #4b5563;
         font-weight: 400;
     }
     
     .therapy-left-column .description {
-        font-size: 1.1rem !important;
-        line-height: 1.7 !important;
-        margin-bottom: 2.5rem !important;
+        font-size: 1.05rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.75rem !important;
         color: #374151;
     }
     
@@ -2348,46 +2348,48 @@ body.menu-open-blur #mobile-menu-overlay {
     .therapy-quote-desktop {
         background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.08));
         border-left: 4px solid #6366f1;
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: 1rem;
-        margin: 2.5rem 0;
+        margin: 1.5rem 0;
         position: relative;
     }
     
     .therapy-quote-desktop::before {
         content: '"';
-        font-size: 4rem;
+        font-size: 2.5rem;
         color: #6366f1;
         position: absolute;
-        top: -0.5rem;
-        left: 1rem;
+        top: -0.25rem;
+        left: 0.5rem;
         font-family: Georgia, serif;
-        opacity: 0.3;
+        opacity: 0.2;
+        z-index: 0;
     }
     
     .therapy-quote-desktop p {
-        font-size: 1.125rem !important;
-        line-height: 1.6 !important;
+        font-size: 1.075rem !important;
+        line-height: 1.5 !important;
         font-style: italic;
         color: #1f2937;
         margin: 0;
         position: relative;
         z-index: 1;
+        padding-left: 1rem;
     }
     
     /* Colonna destra - Contenuti interattivi */
     .therapy-right-column {
-        padding-left: 2rem;
+        padding-left: 1.5rem;
     }
     
     /* Box "Come ti aiuto" migliorato */
     .help-box-desktop {
         background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05));
         border: 1px solid rgba(99, 102, 241, 0.2);
-        border-radius: 1.5rem;
-        padding: 2.5rem;
-        margin-bottom: 2.5rem;
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
+        border-radius: 1.25rem;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);
         position: relative;
         overflow: hidden;
     }
@@ -2398,15 +2400,15 @@ body.menu-open-blur #mobile-menu-overlay {
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         background: linear-gradient(90deg, #6366f1, #8b5cf6, #6366f1);
-        border-radius: 1.5rem 1.5rem 0 0;
+        border-radius: 1.25rem 1.25rem 0 0;
     }
     
     .help-box-desktop h3 {
-        font-size: 1.5rem !important;
+        font-size: 1.35rem !important;
         color: #4f46e5 !important;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1.25rem !important;
         font-weight: 600;
         text-align: center;
     }
@@ -2418,12 +2420,12 @@ body.menu-open-blur #mobile-menu-overlay {
     }
     
     .help-box-desktop li {
-        padding: 0.75rem 0;
+        padding: 0.625rem 0;
         border-bottom: 1px solid rgba(99, 102, 241, 0.1);
         position: relative;
-        padding-left: 2rem;
-        font-size: 1rem;
-        line-height: 1.5;
+        padding-left: 1.75rem;
+        font-size: 0.95rem;
+        line-height: 1.4;
         color: #374151;
     }
     
@@ -2435,19 +2437,19 @@ body.menu-open-blur #mobile-menu-overlay {
         content: '✓';
         position: absolute;
         left: 0;
-        top: 0.75rem;
+        top: 0.625rem;
         color: #10b981;
         font-weight: bold;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     /* Box "Cosa otterrai" migliorato */
     .benefits-box-desktop {
         background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.05));
         border: 1px solid rgba(16, 185, 129, 0.2);
-        border-radius: 1.5rem;
-        padding: 2.5rem;
-        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.1);
+        border-radius: 1.25rem;
+        padding: 1.75rem;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.08);
         position: relative;
         overflow: hidden;
     }
@@ -2458,15 +2460,15 @@ body.menu-open-blur #mobile-menu-overlay {
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         background: linear-gradient(90deg, #10b981, #059669, #10b981);
-        border-radius: 1.5rem 1.5rem 0 0;
+        border-radius: 1.25rem 1.25rem 0 0;
     }
     
     .benefits-box-desktop h3 {
-        font-size: 1.5rem !important;
+        font-size: 1.35rem !important;
         color: #047857 !important;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1.25rem !important;
         font-weight: 600;
         text-align: center;
     }
@@ -2478,12 +2480,12 @@ body.menu-open-blur #mobile-menu-overlay {
     }
     
     .benefits-box-desktop li {
-        padding: 0.75rem 0;
+        padding: 0.625rem 0;
         border-bottom: 1px solid rgba(16, 185, 129, 0.1);
         position: relative;
-        padding-left: 2rem;
-        font-size: 1rem;
-        line-height: 1.5;
+        padding-left: 1.75rem;
+        font-size: 0.95rem;
+        line-height: 1.4;
         color: #374151;
     }
     
@@ -2495,16 +2497,16 @@ body.menu-open-blur #mobile-menu-overlay {
         content: '★';
         position: absolute;
         left: 0;
-        top: 0.75rem;
+        top: 0.625rem;
         color: #f59e0b;
         font-weight: bold;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     /* Bottone CTA centrato e prominente */
     .therapy-cta-desktop {
         text-align: center;
-        margin-top: 3rem;
+        margin-top: 2rem;
         grid-column: 1 / -1; /* Span di entrambe le colonne */
     }
     
@@ -2533,26 +2535,79 @@ body.menu-open-blur #mobile-menu-overlay {
     .therapy-cta-desktop .button:hover::before {
         left: 100%;
     }
+}
+
+/* === LAYOUT INTERMEDIO TABLET/DESKTOP PICCOLO (768px - 1199px) === */
+@media (min-width: 768px) and (max-width: 1199px) {
+    /* Layout completamente in colonna singola per evitare rotture */
+    .therapy-section-desktop {
+        padding: 2rem 0 !important;
+        margin-bottom: 1.5rem !important;
+    }
     
-    /* Responsive adjustments per desktop più piccoli */
-    @media (min-width: 1024px) and (max-width: 1200px) {
-        .therapy-grid-desktop {
-            gap: 3rem;
-            max-width: 1100px;
+    .therapy-content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    
+    /* Box tablet ottimizzati */
+    .help-box-tablet,
+    .benefits-box-tablet {
+        transition: all 0.3s ease;
+        border-radius: 1rem !important;
+        padding: 1.5rem !important;
+        margin-bottom: 1.25rem !important;
+    }
+    
+    .help-box-tablet:hover,
+    .benefits-box-tablet:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    /* Per tablet grandi (1024px-1199px), usiamo grid 2 colonne per i box */
+    @media (min-width: 1024px) {
+        .grid.lg\\:grid-cols-2 {
+            gap: 1.5rem;
         }
         
-        .therapy-left-column {
-            padding-right: 1.5rem;
+        .help-box-tablet,
+        .benefits-box-tablet {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        
-        .therapy-right-column {
-            padding-left: 1.5rem;
+    }
+    
+    /* Per tablet piccoli (768px-1023px), tutto in colonna */
+    @media (max-width: 1023px) {
+        .grid.lg\\:grid-cols-2 {
+            grid-template-columns: 1fr !important;
+            gap: 1rem;
         }
-        
-        .help-box-desktop,
-        .benefits-box-desktop {
-            padding: 2rem;
-        }
+    }
+}
+
+/* Responsive adjustments per desktop più piccoli */
+@media (min-width: 1200px) and (max-width: 1400px) {
+    .therapy-grid-desktop {
+        gap: 3rem;
+        max-width: 1200px;
+    }
+    
+    .therapy-left-column {
+        padding-right: 1.5rem;
+    }
+    
+    .therapy-right-column {
+        padding-left: 1.5rem;
+    }
+    
+    .help-box-desktop,
+    .benefits-box-desktop {
+        padding: 2rem;
     }
 }
 
