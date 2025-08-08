@@ -197,6 +197,56 @@ img {
         overflow: visible !important;
     }
     
+    /* === ICONE MIGLIORATE PER MOBILE === */
+    /* Liste con icone check per "Come ti aiuto" */
+    .bg-gradient-to-br.from-indigo-50.to-blue-50 li {
+        position: relative;
+        padding-left: 2rem !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .bg-gradient-to-br.from-indigo-50.to-blue-50 li::before {
+        content: '✓';
+        position: absolute;
+        left: 0.25rem;
+        top: 0;
+        color: #059669 !important;
+        font-size: 1.1rem !important;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    
+    /* Liste con icone stelle per "Cosa otterrai" */
+    .bg-gradient-to-br.from-green-50.to-emerald-50 li {
+        position: relative;
+        padding-left: 2rem !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .bg-gradient-to-br.from-green-50.to-emerald-50 li::before {
+        content: '★';
+        position: absolute;
+        left: 0.25rem;
+        top: 0;
+        color: #f59e0b !important;
+        font-size: 1.1rem !important;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    
+    /* Rimuovi i pallini di default dalle liste su mobile */
+    .bg-gradient-to-br li {
+        list-style: none !important;
+    }
+    
+    /* Migliora il testo nelle liste su mobile */
+    .bg-gradient-to-br ul {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
     /* Assicura che i numeri nei pallini della timeline mobile siano bianchi */
     .timeline-item-mobile .bg-indigo-600,
     .timeline-item-mobile .bg-purple-600,
