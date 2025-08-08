@@ -2241,119 +2241,128 @@
         </section>
 
         <!-- Contatti Page -->
-        <section id="contatti-page" class="page-content">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">Contatti</h2>
-    <p class="text-base md:text-lg text-gray-700 mb-6 md:mb-8 text-center max-w-3xl mx-auto px-4">Per richiedere un appuntamento o per maggiori informazioni, non esitare a contattarmi. Sarò lieta di rispondere alle tue domande in modo riservato e professionale.</p>
-    
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden mx-4 md:mx-0">
-        <div class="grid grid-cols-1 lg:grid-cols-5">
-            <!-- Colonna sinistra con informazioni - più stretta -->
-            <div class="lg:col-span-2 bg-gradient-to-br from-indigo-50 to-purple-50 p-4 md:p-6 relative">
-                <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-pattern"></div>
-                <div class="relative z-10">
-                    <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-4 md:mb-5 flex items-center">
-                        <span class="bg-indigo-100 p-2 rounded-full mr-3 flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </span>
-                        <span class="text-sm md:text-lg">Informazioni di Contatto</span>
-                    </h3>
-                    
-                    <div class="space-y-3 md:space-y-4 mb-5 md:mb-6">
-                        <div class="flex items-start">
-                            <span class="bg-white p-1.5 rounded-full shadow-sm mr-2 md:mr-3 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                                </svg>
-                            </span>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-xs text-gray-500 font-medium">Telefono</p>
-                                <a href="tel:3896437358" class="text-sm md:text-base text-indigo-700 font-medium hover:underline break-all">389 6437358</a>
+        <section id="contatti-page" class="page-content contacts-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">Contatti</h2>
+            <p class="text-base md:text-lg text-gray-700 mb-8 text-center max-w-3xl mx-auto px-4">Per richiedere un appuntamento o per maggiori informazioni, non esitare a contattarmi. Sarò lieta di rispondere alle tue domande in modo riservato e professionale.</p>
+            
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="contacts-grid">
+                    <!-- Colonna informazioni -->
+                    <div class="contact-info-column">
+                        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-pattern"></div>
+                        <div class="relative z-10">
+                            <!-- Titolo sezione -->
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6 flex items-center">
+                                <span class="bg-indigo-100 p-2 rounded-full mr-3 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </span>
+                                Informazioni di Contatto
+                            </h3>
+                            
+                            <!-- Lista contatti -->
+                            <div class="space-y-3">
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                        </svg>
+                                    </span>
+                                    <div class="contact-text">
+                                        <a href="tel:3896437358" class="text-base font-medium text-indigo-700 hover:underline">389 6437358</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                    </span>
+                                    <div class="contact-text">
+                                        <a href="mailto:dott.saratrovato@gmail.com" class="text-base font-medium text-indigo-700 hover:underline break-words">dott.saratrovato@gmail.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <div class="contact-text">
+                                        <p class="text-base text-gray-800">Via Maria Vittoria 40 Bis<br/>10123 Torino, TO</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <span class="contact-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <div class="contact-text">
+                                        <p class="text-base text-gray-800">Su appuntamento</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="flex items-start">
-                            <span class="bg-white p-1.5 rounded-full shadow-sm mr-2 md:mr-3 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                </svg>
-                            </span>
-                            <div class="min-w-0 flex-1 email-container">
-                                <p class="text-xs text-gray-500 font-medium">Email</p>
-                                <a href="mailto:dott.saratrovato@gmail.com" class="text-sm md:text-base text-indigo-700 font-medium hover:underline block break-words overflow-wrap-anywhere word-break-all">dott.saratrovato@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <span class="bg-white p-1.5 rounded-full shadow-sm mr-2 md:mr-3 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-xs text-gray-500 font-medium">Studio</p>
-                                <p class="text-sm md:text-base text-gray-800">Via Maria Vittoria 40 Bis<br/>10123 Torino, TO</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <span class="bg-white p-1.5 rounded-full shadow-sm mr-2 md:mr-3 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4 text-indigo-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-xs text-gray-500 font-medium">Orari</p>
-                                <p class="text-sm md:text-base text-gray-800">Su appuntamento</p>
-                            </div>
+                        <!-- Mappa in fondo -->
+                        <div class="contact-map-section relative z-10">
+                            <h4 class="font-semibold text-base mb-3 text-gray-800">Dove Trovarmi</h4>
+                            <div id="map" class="contact-map"></div>
                         </div>
                     </div>
                     
-                    <div>
-                        <h4 class="font-semibold text-base md:text-lg mb-2 md:mb-3 text-gray-800">Dove Trovarmi</h4>
-                        <div id="map" class="h-32 md:h-40 rounded-lg shadow-md overflow-hidden"></div>
+                    <!-- Colonna form -->
+                    <div class="contact-form-column">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-1">Scrivimi</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Compila il modulo sottostante per inviarmi un messaggio. Risponderò al più presto.</p>
+                        
+                        <form netlify netlify-honeypot="bot-field" name="contact" method="POST" class="space-y-3">
+                            <input type="hidden" name="form-name" value="contact">
+                            <p style="display: none;">
+                                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                            </p>
+                            
+                            <div>
+                                <input type="text" id="nome" name="nome" required
+                                       class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                                       placeholder="Nome">
+                            </div>
+                            
+                            <div>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                                       placeholder="Email">
+                            </div>
+                            
+                            <div>
+                                <textarea id="messaggio" name="messaggio" rows="4" required
+                                          class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
+                                          placeholder="Messaggio"></textarea>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform transition-all duration-200 hover:scale-105 flex items-center justify-center text-sm">
+                                <span>Invia messaggio</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            </button>
+                        </form>
+                        
+                        <p class="text-xs text-gray-500 mt-3 text-center">
+                            Rispetto la tua privacy e non condividerò mai i tuoi dati con terze parti.
+                        </p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Colonna destra con form - più ampia -->
-            <div class="lg:col-span-3 p-4 md:p-8">
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 md:mb-6">Scrivimi</h3>
-                <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Compila il modulo sottostante per inviarmi un messaggio. Risponderò al più presto.</p>
-                
-                <form action="https://formspree.io/f/mjkoewrp" method="POST" class="space-y-4 md:space-y-6" onsubmit="showSuccessModal(event)">
-                    <div class="relative">
-                        <input type="text" name="name" id="name" required class="peer w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-indigo-600 focus:outline-none" placeholder="Il tuo nome">
-                        <label for="name" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-500 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-0 peer-focus:text-sm peer-focus:text-indigo-600">Nome</label>
-                    </div>
-                    
-                    <div class="relative">
-                        <input type="email" name="email" id="email" required class="peer w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-indigo-600 focus:outline-none" placeholder="La tua email">
-                        <label for="email" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-500 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-0 peer-focus:text-sm peer-focus:text-indigo-600">Email</label>
-                    </div>
-                    
-                    <div class="relative">
-                        <textarea name="message" id="message" rows="5" required class="peer w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-indigo-600 focus:outline-none resize-none" placeholder="Il tuo messaggio"></textarea>
-                        <label for="message" class="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-500 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-0 peer-focus:text-sm peer-focus:text-indigo-600">Messaggio</label>
-                    </div>
-                    
-                    <div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center">
-                            <span>Invia messaggio</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                </form>
-                
-                <p class="mt-6 text-center text-sm text-gray-500">Rispetto la tua privacy e non condividerò mai i tuoi dati con terze parti.</p>
-            </div>
-        </div>
-    </div>
+        </section>
     
     <!-- Sezione "Cosa aspettarsi" con design migliorato -->
     <div class="my-12">

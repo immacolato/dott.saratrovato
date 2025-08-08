@@ -2767,3 +2767,90 @@ body.menu-open-blur #mobile-menu-overlay {
         font-size: 0.8rem !important;
     }
 }
+
+/* === CONTATTI - LAYOUT PERFETTO === */
+.contacts-section {
+    padding: 4rem 0;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: 550px;
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 1024px) {
+    .contacts-grid {
+        grid-template-columns: 1.2fr 1.8fr;
+    }
+}
+
+.contact-info-column {
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    min-height: 550px;
+}
+
+.contact-form-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    min-height: 550px;
+}
+
+/* Fix per allineamento elementi contatto */
+.contact-item {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+.contact-icon {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Mappa perfettamente bilanciata */
+.contact-map-section {
+    margin-top: 2rem;
+}
+
+.contact-map {
+    width: 100%;
+    height: 14rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .contact-map {
+        height: 16rem;
+    }
+}
