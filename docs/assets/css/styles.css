@@ -247,6 +247,45 @@ img {
         padding: 0 !important;
     }
     
+    /* === TIMELINE MOBILE COMPATTA === */
+    /* Compatta le card del percorso terapeutico su mobile */
+    .timeline-item-mobile {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .timeline-item-mobile .flex.items-center {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .timeline-item-mobile h3 {
+        font-size: 1rem !important;
+        margin: 0 !important;
+    }
+    
+    .timeline-item-mobile p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        margin-left: 3.5rem !important; /* Allineato con il testo del titolo */
+    }
+    
+    .timeline-item-mobile .w-10.h-10 {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+        margin-right: 0.75rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Riduce spaziatura generale della sezione timeline su mobile */
+    .therapy-process-section {
+        margin: 2rem 0 !important;
+    }
+    
+    .therapy-process-section .space-y-6 {
+        gap: 1rem !important;
+    }
+    
     /* Assicura che i numeri nei pallini della timeline mobile siano bianchi */
     .timeline-item-mobile .bg-indigo-600,
     .timeline-item-mobile .bg-purple-600,
@@ -2556,7 +2595,7 @@ body.menu-open-blur #mobile-menu-overlay {
     /* Bottone CTA centrato e prominente */
     .therapy-cta-desktop {
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 1.25rem;
         grid-column: 1 / -1; /* Span di entrambe le colonne */
     }
     
