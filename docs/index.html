@@ -677,52 +677,64 @@
             </div>
 
             <!-- Sezione Approccio Semplificata -->
-            <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-12 hover-lift animate-on-scroll">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-                    Terapia Cognitivo Costruttivista
-                </h2>
-                <div class="max-w-6xl mx-auto therapy-approach-desktop">
-                    <!-- Desktop: Layout a due colonne ottimizzato -->
-                    <div class="hidden md:grid md:grid-cols-2 gap-8 items-start">
-                        <!-- Colonna sinistra: Descrizione principale -->
-                        <div class="space-y-6">
-                            <p class="text-gray-700 text-lg leading-relaxed">
+            <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-12 hover-lift animate-on-scroll therapy-section-desktop">
+                <div class="therapy-content-container">
+                    <div class="therapy-grid-desktop">
+                        <!-- Colonna sinistra: Contenuto principale -->
+                        <div class="therapy-left-column">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+                                Terapia Cognitivo Costruttivista
+                            </h1>
+                            <p class="subtitle text-gray-700 leading-relaxed">
                                 Un approccio moderno e scientificamente validato che ti aiuta a <strong>riconoscere e trasformare</strong> 
                                 i pensieri che influenzano negativamente il tuo benessere.
                             </p>
-                            <p class="text-gray-700 text-base leading-relaxed">
+                            <p class="description text-gray-700 leading-relaxed">
                                 La terapia cognitivo costruttivista combina l'efficacia delle tecniche cognitive con una visione costruttivista che rispetta la tua unicità. Non si tratta di "correggere" chi sei, ma di aiutarti a <em>ricostruire</em> la tua storia in modo più funzionale e significativo.
                             </p>
-                            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
-                                <p class="text-gray-700 text-sm italic">
-                                    "Immagina il percorso come una scalata in montagna. Le tue modalità di pensiero e azione sono gli strumenti necessari per salire in alta quota. Io ti alleno ad affinarli, e resto al tuo fianco durante l'arrampicata per sostenerti e motivarti."
+                            
+                            <!-- Citazione decorata per desktop -->
+                            <div class="therapy-quote-desktop hidden md:block">
+                                <p>
+                                    Immagina il percorso come una scalata in montagna. Le tue modalità di pensiero e azione sono gli strumenti necessari per salire in alta quota. Io ti alleno ad affinarli, e resto al tuo fianco durante l'arrampicata per sostenerti e motivarti.
                                 </p>
                             </div>
                         </div>
                         
-                        <!-- Colonna destra: Come ti aiuto e Cosa otterrai -->
-                        <div class="space-y-6">
-                            <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-lg">
-                                <h3 class="font-semibold text-lg mb-3 text-indigo-800">Come ti aiuto</h3>
-                                <ul class="text-gray-700 space-y-3 text-base">
-                                    <li>• Modificare pensieri disfunzionali</li>
-                                    <li>• Costruire narrazioni più funzionali</li>
-                                    <li>• Gestire ansia e stress con strategie concrete</li>
+                        <!-- Colonna destra: Box interattivi -->
+                        <div class="therapy-right-column">
+                            <div class="help-box-desktop">
+                                <h3>Come ti aiuto</h3>
+                                <ul>
+                                    <li>Modificare pensieri disfunzionali</li>
+                                    <li>Costruire narrazioni più funzionali</li>
+                                    <li>Gestire ansia e stress con strategie concrete</li>
                                 </ul>
                             </div>
-                            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg">
-                                <h3 class="font-semibold text-lg mb-3 text-green-800">Cosa otterrai</h3>
-                                <ul class="text-gray-700 space-y-3 text-base">
-                                    <li>• Maggiore consapevolezza di te stesso</li>
-                                    <li>• Strumenti pratici per il quotidiano</li>
-                                    <li>• Crescita personale duratura</li>
+                            
+                            <div class="benefits-box-desktop">
+                                <h3>Cosa otterrai</h3>
+                                <ul>
+                                    <li>Maggiore consapevolezza di te stesso</li>
+                                    <li>Strumenti pratici per il quotidiano</li>
+                                    <li>Crescita personale duratura</li>
                                 </ul>
                             </div>
                         </div>
+                        
+                        <!-- CTA centrato per desktop -->
+                        <div class="therapy-cta-desktop">
+                            <a href="#servizi" data-page="servizi" class="button bg-indigo-600 hover:bg-indigo-700 text-white">
+                                Scopri i miei servizi
+                            </a>
+                        </div>
                     </div>
                     
-                    <!-- Mobile: Layout tradizionale -->
+                    <!-- Layout mobile: manteniamo quello esistente -->
                     <div class="md:hidden space-y-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+                            Terapia Cognitivo Costruttivista
+                        </h2>
                         <p class="text-center text-gray-700 text-lg leading-relaxed">
                             Un approccio moderno e scientificamente validato che ti aiuta a <strong>riconoscere e trasformare</strong> 
                             i pensieri che influenzano negativamente il tuo benessere.
@@ -756,12 +768,12 @@
                                 "Immagina il percorso come una scalata in montagna. Le tue modalità di pensiero e azione sono gli strumenti necessari per salire in alta quota. Io ti alleno ad affinarli, e resto al tuo fianco durante l'arrampicata per sostenerti e motivarti."
                             </p>
                         </div>
-                    </div>
-                    
-                    <div class="text-center mt-8">
-                        <a href="#servizi" data-page="servizi" class="button bg-indigo-600 hover:bg-indigo-700 text-white">
-                            Scopri i miei servizi
-                        </a>
+                        
+                        <div class="text-center mt-8">
+                            <a href="#servizi" data-page="servizi" class="button bg-indigo-600 hover:bg-indigo-700 text-white">
+                                Scopri i miei servizi
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

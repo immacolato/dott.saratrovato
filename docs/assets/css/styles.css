@@ -490,6 +490,85 @@ section {
     -webkit-backdrop-filter: blur(5px); /* Per compatibilità Safari */
 }
 
+/* Desktop: sezioni più spaziose e bilanciate */
+@media (min-width: 1024px) {
+    section {
+        padding: 4rem 3rem; /* Padding generoso per desktop */
+        margin-bottom: 4rem;
+        max-width: 1400px; /* Larghezza massima per leggibilità ottimale */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Sezioni specifiche con layout ottimizzato */
+    section.hero-section {
+        padding: 5rem 3rem;
+        text-align: center;
+    }
+    
+    section.content-section {
+        padding: 4rem 3rem;
+    }
+    
+    section.cta-section {
+        padding: 3rem;
+        text-align: center;
+    }
+    
+    /* Migliore tipografia per i titoli delle sezioni */
+    section h1 {
+        font-size: 2.75rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1.5rem !important;
+        text-align: center;
+    }
+    
+    section h2 {
+        font-size: 2.25rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1.25rem !important;
+        text-align: center;
+    }
+    
+    section h3 {
+        font-size: 1.5rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Paragrafi più leggibili */
+    section p {
+        font-size: 1.125rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 1.5rem !important;
+        max-width: 65ch; /* Larghezza ottimale per la lettura */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Layout specifico per sezioni con contenuto misto */
+    .section-with-sidebar {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    
+    .section-two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    
+    .section-three-columns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+}
+
 /* Modal styles */
 .modal {
     display: none;
@@ -1983,6 +2062,164 @@ body.menu-open-blur #mobile-menu-overlay {
     text-align: left !important;
 }
 
+/* === UTILITY CLASSES DESKTOP LAYOUT === */
+
+/* Classi per gestire facilmente i layout desktop */
+@media (min-width: 1024px) {
+    .desktop-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    
+    .desktop-grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: start;
+    }
+    
+    .desktop-grid-sidebar {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    
+    .desktop-grid-reverse {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: start;
+    }
+}
+
+/* Classi per migliorare la leggibilità */
+.readable-width {
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered-content {
+    text-align: center;
+}
+
+.left-content {
+    text-align: left;
+}
+
+/* Classi per spaziatura migliorata */
+@media (min-width: 1024px) {
+    .section-padding-desktop {
+        padding: 4rem 3rem !important;
+    }
+    
+    .section-padding-large {
+        padding: 5rem 3rem !important;
+    }
+    
+    .section-margin-desktop {
+        margin-bottom: 4rem !important;
+    }
+}
+
+/* Classi per gestire il contenuto della sezione terapia */
+@media (min-width: 1024px) {
+    .therapy-content-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .therapy-text-column {
+        padding-right: 2rem;
+    }
+    
+    .therapy-feature-column {
+        padding-left: 2rem;
+    }
+}
+
+/* Box decorativi per desktop */
+@media (min-width: 1024px) {
+    .feature-box {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05));
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .feature-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6, #6366f1);
+        border-radius: 1.5rem 1.5rem 0 0;
+    }
+    
+    .feature-box.green {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.05));
+        border-color: rgba(16, 185, 129, 0.2);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.1);
+    }
+    
+    .feature-box.green::before {
+        background: linear-gradient(90deg, #10b981, #059669, #10b981);
+    }
+}
+
+/* Miglioramenti per liste nei feature box */
+@media (min-width: 1024px) {
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .feature-list li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        position: relative;
+        padding-left: 2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #374151;
+    }
+    
+    .feature-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .feature-list.checkmarks li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        color: #10b981;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    
+    .feature-list.stars li::before {
+        content: '★';
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        color: #f59e0b;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+}
+
 /* === MIGLIORAMENTI DESKTOP === */
 @media (min-width: 1024px) {
     /* Migliore spaziatura per le card del percorso terapeutico */
@@ -2059,6 +2296,263 @@ body.menu-open-blur #mobile-menu-overlay {
         font-weight: 500;
         line-height: 1.3;
         text-align: center;
+    }
+    
+    /* === LAYOUT DESKTOP MIGLIORATO PER SEZIONE TERAPIA === */
+    
+    /* Sezione principale terapia cognitivo costruttivista */
+    .therapy-section-desktop {
+        padding: 4rem 0 !important;
+        margin-bottom: 3rem !important;
+    }
+    
+    /* Grid layout ottimizzato per desktop */
+    .therapy-grid-desktop {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr; /* Colonna destra leggermente più grande */
+        gap: 4rem;
+        align-items: start;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    /* Colonna sinistra - Testo principale */
+    .therapy-left-column {
+        padding-right: 2rem;
+    }
+    
+    .therapy-left-column h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 2rem !important;
+        color: #1f2937;
+        font-weight: 700;
+    }
+    
+    .therapy-left-column .subtitle {
+        font-size: 1.25rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+        color: #4b5563;
+        font-weight: 400;
+    }
+    
+    .therapy-left-column .description {
+        font-size: 1.1rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 2.5rem !important;
+        color: #374151;
+    }
+    
+    /* Citazione decorata */
+    .therapy-quote-desktop {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.08));
+        border-left: 4px solid #6366f1;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin: 2.5rem 0;
+        position: relative;
+    }
+    
+    .therapy-quote-desktop::before {
+        content: '"';
+        font-size: 4rem;
+        color: #6366f1;
+        position: absolute;
+        top: -0.5rem;
+        left: 1rem;
+        font-family: Georgia, serif;
+        opacity: 0.3;
+    }
+    
+    .therapy-quote-desktop p {
+        font-size: 1.125rem !important;
+        line-height: 1.6 !important;
+        font-style: italic;
+        color: #1f2937;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Colonna destra - Contenuti interattivi */
+    .therapy-right-column {
+        padding-left: 2rem;
+    }
+    
+    /* Box "Come ti aiuto" migliorato */
+    .help-box-desktop {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05));
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .help-box-desktop::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6, #6366f1);
+        border-radius: 1.5rem 1.5rem 0 0;
+    }
+    
+    .help-box-desktop h3 {
+        font-size: 1.5rem !important;
+        color: #4f46e5 !important;
+        margin-bottom: 1.5rem !important;
+        font-weight: 600;
+        text-align: center;
+    }
+    
+    .help-box-desktop ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .help-box-desktop li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        position: relative;
+        padding-left: 2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #374151;
+    }
+    
+    .help-box-desktop li:last-child {
+        border-bottom: none;
+    }
+    
+    .help-box-desktop li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        color: #10b981;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    
+    /* Box "Cosa otterrai" migliorato */
+    .benefits-box-desktop {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.05));
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .benefits-box-desktop::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #10b981, #059669, #10b981);
+        border-radius: 1.5rem 1.5rem 0 0;
+    }
+    
+    .benefits-box-desktop h3 {
+        font-size: 1.5rem !important;
+        color: #047857 !important;
+        margin-bottom: 1.5rem !important;
+        font-weight: 600;
+        text-align: center;
+    }
+    
+    .benefits-box-desktop ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .benefits-box-desktop li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+        position: relative;
+        padding-left: 2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #374151;
+    }
+    
+    .benefits-box-desktop li:last-child {
+        border-bottom: none;
+    }
+    
+    .benefits-box-desktop li::before {
+        content: '★';
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        color: #f59e0b;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    
+    /* Bottone CTA centrato e prominente */
+    .therapy-cta-desktop {
+        text-align: center;
+        margin-top: 3rem;
+        grid-column: 1 / -1; /* Span di entrambe le colonne */
+    }
+    
+    .therapy-cta-desktop .button {
+        font-size: 1.1rem !important;
+        padding: 1rem 2.5rem !important;
+        min-width: 250px;
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3) !important;
+        border-radius: 1rem !important;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .therapy-cta-desktop .button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .therapy-cta-desktop .button:hover::before {
+        left: 100%;
+    }
+    
+    /* Responsive adjustments per desktop più piccoli */
+    @media (min-width: 1024px) and (max-width: 1200px) {
+        .therapy-grid-desktop {
+            gap: 3rem;
+            max-width: 1100px;
+        }
+        
+        .therapy-left-column {
+            padding-right: 1.5rem;
+        }
+        
+        .therapy-right-column {
+            padding-left: 1.5rem;
+        }
+        
+        .help-box-desktop,
+        .benefits-box-desktop {
+            padding: 2rem;
+        }
     }
 }
 
