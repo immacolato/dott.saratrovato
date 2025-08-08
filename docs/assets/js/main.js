@@ -1063,16 +1063,54 @@ function initTimeline() {
             
             if (data && timelineInfo && timelineInfoContent) {
                 timelineInfoContent.innerHTML = `
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">${data.title}</h3>
-                    <p class="text-sm text-indigo-600 mb-3">⏱️ Durata: ${data.duration}</p>
-                    <p class="text-gray-700 mb-4">${data.details}</p>
-                    <div class="bg-white p-3 rounded border border-gray-200">
-                        <p class="text-sm text-gray-600">${data.what}</p>
+                    <div class="space-y-2 md:space-y-4">
+                        <h3 class="text-base md:text-xl font-bold text-gray-800">${data.title}</h3>
+                        <div class="flex items-center gap-2 text-indigo-600">
+                            <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-xs md:text-base font-medium">Durata: ${data.duration}</span>
+                        </div>
+                        <p class="text-gray-700 text-xs md:text-base leading-relaxed">${data.details}</p>
+                        <div class="bg-white p-2 md:p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <div class="flex items-start gap-2">
+                                <svg class="w-3 h-3 md:w-4 md:h-4 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-xs md:text-base text-gray-600">${data.what}</p>
+                            </div>
+                        </div>
                     </div>
                 `;
                 
                 timelineInfo.classList.remove('hidden');
-                timelineInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Miglior centraggio: scroll con offset per centrare meglio
+                setTimeout(() => {
+                    const timelineInfoRect = timelineInfo.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    const isMobile = window.innerWidth <= 768;
+                    
+                    if (isMobile) {
+                        // Su mobile, scroll minimo per mostrare il contenuto
+                        const offset = Math.min(80, viewportHeight * 0.1);
+                        const targetScrollY = window.scrollY + timelineInfoRect.top - offset;
+                        
+                        window.scrollTo({
+                            top: Math.max(0, targetScrollY),
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Su desktop, centraggio ottimale
+                        const offset = (viewportHeight - timelineInfoRect.height) / 2;
+                        const targetScrollY = window.scrollY + timelineInfoRect.top - offset;
+                        
+                        window.scrollTo({
+                            top: Math.max(0, targetScrollY),
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 100);
                 
                 // Highlight dell'item selezionato
                 timelineItems.forEach(ti => ti.classList.remove('active'));
