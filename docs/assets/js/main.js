@@ -1064,20 +1064,20 @@ function initTimeline() {
             if (data && timelineInfo && timelineInfoContent) {
                 timelineInfoContent.innerHTML = `
                     <div class="space-y-2 md:space-y-4">
-                        <h3 class="text-base md:text-xl font-bold text-gray-800">${data.title}</h3>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800">${data.title}</h3>
                         <div class="flex items-center gap-2 text-indigo-600">
                             <svg class="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            <span class="text-xs md:text-base font-medium">Durata: ${data.duration}</span>
+                            <span class="text-sm md:text-base font-medium">Durata: ${data.duration}</span>
                         </div>
-                        <p class="text-gray-700 text-xs md:text-base leading-relaxed">${data.details}</p>
+                        <p class="text-gray-700 text-sm md:text-base leading-relaxed">${data.details}</p>
                         <div class="bg-white p-2 md:p-4 rounded-lg border border-gray-200 shadow-sm">
                             <div class="flex items-start gap-2">
                                 <svg class="w-3 h-3 md:w-4 md:h-4 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                <p class="text-xs md:text-base text-gray-600">${data.what}</p>
+                                <p class="text-sm md:text-base text-gray-600">${data.what}</p>
                             </div>
                         </div>
                     </div>
@@ -1092,9 +1092,11 @@ function initTimeline() {
                     const isMobile = window.innerWidth <= 768;
                     
                     if (isMobile) {
-                        // Su mobile, scroll minimo per mostrare il contenuto
-                        const offset = Math.min(80, viewportHeight * 0.1);
-                        const targetScrollY = window.scrollY + timelineInfoRect.top - offset;
+                        // Su mobile, centraggio ottimale nella viewport
+                        const viewportCenter = viewportHeight / 2;
+                        const boxCenter = timelineInfoRect.height / 2;
+                        const idealOffset = Math.max(20, viewportCenter - boxCenter);
+                        const targetScrollY = window.scrollY + timelineInfoRect.top - idealOffset;
                         
                         window.scrollTo({
                             top: Math.max(0, targetScrollY),

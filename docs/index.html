@@ -552,7 +552,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=0957">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1596">
 </head>
 <body class="flex flex-col min-h-screen">
 
@@ -625,59 +625,92 @@
     <main class="flex-grow container mt-8">
         <!-- Home Page -->
         <section id="home-page" class="page-content active-page">
-            <div class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
+            <!-- Hero Section Ottimizzata -->
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 animate-on-scroll">
                 <div class="md:w-1/2 text-center md:text-left">
-                    <h1 class="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Benvenuti. Un percorso verso il tuo benessere.</h1>
-                    <p class="text-xl text-gray-700 mb-8">
-                        Sono la <strong>Dottoressa Sara Trovato</strong>, psicoterapeuta specializzata in <strong>terapia cognitivo costruttivista</strong> a Torino. I nostri pensieri e comportamenti sono influenzati non solo dagli eventi che ci capitano, ma anche da come li percepiamo. Il mio compito è accompagnarti in un processo di consapevolezza e cambiamento, aiutandoti a interrompere i circoli viziosi che ci allontanano dal benessere.
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3 md:mb-4 leading-tight">
+                        Il tuo percorso verso il <span class="text-indigo-600">benessere</span> inizia qui
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                        Sono la <strong>Dott.ssa Sara Trovato</strong>, psicoterapeuta a Torino specializzata in <strong>terapia cognitivo costruttivista</strong>. 
+                        Ti accompagno in un percorso di consapevolezza per trasformare pensieri e comportamenti che ti allontanano dal benessere.
                     </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                        <a href="#chisiamo" data-page="chisiamo" class="button hover-lift">Scopri di più su di me</a>
-                        <a href="#contatti" data-page="contatti" class="button bg-gray-600 hover:bg-gray-700 hover-lift">Contattami</a>
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                        <a href="#chisiamo" data-page="chisiamo" class="button hover-lift text-center">Scopri il mio approccio</a>
+                        <a href="#contatti" data-page="contatti" class="button bg-indigo-600 hover:bg-indigo-700 text-white hover-lift text-center">Prenota un colloquio</a>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
-                    <img src="assets/images/pic.jpeg" alt="Dott.ssa Sara Trovato - Studio di Psicoterapia Torino" class="w-full max-w-xs h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300 object-cover hover-scale">
+                    <img src="assets/images/pic.jpeg" alt="Dott.ssa Sara Trovato - Psicoterapeuta Torino" class="w-full max-w-xs h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300 object-cover hover-scale">
                 </div>
             </div>
             
-            <!-- Banner con valore emotivo -->
-            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl mt-16 mb-8 border border-indigo-100 animate-on-scroll">
-                <p class="text-lg text-center text-gray-700 font-medium">
-                    "Il primo passo verso il benessere è riconoscere di meritarlo" 
-                    <span class="block mt-2 text-sm text-indigo-600">Ogni percorso inizia con una conversazione</span>
-                </p>
+            <!-- Quick Value Props -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 mb-12 animate-on-scroll">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200 text-center">
+                    <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Approccio Scientifico</h3>
+                    <p class="text-xs text-gray-600 mt-1">Metodi validati e personalizzati</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200 text-center">
+                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Risultati Concreti</h3>
+                    <p class="text-xs text-gray-600 mt-1">Cambiamenti misurabili e duraturi</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-lg border border-purple-200 text-center">
+                    <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">Ambiente Sicuro</h3>
+                    <p class="text-xs text-gray-600 mt-1">Spazio libero da giudizi</p>
+                </div>
             </div>
 
-            <!-- Sezione Approccio Terapeutico -->
-            <div class="bg-white rounded-xl p-6 shadow-md mb-12 hover-lift animate-on-scroll">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Il Mio Approccio: Terapia Cognitivo Costruttivista</h2>
-                <div class="grid md:grid-cols-2 gap-6 items-center">
-                    <div>
-                        <p class="text-gray-700 mb-4">
-                            La <strong>terapia cognitivo costruttivista</strong> è un approccio moderno e scientificamente validato che ti aiuta a:
-                        </p>
-                        <ul class="text-gray-700 space-y-2">
-                            <li class="flex items-start">
-                                <span class="text-indigo-600 mr-2">•</span>
-                                <span>Riconoscere e modificare <strong>pensieri disfunzionali</strong></span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-indigo-600 mr-2">•</span>
-                                <span>Costruire nuove <strong>narrazioni di sé</strong> più funzionali</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-indigo-600 mr-2">•</span>
-                                <span>Sviluppare <strong>strategie concrete</strong> per gestire ansia e stress</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-indigo-600 mr-2">•</span>
-                                <span>Promuovere la <strong>crescita personale</strong> e l'autoconsapevolezza</span>
-                            </li>
-                        </ul>
+            <!-- Sezione Approccio Semplificata -->
+            <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-12 hover-lift animate-on-scroll">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+                    Terapia Cognitivo Costruttivista
+                </h2>
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-center text-gray-700 text-lg leading-relaxed mb-6">
+                        Un approccio moderno e scientificamente validato che ti aiuta a <strong>riconoscere e trasformare</strong> 
+                        i pensieri che influenzano negativamente il tuo benessere.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg mb-2 text-indigo-800">Come ti aiuto</h3>
+                            <ul class="text-gray-700 space-y-2 text-sm">
+                                <li>• Modificare pensieri disfunzionali</li>
+                                <li>• Costruire narrazioni più funzionali</li>
+                                <li>• Gestire ansia e stress con strategie concrete</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg mb-2 text-green-800">Cosa otterrai</h3>
+                            <ul class="text-gray-700 space-y-2 text-sm">
+                                <li>• Maggiore consapevolezza di te stesso</li>
+                                <li>• Strumenti pratici per il quotidiano</li>
+                                <li>• Crescita personale duratura</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-lg">
-                        <h3 class="font-semibold text-lg mb-3 text-gray-800">Perché questo approccio?</h3>
+                    <div class="text-center mt-6">
+                        <a href="#servizi" data-page="servizi" class="button bg-indigo-600 hover:bg-indigo-700 text-white">
+                            Scopri i miei servizi
+                        </a>
+                    </div>
+                </div>
+            </div>
                         <p class="text-gray-700 text-sm">
                             La terapia cognitivo costruttivista combina l'efficacia delle tecniche cognitive con una visione costruttivista che rispetta la tua unicità. Non si tratta di "correggere" chi sei, ma di aiutarti a <em>ricostruire</em> la tua storia in modo più funzionale e significativo.
                         </p>
@@ -2327,7 +2360,7 @@
     </footer>
 
     <!-- Custom JavaScript -->
-    <script src="assets/js/main.js?v=0957"></script>
+    <script src="assets/js/main.js?v=1376"></script>
 
 </body>
 </html>
