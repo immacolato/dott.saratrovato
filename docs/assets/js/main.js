@@ -1278,4 +1278,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(quizStyle);
+    
+    // === INTERATTIVITÀ AREE DI INTERVENTO ===
+    // Gestione hover/click delle card aree di intervento nella sezione servizi
+    document.querySelectorAll('.intervention-card').forEach(card => {
+        const details = card.querySelector('.intervention-details');
+        
+        card.addEventListener('mouseenter', () => {
+            if (details) {
+                details.classList.remove('hidden');
+                details.classList.add('block');
+                card.style.transform = 'translateY(-4px)';
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            if (details) {
+                details.classList.add('hidden');
+                details.classList.remove('block');
+                card.style.transform = 'translateY(0)';
+            }
+        });
+        
+        // Per mobile: click per mostrare/nascondere dettagli
+        card.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const isHidden = details.classList.contains('hidden');
+                
+                // Nascondi tutti gli altri dettagli
+                document.querySelectorAll('.intervention-details').forEach(detail => {
+                    if (detail !== details) {
+                        detail.classList.add('hidden');
+                        detail.classList.remove('block');
+                    }
+                });
+                
+                // Toggle questo dettaglio
+                if (isHidden) {
+                    details.classList.remove('hidden');
+                    details.classList.add('block');
+                } else {
+                    details.classList.add('hidden');
+                    details.classList.remove('block');
+                }
+            }
+        });
+    });
 });
