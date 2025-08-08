@@ -552,7 +552,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=7697">
+    <link rel="stylesheet" href="assets/css/styles.css?v=562813f">
 </head>
 <body class="flex flex-col min-h-screen">
 
@@ -625,24 +625,24 @@
     <main class="flex-grow container mt-8">
         <!-- Home Page -->
         <section id="home-page" class="page-content active-page">
-            <div class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
+            <div class="flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/2 text-center md:text-left">
                     <h1 class="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Benvenuti. Un percorso verso il tuo benessere.</h1>
                     <p class="text-xl text-gray-700 mb-8">
                         Sono la <strong>Dottoressa Sara Trovato</strong>, psicoterapeuta specializzata in <strong>terapia cognitivo costruttivista</strong> a Torino. I nostri pensieri e comportamenti sono influenzati non solo dagli eventi che ci capitano, ma anche da come li percepiamo. Il mio compito è accompagnarti in un processo di consapevolezza e cambiamento, aiutandoti a interrompere i circoli viziosi che ci allontanano dal benessere.
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                        <a href="#chisiamo" data-page="chisiamo" class="button hover-lift">Scopri di più su di me</a>
-                        <a href="#contatti" data-page="contatti" class="button bg-gray-600 hover:bg-gray-700 hover-lift">Contattami</a>
+                        <a href="#chisiamo" data-page="chisiamo" class="button">Scopri di più su di me</a>
+                        <a href="#contatti" data-page="contatti" class="button bg-gray-600 hover:bg-gray-700">Contattami</a>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
-                    <img src="assets/images/pic.jpeg" alt="Dott.ssa Sara Trovato - Studio di Psicoterapia Torino" class="w-full max-w-md h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300 object-cover hover-scale">
+                    <img src="https://placehold.co/600x400/e0e7ff/6366f1?text=Spazio+Accogliente" alt="Spazio Accogliente" class="w-full max-w-md h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
                 </div>
             </div>
             
             <!-- Banner con valore emotivo -->
-            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl mt-16 mb-8 border border-indigo-100 animate-on-scroll">
+            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-xl mt-16 mb-8 border border-indigo-100">
                 <p class="text-lg text-center text-gray-700 font-medium">
                     "Il primo passo verso il benessere è riconoscere di meritarlo" 
                     <span class="block mt-2 text-sm text-indigo-600">Ogni percorso inizia con una conversazione</span>
@@ -650,7 +650,7 @@
             </div>
 
             <!-- Sezione Approccio Terapeutico -->
-            <div class="bg-white rounded-xl p-6 shadow-md mb-12 hover-lift animate-on-scroll">
+            <div class="bg-white rounded-xl p-6 shadow-md mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Il Mio Approccio: Terapia Cognitivo Costruttivista</h2>
                 <div class="grid md:grid-cols-2 gap-6 items-center">
                     <div>
@@ -690,290 +690,76 @@
                 </div>
             </div>
 
-            <!-- Quiz Interattivo -->
-            <div class="my-12 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-8 border border-purple-100 animate-on-scroll">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">🎯 La Terapia Cognitivo Costruttivista fa per te?</h2>
-                    <p class="text-gray-600">Rispondi a queste semplici domande per scoprirlo</p>
-                </div>
-                
-                <div id="quiz-container" class="max-w-2xl mx-auto">
-                    <!-- Domanda 1 -->
-                    <div class="quiz-question active mb-6" data-question="1">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">1. Come descrivresti il tuo approccio ai problemi?</h3>
-                        <div class="space-y-3">
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q1" value="analytic" class="mr-3">
-                                <span>Mi piace analizzare e capire le cause profonde</span>
-                            </label>
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q1" value="practical" class="mr-3">
-                                <span>Preferisco soluzioni pratiche e immediate</span>
-                            </label>
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q1" value="emotional" class="mr-3">
-                                <span>Tendo a essere guidato dalle emozioni</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Domanda 2 -->
-                    <div class="quiz-question mb-6" data-question="2">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">2. Quale di questi ti descrive meglio?</h3>
-                        <div class="space-y-3">
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q2" value="overthinking" class="mr-3">
-                                <span>Tendo a rimuginare sui pensieri negativi</span>
-                            </label>
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q2" value="patterns" class="mr-3">
-                                <span>Mi accorgo di ripetere sempre gli stessi schemi</span>
-                            </label>
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q2" value="growth" class="mr-3">
-                                <span>Sono interessato alla crescita personale</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Domanda 3 -->
-                    <div class="quiz-question mb-6" data-question="3">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">3. Cosa ti aspetti da un percorso terapeutico?</h3>
-                        <div class="space-y-3">
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q3" value="tools" class="mr-3">
-                                <span>Strumenti concreti per gestire ansia e stress</span>
-                            </label>
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q3" value="understanding" class="mr-3">
-                                <span>Comprensione profonda di me stesso</span>
-                            </label>
-                            <label class="quiz-option flex items-center p-3 rounded-lg border border-gray-200 hover:bg-white cursor-pointer transition-all duration-200">
-                                <input type="radio" name="q3" value="change" class="mr-3">
-                                <span>Cambiare prospettiva sui miei problemi</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Risultato -->
-                    <div id="quiz-result" class="hidden text-center p-6 bg-white rounded-lg shadow-md">
-                        <div id="result-content"></div>
-                        <div class="mt-6">
-                            <a href="https://wa.me/393896437358?text=Ciao%20Dott.ssa%20Trovato,%20ho%20fatto%20il%20quiz%20sul%20sito%20e%20sono%20interessato%20a%20saperne%20di%20più" 
-                               class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center transition-all duration-300 hover-lift">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                                </svg>
-                                Parliamone su WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Pulsanti Navigazione -->
-                    <div class="flex justify-between mt-6">
-                        <button id="quiz-prev" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors duration-200 hidden">
-                            ← Precedente
-                        </button>
-                        <button id="quiz-next" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 ml-auto">
-                            Successiva →
-                        </button>
-                        <button id="quiz-submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 ml-auto hidden">
-                            Vedi Risultato
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <!-- Sezione "Come posso aiutarti" -->
-            <div class="mt-12 mb-12 animate-on-scroll">
+            <div class="mt-12 mb-12">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Aree di Intervento</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-center">
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Difficoltà relazionali e familiari</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Elaborazione di un lutto</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Elaborazione di un trauma</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Difficoltà alimentari</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Difficoltà psicosomatiche</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Ansia per la salute</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Ansia e attacchi di panico</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Disturbo ossessivo-compulsivo</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Gestione dello stress</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Depressione</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Fobie</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Difficoltà sessuali</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Tematiche LGBTQIA+</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Autostima</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Crescita personale</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Difficoltà lavorative</span>
                     </div>
-                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100 hover-lift">
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                         <span class="text-indigo-600 block text-sm">Sfide legate all'espatrio</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Timeline del Processo Terapeutico -->
-            <div class="my-12 animate-on-scroll">
-                <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">🗺️ Il Percorso Terapeutico Insieme</h2>
-                <div class="max-w-4xl mx-auto">
-                    <!-- Timeline per mobile (layout verticale semplice) -->
-                    <div class="block md:hidden space-y-6">
-                        <div class="timeline-item-mobile bg-white p-4 rounded-lg shadow-md hover-lift cursor-pointer" data-step="1">
-                            <div class="flex items-center mb-3">
-                                <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">1</div>
-                                <h3 class="font-semibold text-lg text-gray-800">Primo Incontro</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm ml-11">Ci conosciamo, ascolto la tua storia e valutiamo insieme se posso esserti d'aiuto.</p>
-                        </div>
-                        
-                        <div class="timeline-item-mobile bg-white p-4 rounded-lg shadow-md hover-lift cursor-pointer" data-step="2">
-                            <div class="flex items-center mb-3">
-                                <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">2</div>
-                                <h3 class="font-semibold text-lg text-gray-800">Definizione Obiettivi</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm ml-11">Stabiliamo insieme i tuoi obiettivi e il piano terapeutico personalizzato.</p>
-                        </div>
-                        
-                        <div class="timeline-item-mobile bg-white p-4 rounded-lg shadow-md hover-lift cursor-pointer" data-step="3">
-                            <div class="flex items-center mb-3">
-                                <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">3</div>
-                                <h3 class="font-semibold text-lg text-gray-800">Lavoro Attivo</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm ml-11">Sessioni regolari con tecniche cognitive, esercizi pratici e supporto continuo.</p>
-                        </div>
-                        
-                        <div class="timeline-item-mobile bg-white p-4 rounded-lg shadow-md hover-lift cursor-pointer" data-step="4">
-                            <div class="flex items-center mb-3">
-                                <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">4</div>
-                                <h3 class="font-semibold text-lg text-gray-800">Consolidamento</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm ml-11">Rafforziamo i progressi e prepariamo strumenti per il futuro.</p>
-                        </div>
-                        
-                        <div class="timeline-item-mobile bg-white p-4 rounded-lg shadow-md hover-lift cursor-pointer" data-step="5">
-                            <div class="flex items-center mb-3">
-                                <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">5</div>
-                                <h3 class="font-semibold text-lg text-gray-800">Autonomia</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm ml-11">Raggiungi l'autonomia nel gestire le sfide quotidiane con i nuovi strumenti acquisiti.</p>
-                        </div>
-                    </div>
-
-                    <!-- Timeline per desktop (layout orizzontale) -->
-                    <div class="hidden md:block relative">
-                        <!-- Linea centrale -->
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-indigo-300 to-purple-300 rounded-full"></div>
-                        
-                        <!-- Step 1 - Sinistra -->
-                        <div class="timeline-item relative flex items-center mb-16" data-step="1">
-                            <div class="w-1/2 flex justify-end pr-12">
-                                <div class="bg-white p-6 rounded-lg shadow-md hover-lift cursor-pointer max-w-sm w-full">
-                                    <h3 class="font-semibold text-xl text-gray-800 mb-3">1. Primo Incontro</h3>
-                                    <p class="text-gray-600">Ci conosciamo, ascolto la tua storia e valutiamo insieme se posso esserti d'aiuto.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
-                            <div class="w-1/2"></div>
-                        </div>
-
-                        <!-- Step 2 - Destra -->
-                        <div class="timeline-item relative flex items-center mb-16" data-step="2">
-                            <div class="w-1/2"></div>
-                            <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
-                            <div class="w-1/2 flex justify-start pl-12">
-                                <div class="bg-white p-6 rounded-lg shadow-md hover-lift cursor-pointer max-w-sm w-full">
-                                    <h3 class="font-semibold text-xl text-gray-800 mb-3">2. Definizione Obiettivi</h3>
-                                    <p class="text-gray-600">Stabiliamo insieme i tuoi obiettivi e il piano terapeutico personalizzato.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 - Sinistra -->
-                        <div class="timeline-item relative flex items-center mb-16" data-step="3">
-                            <div class="w-1/2 flex justify-end pr-12">
-                                <div class="bg-white p-6 rounded-lg shadow-md hover-lift cursor-pointer max-w-sm w-full">
-                                    <h3 class="font-semibold text-xl text-gray-800 mb-3">3. Lavoro Attivo</h3>
-                                    <p class="text-gray-600">Sessioni regolari con tecniche cognitive, esercizi pratici e supporto continuo.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-600 rounded-full border-4 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
-                            <div class="w-1/2"></div>
-                        </div>
-
-                        <!-- Step 4 - Destra -->
-                        <div class="timeline-item relative flex items-center mb-16" data-step="4">
-                            <div class="w-1/2"></div>
-                            <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-600 rounded-full border-4 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
-                            <div class="w-1/2 flex justify-start pl-12">
-                                <div class="bg-white p-6 rounded-lg shadow-md hover-lift cursor-pointer max-w-sm w-full">
-                                    <h3 class="font-semibold text-xl text-gray-800 mb-3">4. Consolidamento</h3>
-                                    <p class="text-gray-600">Rafforziamo i progressi e prepariamo strumenti per il futuro.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 5 - Sinistra -->
-                        <div class="timeline-item relative flex items-center" data-step="5">
-                            <div class="w-1/2 flex justify-end pr-12">
-                                <div class="bg-white p-6 rounded-lg shadow-md hover-lift cursor-pointer max-w-sm w-full">
-                                    <h3 class="font-semibold text-xl text-gray-800 mb-3">5. Autonomia</h3>
-                                    <p class="text-gray-600">Raggiungi l'autonomia nel gestire le sfide quotidiane con i nuovi strumenti acquisiti.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform duration-200 z-10"></div>
-                            <div class="w-1/2"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Info Box -->
-                <div id="timeline-info" class="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-100 hidden">
-                    <div id="timeline-info-content"></div>
-                </div>
-            </div>
-
             <!-- Testimonianze -->
-            <div class="my-12 bg-white rounded-xl p-6 shadow-md hover-lift animate-on-scroll">
+            <div class="my-12 bg-white rounded-xl p-6 shadow-md">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Alcune esperienze di percorso</h2>
                 <p class="text-gray-600 text-center mb-6">Condivido questi feedback (anonimi) con il consenso delle persone, per dare un'idea di come può essere utile il nostro lavoro insieme.</p>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="p-5 text-gray-700 border-l-4 border-blue-300 bg-blue-50 rounded-r-lg hover-lift">
+                    <div class="p-5 text-gray-700 border-l-4 border-blue-300 bg-blue-50 rounded-r-lg">
                         <p class="mb-3">
                             "Il percorso con la dottoressa mi ha aiutato a comprendere meglio me stesso e a gestire l'ansia che sentivo quotidianamente. Ora ho strumenti concreti per affrontare le situazioni difficili."
                         </p>
                         <p class="text-sm text-gray-500">— Percorso di 8 mesi</p>
                     </div>
-                    <div class="p-5 text-gray-700 border-l-4 border-blue-300 bg-blue-50 rounded-r-lg hover-lift">
+                    <div class="p-5 text-gray-700 border-l-4 border-blue-300 bg-blue-50 rounded-r-lg">
                         <p class="mb-3">
                             "Dopo molte difficoltà relazionali, ho finalmente iniziato a capire alcuni schemi ricorrenti nei miei comportamenti. È stato un percorso di crescita importante."
                         </p>
@@ -985,84 +771,27 @@
                 </p>
             </div>
 
-            <!-- Sezione "Perché Scegliermi" -->
-            <div class="my-12 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-8 border border-indigo-100 hover-lift animate-on-scroll">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Perché Scegliere il Mio Approccio</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="font-semibold text-lg mb-2 text-gray-800">Esperienza Consolidata</h3>
-                        <p class="text-gray-600 text-sm">8+ anni di pratica clinica e formazione continua in psicoterapia cognitivo costruttivista</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="font-semibold text-lg mb-2 text-gray-800">Approccio Personalizzato</h3>
-                        <p class="text-gray-600 text-sm">Ogni percorso è cucito su misura per le tue esigenze specifiche e i tuoi obiettivi di benessere</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="font-semibold text-lg mb-2 text-gray-800">Flessibilità e Supporto</h3>
-                        <p class="text-gray-600 text-sm">Consulenze in presenza e online, con supporto continuo durante tutto il percorso terapeutico</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sezione Numeri e Risultati -->
-            <div class="my-8 bg-white rounded-xl p-6 shadow-md hover-lift animate-on-scroll">
-                <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">La Mia Esperienza in Numeri</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    <div class="p-4">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2 counter-number" data-target="8">0+</div>
-                        <div class="text-sm text-gray-600">Anni di Esperienza</div>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2 counter-number" data-target="500">0+</div>
-                        <div class="text-sm text-gray-600">Ore di Terapia</div>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2 counter-number" data-target="100">0+</div>
-                        <div class="text-sm text-gray-600">Persone Accompagnate</div>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl font-bold text-indigo-600 mb-2 counter-number" data-target="95">0%</div>
-                        <div class="text-sm text-gray-600">Soddisfazione Clienti</div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Credenziali e Riconoscimenti -->
-            <div class="my-8 flex flex-wrap justify-center gap-4 items-center animate-on-scroll">
-                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100 hover-lift">
+            <div class="my-8 flex flex-wrap justify-center gap-4 items-center">
+                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100">
                     <div class="h-12 w-32 mx-auto mb-2 flex items-center justify-center">
                         <img src="assets/images/logos/logoSiciliaOrdine.png" alt="Ordine Psicologi Regione Sicilia" class="max-h-10 w-auto">
                     </div>
                     <span class="text-xs text-gray-500 font-medium">Albo Psicologi Sicilia n°10486</span>
                 </div>
-                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100 hover-lift">
+                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100">
                     <div class="h-12 w-20 mx-auto mb-2 flex items-center justify-center">
                         <img src="assets/images/logos/logoUnito.png" alt="Università di Torino" class="max-h-10 w-auto">
                     </div>
                     <span class="text-xs text-gray-500 font-medium">Laurea Scienze della Mente (110 e lode)</span>
                 </div>
-                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100 hover-lift">
+                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100">
                     <div class="h-12 w-36 mx-auto mb-2 flex items-center justify-center">
                         <img src="assets/images/logos/logoVu.png" alt="Vrije Universiteit Amsterdam" class="max-h-10 w-auto">
                     </div>
                     <span class="text-xs text-gray-500 font-medium">PhD Candidate Vrije Universiteit Amsterdam</span>
                 </div>
-                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100 hover-lift">
+                <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center border border-gray-100">
                     <div class="h-12 w-20 mx-auto mb-2 flex items-center justify-center">
                         <img src="assets/images/logos/logoFirenze.png" alt="Università di Firenze" class="max-h-10 w-auto">
                     </div>
@@ -1070,81 +799,8 @@
                 </div>
             </div>
 
-            <!-- FAQ Rapide -->
-            <div class="my-12 bg-white rounded-xl p-6 shadow-md hover-lift animate-on-scroll">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Domande Frequenti</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="border border-gray-100 rounded-lg p-4 hover-lift">
-                        <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                            </svg>
-                            Quanto costa una seduta?
-                        </h3>
-                        <p class="text-gray-600 text-sm">Una seduta individuale costa €70-90. Il primo colloquio conoscitivo ti aiuterà a valutare il percorso più adatto.</p>
-                    </div>
-                    <div class="border border-gray-100 rounded-lg p-4 hover-lift">
-                        <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            Quanto dura un percorso?
-                        </h3>
-                        <p class="text-gray-600 text-sm">Dipende dalle tue esigenze. Alcuni vedono miglioramenti in 3-6 mesi, altri preferiscono percorsi più lunghi.</p>
-                    </div>
-                    <div class="border border-gray-100 rounded-lg p-4 hover-lift">
-                        <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
-                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            Offre consulenze online?
-                        </h3>
-                        <p class="text-gray-600 text-sm">Sì, offro sedute online tramite piattaforme sicure per chi preferisce la comodità di casa.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-6">
-                    <a href="#faq" data-page="faq" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm hover:underline">
-                        Vedi tutte le domande frequenti →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Social Proof e Certificazioni -->
-            <div class="my-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 border border-green-100 animate-on-scroll">
-                <div class="text-center mb-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Qualità e Affidabilità Garantite</h3>
-                    <p class="text-gray-600 text-sm">Formazione continua e standard professionali elevati</p>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4 items-center">
-                    <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200 flex items-center">
-                        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-700">Psicologa Abilitata</span>
-                    </div>
-                    <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200 flex items-center">
-                        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-700">Specializzata in Psicoterapia</span>
-                    </div>
-                    <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200 flex items-center">
-                        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-700">Formazione Internazionale</span>
-                    </div>
-                    <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200 flex items-center">
-                        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-700">Aggiornamento Continuo</span>
-                    </div>
-                </div>
-            </div>
-
             <!-- Call to action principale -->
-            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 p-6 rounded-xl text-center my-12 hover-lift animate-on-scroll">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 p-6 rounded-xl text-center my-12">
                 <div class="max-w-2xl mx-auto">
                     <h2 class="text-2xl font-bold text-gray-800 mb-3">Iniziamo insieme questo percorso</h2>
                     <p class="text-gray-600 mb-6">
@@ -1178,13 +834,13 @@
                     
                     <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
                         <a href="https://wa.me/393896437358?text=Buongiorno%20Dott.ssa%20Trovato,%20vorrei%20informazioni%20per%20un%20primo%20colloquio" 
-                           class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300 hover-lift">
+                           class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
                             </svg>
                             Scrivimi su WhatsApp
                         </a>
-                        <a href="tel:+393896437358" class="border-2 border-blue-200 text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300 hover:border-blue-300 hover-lift">
+                        <a href="tel:+393896437358" class="border-2 border-blue-200 text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all duration-300 hover:border-blue-300">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                             </svg>
@@ -2327,7 +1983,7 @@
     </footer>
 
     <!-- Custom JavaScript -->
-    <script src="assets/js/main.js?v=7697"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>

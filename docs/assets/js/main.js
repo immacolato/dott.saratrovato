@@ -796,6 +796,292 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// === ANIMAZIONI E INTERATTIVITÀ ===
+
+// Osservatore per animazioni on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const animateObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Attiva contatori animati se presente
+            const counters = entry.target.querySelectorAll('.counter-number');
+            counters.forEach(counter => {
+                animateCounter(counter);
+            });
+        }
+    });
+}, observerOptions);
+
+// Funzione per animare i contatori
+function animateCounter(element) {
+    if (element.classList.contains('counting')) return;
+    
+    const target = parseInt(element.getAttribute('data-target'));
+    const isPercentage = element.textContent.includes('%');
+    const hasPlus = element.textContent.includes('+');
+    
+    element.classList.add('counting');
+    
+    let current = 0;
+    const increment = target / 30; // 30 frame per animazione fluida
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        let displayValue = Math.floor(current);
+        if (isPercentage) {
+            element.textContent = displayValue + '%';
+        } else if (hasPlus) {
+            element.textContent = displayValue + '+';
+        } else {
+            element.textContent = displayValue;
+        }
+    }, 50);
+}
+
+// Quiz Interattivo
+let currentQuestion = 1;
+const totalQuestions = 3;
+let quizAnswers = {};
+
+function initQuiz() {
+    const nextButton = document.getElementById('quiz-next');
+    const prevButton = document.getElementById('quiz-prev');
+    const submitButton = document.getElementById('quiz-submit');
+    
+    if (!nextButton) return;
+    
+    nextButton.addEventListener('click', () => {
+        const currentQ = document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`);
+        const selectedAnswer = currentQ.querySelector('input[type="radio"]:checked');
+        
+        if (!selectedAnswer) {
+            alert('Seleziona una risposta prima di continuare');
+            return;
+        }
+        
+        quizAnswers[`q${currentQuestion}`] = selectedAnswer.value;
+        
+        if (currentQuestion < totalQuestions) {
+            showQuizQuestion(currentQuestion + 1);
+        }
+    });
+    
+    prevButton.addEventListener('click', () => {
+        if (currentQuestion > 1) {
+            showQuizQuestion(currentQuestion - 1);
+        }
+    });
+    
+    submitButton.addEventListener('click', () => {
+        const currentQ = document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`);
+        const selectedAnswer = currentQ.querySelector('input[type="radio"]:checked');
+        
+        if (!selectedAnswer) {
+            alert('Seleziona una risposta prima di continuare');
+            return;
+        }
+        
+        quizAnswers[`q${currentQuestion}`] = selectedAnswer.value;
+        showQuizResult();
+    });
+}
+
+function showQuizQuestion(questionNumber) {
+    // Nascondi tutte le domande
+    document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+    
+    // Mostra la domanda corrente
+    const question = document.querySelector(`.quiz-question[data-question="${questionNumber}"]`);
+    if (question) {
+        question.classList.add('active');
+        currentQuestion = questionNumber;
+        
+        // Aggiorna pulsanti
+        const nextButton = document.getElementById('quiz-next');
+        const prevButton = document.getElementById('quiz-prev');
+        const submitButton = document.getElementById('quiz-submit');
+        
+        prevButton.classList.toggle('hidden', currentQuestion === 1);
+        
+        if (currentQuestion === totalQuestions) {
+            nextButton.classList.add('hidden');
+            submitButton.classList.remove('hidden');
+        } else {
+            nextButton.classList.remove('hidden');
+            submitButton.classList.add('hidden');
+        }
+    }
+}
+
+function showQuizResult() {
+    // Nascondi domande e pulsanti
+    document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+    document.getElementById('quiz-next').classList.add('hidden');
+    document.getElementById('quiz-prev').classList.add('hidden');
+    document.getElementById('quiz-submit').classList.add('hidden');
+    
+    // Calcola risultato
+    const result = calculateQuizResult();
+    
+    // Mostra risultato
+    const resultDiv = document.getElementById('quiz-result');
+    const resultContent = document.getElementById('result-content');
+    
+    resultContent.innerHTML = result.content;
+    resultDiv.classList.remove('hidden');
+    
+    // Scroll to result
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function calculateQuizResult() {
+    const scores = { cognitive: 0, practical: 0, growth: 0 };
+    
+    // Analizza risposte
+    if (quizAnswers.q1 === 'analytic') scores.cognitive += 2;
+    if (quizAnswers.q1 === 'practical') scores.practical += 2;
+    if (quizAnswers.q1 === 'emotional') scores.growth += 1;
+    
+    if (quizAnswers.q2 === 'overthinking') scores.cognitive += 2;
+    if (quizAnswers.q2 === 'patterns') scores.cognitive += 1;
+    if (quizAnswers.q2 === 'growth') scores.growth += 2;
+    
+    if (quizAnswers.q3 === 'tools') scores.practical += 2;
+    if (quizAnswers.q3 === 'understanding') scores.cognitive += 2;
+    if (quizAnswers.q3 === 'change') scores.growth += 2;
+    
+    // Determina risultato principale
+    const maxScore = Math.max(scores.cognitive, scores.practical, scores.growth);
+    
+    if (scores.cognitive === maxScore) {
+        return {
+            type: 'cognitive',
+            content: `
+                <h3 class="text-xl font-bold text-green-600 mb-3">🎯 Perfetto Match!</h3>
+                <p class="text-gray-700 mb-4">La terapia cognitivo costruttivista è ideale per te! Il tuo approccio analitico e la voglia di comprendere profondamente i tuoi schemi mentali si allineano perfettamente con questo metodo.</p>
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h4 class="font-semibold text-green-800 mb-2">Cosa potrai ottenere:</h4>
+                    <ul class="text-green-700 text-sm space-y-1">
+                        <li>• Comprensione approfondita dei tuoi pattern di pensiero</li>
+                        <li>• Strumenti per riconoscere e modificare pensieri disfunzionali</li>
+                        <li>• Sviluppo di nuove prospettive più funzionali</li>
+                    </ul>
+                </div>
+            `
+        };
+    } else if (scores.practical === maxScore) {
+        return {
+            type: 'practical',
+            content: `
+                <h3 class="text-xl font-bold text-blue-600 mb-3">🛠️ Ottima Compatibilità!</h3>
+                <p class="text-gray-700 mb-4">Il mio approccio cognitivo costruttivista include molti elementi pratici che apprezzerai. Combineremo comprensione teorica con strategie concrete.</p>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-semibold text-blue-800 mb-2">Cosa potrai ottenere:</h4>
+                    <ul class="text-blue-700 text-sm space-y-1">
+                        <li>• Tecniche immediate per gestire ansia e stress</li>
+                        <li>• Esercizi pratici da usare nella vita quotidiana</li>
+                        <li>• Strategie concrete per risolvere problemi specifici</li>
+                    </ul>
+                </div>
+            `
+        };
+    } else {
+        return {
+            type: 'growth',
+            content: `
+                <h3 class="text-xl font-bold text-purple-600 mb-3">🌱 Crescita Personale!</h3>
+                <p class="text-gray-700 mb-4">Il tuo interesse per la crescita personale si sposa benissimo con l'approccio cognitivo costruttivista. Potrai esplorare nuove versioni di te stesso.</p>
+                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                    <h4 class="font-semibold text-purple-800 mb-2">Cosa potrai ottenere:</h4>
+                    <ul class="text-purple-700 text-sm space-y-1">
+                        <li>• Maggiore consapevolezza di te stesso</li>
+                        <li>• Sviluppo del tuo potenziale personale</li>
+                        <li>• Costruzione di nuove narrazioni di vita più soddisfacenti</li>
+                    </ul>
+                </div>
+            `
+        };
+    }
+}
+
+// Timeline Interattiva
+function initTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item, .timeline-item-mobile');
+    const timelineInfo = document.getElementById('timeline-info');
+    const timelineInfoContent = document.getElementById('timeline-info-content');
+    
+    if (!timelineItems.length) return;
+    
+    const timelineData = {
+        1: {
+            title: "Primo Incontro - La Conoscenza",
+            duration: "50 minuti",
+            details: "Durante il primo colloquio ascolterò attentamente la tua storia, comprenderò le tue difficoltà attuali e valuteremo insieme se posso esserti d'aiuto. È un momento libero da giudizi, dove puoi esprimerti in totale libertà.",
+            what: "Cosa aspettarti: Un ambiente accogliente, ascolto attivo, prime impressioni condivise"
+        },
+        2: {
+            title: "Definizione del Percorso",
+            duration: "2-3 sedute",
+            details: "Insieme stabiliremo obiettivi chiari e realistici per il tuo percorso. Definiremo la frequenza degli incontri e il metodo di lavoro più adatto alle tue esigenze specifiche.",
+            what: "Cosa aspettarti: Piano terapeutico personalizzato, obiettivi condivisi, tempistiche definite"
+        },
+        3: {
+            title: "Lavoro Terapeutico Attivo",
+            duration: "Variabile",
+            details: "Questa è la fase centrale dove lavoriamo insieme sui tuoi obiettivi. Utilizzeremo tecniche cognitive, esercizi pratici e strumenti personalizzati per affrontare le tue difficoltà.",
+            what: "Cosa aspettarti: Sessioni strutturate, compiti a casa, progressi graduali ma concreti"
+        },
+        4: {
+            title: "Consolidamento dei Progressi",
+            duration: "Alcune sedute",
+            details: "Rafforziamo i risultati ottenuti e prepariamo strumenti di autonomia. È il momento di stabilizzare i cambiamenti e prevenire eventuali ricadute.",
+            what: "Cosa aspettarti: Consolidamento delle abilità acquisite, preparazione all'autonomia"
+        },
+        5: {
+            title: "Autonomia e Chiusura",
+            duration: "Quando sei pronto",
+            details: "Raggiungi l'autonomia nel gestire le situazioni quotidiane con i nuovi strumenti acquisiti. La porta rimane sempre aperta per supporto futuro se necessario.",
+            what: "Cosa aspettarti: Indipendenza, fiducia nelle tue capacità, supporto disponibile"
+        }
+    };
+    
+    timelineItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const step = item.getAttribute('data-step');
+            const data = timelineData[step];
+            
+            if (data && timelineInfo && timelineInfoContent) {
+                timelineInfoContent.innerHTML = `
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">${data.title}</h3>
+                    <p class="text-sm text-indigo-600 mb-3">⏱️ Durata: ${data.duration}</p>
+                    <p class="text-gray-700 mb-4">${data.details}</p>
+                    <div class="bg-white p-3 rounded border border-gray-200">
+                        <p class="text-sm text-gray-600">${data.what}</p>
+                    </div>
+                `;
+                
+                timelineInfo.classList.remove('hidden');
+                timelineInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Highlight dell'item selezionato
+                timelineItems.forEach(ti => ti.classList.remove('active'));
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
 // Aggiorna il padding del body al ridimensionamento della finestra
 window.addEventListener('resize', adjustBodyPadding);
 
@@ -811,4 +1097,49 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
         closeMobileMenu(false); // false = animazione fluida per tasto Escape
     }
+});
+
+// Inizializza tutto quando il DOM è pronto
+document.addEventListener('DOMContentLoaded', () => {
+    // Inizializza animazioni on scroll
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        animateObserver.observe(el);
+    });
+    
+    // Inizializza quiz
+    initQuiz();
+    
+    // Inizializza timeline
+    initTimeline();
+    
+    // Aggiungi classe CSS per quiz attivo
+    const quizStyle = document.createElement('style');
+    quizStyle.textContent = `
+        .quiz-question {
+            display: none;
+        }
+        .quiz-question.active {
+            display: block;
+        }
+        .quiz-option:hover {
+            background-color: #f8fafc;
+            border-color: #6366f1;
+        }
+        .quiz-option input:checked + span {
+            color: #6366f1;
+            font-weight: 500;
+        }
+        .timeline-item {
+            cursor: pointer;
+        }
+        .timeline-item.active .timeline-content > div {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border: 2px solid #6366f1;
+        }
+        .timeline-item:hover .timeline-content > div {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+    `;
+    document.head.appendChild(quizStyle);
 });
