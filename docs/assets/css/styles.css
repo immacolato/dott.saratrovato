@@ -2466,8 +2466,10 @@ body.menu-open-blur #mobile-menu-overlay {
     
     /* Box interattivi per tablet rimangono invariati */
     
-    /* Box "Come ti aiuto" migliorato */
-    .help-box-desktop {
+    /* Il CSS vecchio del desktop è stato rimosso e sostituito con il nuovo layout */
+    
+    /*
+    VECCHIO CSS DESKTOP RIMOSSO - Todo: cleanup
         background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05));
         border: 1px solid rgba(99, 102, 241, 0.2);
         border-radius: 1.25rem;
@@ -2634,6 +2636,7 @@ body.menu-open-blur #mobile-menu-overlay {
         margin: 0 auto;
         padding: 0 1.5rem;
     }
+    */
     
     /* Box tablet ottimizzati */
     .help-box-tablet,
