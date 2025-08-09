@@ -1966,48 +1966,8 @@ body.menu-open-blur #mobile-menu-overlay {
     font-size: 1.5rem !important;
     line-height: 1.3 !important;
 }
-    
-    /* Riduci spazi generali su mobile */
-    .py-12 {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
-    }
-    
-    .py-16 {
-        padding-top: 2.5rem !important;
-        padding-bottom: 2.5rem !important;
-    }
-    
-    .py-20 {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-    }
-    
-    .mb-8 {
-        margin-bottom: 1.5rem !important;
-    }
-    
-    .mb-12 {
-        margin-bottom: 2rem !important;
-    }
-    
-    .mb-16 {
-        margin-bottom: 2.5rem !important;
-    }
-    
-    .space-y-8 > * + * {
-        margin-top: 1.5rem !important;
-    }
-    
-    .space-y-6 > * + * {
-        margin-top: 1rem !important;
-    }
-    
-    .space-y-12 > * + * {
-        margin-top: 2rem !important;
-    }
-    
-    /* Ottimizza altezze delle card */
+
+/* Ottimizza altezze delle card */
     .h-64 {
         height: 12rem !important;
     }
