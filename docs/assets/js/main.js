@@ -957,7 +957,8 @@ function initQuiz() {
     
     if (!nextButton) return;
     
-    nextButton.addEventListener('click', () => {
+    // Funzione per andare avanti nel quiz
+    function proceedQuiz() {
         const currentQ = document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`);
         const selectedAnswer = currentQ.querySelector('input[type="radio"]:checked');
         
@@ -970,6 +971,35 @@ function initQuiz() {
         
         if (currentQuestion < totalQuestions) {
             showQuizQuestion(currentQuestion + 1);
+        } else {
+            showQuizResult();
+        }
+    }
+    
+    nextButton.addEventListener('click', proceedQuiz);
+    
+    // Aggiungi listener per il tasto Enter
+    document.addEventListener('keydown', function(e) {
+        // Verifica se siamo in una domanda del quiz attiva
+        const activeQuestion = document.querySelector('.quiz-question.active');
+        if (activeQuestion && e.key === 'Enter') {
+            e.preventDefault();
+            
+            if (currentQuestion < totalQuestions) {
+                proceedQuiz();
+            } else {
+                // Ultimo step - submit
+                const currentQ = document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`);
+                const selectedAnswer = currentQ.querySelector('input[type="radio"]:checked');
+                
+                if (!selectedAnswer) {
+                    alert('Seleziona una risposta prima di continuare');
+                    return;
+                }
+                
+                quizAnswers[`q${currentQuestion}`] = selectedAnswer.value;
+                showQuizResult();
+            }
         }
     });
     
@@ -1064,11 +1094,20 @@ function calculateQuizResult() {
         return {
             type: 'cognitive',
             content: `
-                <h3 class="text-xl font-bold text-green-600 mb-3">🎯 Perfetto Match!</h3>
-                <p class="text-gray-700 mb-4">La terapia cognitivo costruttivista è ideale per te! Il tuo approccio analitico e la voglia di comprendere profondamente i tuoi schemi mentali si allineano perfettamente con questo metodo.</p>
-                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <h4 class="font-semibold text-green-800 mb-2">Cosa potrai ottenere:</h4>
-                    <ul class="text-green-700 text-sm space-y-1">
+                <div class="text-center mb-4">
+                    <h3 class="text-base sm:text-xl font-bold text-green-600 m-0 flex items-center justify-center gap-2">
+                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        Perfetto Match!
+                    </h3>
+                </div>
+                <p class="text-sm sm:text-base text-gray-700 mb-4 text-center">La terapia cognitivo costruttivista è ideale per te! Il tuo approccio analitico e la voglia di comprendere profondamente i tuoi schemi mentali si allineano perfettamente con questo metodo.</p>
+                <div class="bg-green-50 p-3 sm:p-4 rounded-lg border border-green-200">
+                    <h4 class="font-semibold text-green-800 mb-2 text-sm sm:text-base text-center">Cosa potrai ottenere:</h4>
+                    <ul class="text-green-700 text-xs sm:text-sm space-y-1">
                         <li>• Comprensione approfondita dei tuoi pattern di pensiero</li>
                         <li>• Strumenti per riconoscere e modificare pensieri disfunzionali</li>
                         <li>• Sviluppo di nuove prospettive più funzionali</li>
@@ -1080,11 +1119,20 @@ function calculateQuizResult() {
         return {
             type: 'practical',
             content: `
-                <h3 class="text-xl font-bold text-blue-600 mb-3">🛠️ Ottima Compatibilità!</h3>
-                <p class="text-gray-700 mb-4">Il mio approccio cognitivo costruttivista include molti elementi pratici che apprezzerai. Combineremo comprensione teorica con strategie concrete.</p>
-                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <h4 class="font-semibold text-blue-800 mb-2">Cosa potrai ottenere:</h4>
-                    <ul class="text-blue-700 text-sm space-y-1">
+                <div class="text-center mb-4">
+                    <h3 class="text-base sm:text-xl font-bold text-blue-600 m-0 flex items-center justify-center gap-2">
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        Ottima Compatibilità!
+                    </h3>
+                </div>
+                <p class="text-sm sm:text-base text-gray-700 mb-4 text-center">Il mio approccio cognitivo costruttivista include molti elementi pratici che apprezzerai. Combineremo comprensione teorica con strategie concrete.</p>
+                <div class="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-200">
+                    <h4 class="font-semibold text-blue-800 mb-2 text-sm sm:text-base text-center">Cosa potrai ottenere:</h4>
+                    <ul class="text-blue-700 text-xs sm:text-sm space-y-1">
                         <li>• Tecniche immediate per gestire ansia e stress</li>
                         <li>• Esercizi pratici da usare nella vita quotidiana</li>
                         <li>• Strategie concrete per risolvere problemi specifici</li>
@@ -1096,11 +1144,20 @@ function calculateQuizResult() {
         return {
             type: 'growth',
             content: `
-                <h3 class="text-xl font-bold text-purple-600 mb-3">🌱 Crescita Personale!</h3>
-                <p class="text-gray-700 mb-4">Il tuo interesse per la crescita personale si sposa benissimo con l'approccio cognitivo costruttivista. Potrai esplorare nuove versioni di te stesso.</p>
-                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                    <h4 class="font-semibold text-purple-800 mb-2">Cosa potrai ottenere:</h4>
-                    <ul class="text-purple-700 text-sm space-y-1">
+                <div class="text-center mb-4">
+                    <h3 class="text-base sm:text-xl font-bold text-purple-600 m-0 flex items-center justify-center gap-2">
+                        <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        Crescita Personale!
+                    </h3>
+                </div>
+                <p class="text-sm sm:text-base text-gray-700 mb-4 text-center">Il tuo interesse per la crescita personale si sposa benissimo con l'approccio cognitivo costruttivista. Potrai esplorare nuove versioni di te stesso.</p>
+                <div class="bg-purple-50 p-3 sm:p-4 rounded-lg border border-purple-200">
+                    <h4 class="font-semibold text-purple-800 mb-2 text-sm sm:text-base text-center">Cosa potrai ottenere:</h4>
+                    <ul class="text-purple-700 text-xs sm:text-sm space-y-1">
                         <li>• Maggiore consapevolezza di te stesso</li>
                         <li>• Sviluppo del tuo potenziale personale</li>
                         <li>• Costruzione di nuove narrazioni di vita più soddisfacenti</li>
