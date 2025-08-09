@@ -2958,43 +2958,51 @@ section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer * {
     }
 }
 
-/* Media queries specifiche per iPad e breakpoint intermedi */
+/* Media queries unificate per iPad e breakpoint intermedi */
 
-/* iPad in portrait (768px - 834px) */
-@media (min-width: 768px) and (max-width: 834px) {
-    .therapy-grid-desktop {
-        max-width: 750px;
-        gap: 2rem;
-        padding: 0 1.5rem;
-    }
-    
-    .therapy-left-column h1 {
-        font-size: 2.2rem !important;
-    }
-    
-    .therapy-left-column .subtitle {
-        font-size: 1.15rem !important;
-    }
-}
-
-/* iPad Pro 11" in landscape e iPad 13" in portrait (1024px - 1194px) */
-@media (min-width: 1024px) and (max-width: 1194px) {
-    .therapy-grid-desktop {
-        max-width: 950px;
-        gap: 2.5rem;
-        padding: 0 1.5rem;
-    }
-    
-    .therapy-left-column h1 {
-        font-size: 2.3rem !important;
-    }
-}
-
-/* Large desktop (1200px+) - ottimizzazioni finali */
-@media (min-width: 1200px) {
-    .therapy-grid-desktop {
-        max-width: 1100px;
-        gap: 3rem;
+/* iPad unificato - 11" e 13" (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    /* Layout tablet terapia - ottimizzato per tutti gli iPad */
+    .therapy-content-container .max-w-4xl {
+        max-width: 900px;
         padding: 0 2rem;
+    }
+    
+    /* Titoli ottimizzati per iPad */
+    .therapy-content-container h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Sottotitoli responsive */
+    .therapy-content-container p.text-lg,
+    .therapy-content-container p.text-xl {
+        font-size: 1.25rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Cards ottimizzate per iPad - Layout 1 colonna */
+    .therapy-content-container .grid-cols-1 {
+        gap: 2rem;
+    }
+    
+    /* Box help e benefits ottimizzati per iPad */
+    .help-box-tablet,
+    .benefits-box-tablet {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    /* Spaziatura ottimizzata */
+    .therapy-content-container .space-y-8 {
+        gap: 2.5rem;
+    }
+}
+
+/* Large desktop (1200px+) - layout finale */
+@media (min-width: 1200px) {
+    .therapy-new-layout {
+        max-width: 1100px;
+        padding: 2.5rem;
     }
 }
