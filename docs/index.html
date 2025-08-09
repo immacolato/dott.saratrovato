@@ -679,56 +679,91 @@
             <!-- Sezione Approccio Semplificata -->
             <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-12 hover-lift animate-on-scroll therapy-section-desktop">
                 <div class="therapy-content-container">
-                    <!-- Layout Desktop (≥1200px) - Grid a 2 colonne -->
+                    <!-- Layout Desktop Rinnovato (≥1200px) - Design Centrato -->
                     <div class="hidden xl:block">
-                        <div class="therapy-grid-desktop">
-                            <!-- Colonna sinistra: Contenuto principale (solo titolo e testi) -->
-                            <div class="therapy-left-column">
-                                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+                        <div class="therapy-new-layout">
+                            <!-- Header centrato -->
+                            <div class="therapy-header">
+                                <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center">
                                     Terapia Cognitivo Costruttivista
                                 </h1>
-                                <p class="subtitle text-gray-700 leading-relaxed">
+                                <p class="text-lg text-gray-700 leading-relaxed text-center mb-8 max-w-3xl mx-auto">
                                     Un approccio moderno e scientificamente validato che ti aiuta a <strong>riconoscere e trasformare</strong> 
                                     i pensieri che influenzano negativamente il tuo benessere.
                                 </p>
-                                <p class="description text-gray-700 leading-relaxed">
+                            </div>
+                            
+                            <!-- Contenuto principale -->
+                            <div class="therapy-main-content">
+                                <p class="text-base text-gray-700 leading-relaxed mb-6 max-w-3xl mx-auto">
                                     La terapia cognitivo costruttivista combina l'efficacia delle tecniche cognitive con una visione costruttivista che rispetta la tua unicità. Non si tratta di "correggere" chi sei, ma di aiutarti a <em>ricostruire</em> la tua storia in modo più funzionale e significativo.
                                 </p>
                             </div>
-                            
-                            <!-- Citazione decorata per desktop: in riga 2 colonna sinistra -->
-                            <div class="therapy-quote-desktop xl:col-start-1 xl:row-start-2">
-                                <p>
-                                    Immagina il percorso come una scalata in montagna. Le tue modalità di pensiero e azione sono gli strumenti necessari per salire in alta quota. Io ti alleno ad affinarli, e resto al tuo fianco durante l'arrampicata per sostenerti e motivarti.
-                                </p>
-                            </div>
 
-                            <!-- Colonna destra: Box interattivi (forzata in riga 2 per allinearsi alla citazione) -->
-                            <div class="therapy-right-column xl:col-start-2 xl:row-start-2">
-                                <div class="help-box-desktop">
-                                    <h3>Come ti aiuto</h3>
-                                    <ul>
-                                        <li>Modificare pensieri disfunzionali</li>
-                                        <li>Costruire narrazioni più funzionali</li>
-                                        <li>Gestire ansia e stress con strategie concrete</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="benefits-box-desktop">
-                                    <h3>Cosa otterrai</h3>
-                                    <ul>
-                                        <li>Maggiore consapevolezza di te stesso</li>
-                                        <li>Strumenti pratici per il quotidiano</li>
-                                        <li>Crescita personale duratura</li>
-                                    </ul>
+                            <!-- Citazione integrata -->
+                            <div class="therapy-quote-new">
+                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-indigo-400 p-6 rounded-lg shadow-sm max-w-4xl mx-auto mb-8">
+                                    <div class="flex items-start space-x-3">
+                                        <svg class="w-8 h-8 text-indigo-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                                        </svg>
+                                        <p class="text-gray-700 text-base italic leading-relaxed flex-1">
+                                            Immagina il percorso come una scalata in montagna. Le tue modalità di pensiero e azione sono gli strumenti necessari per salire in alta quota. Io ti alleno ad affinarli, e resto al tuo fianco durante l'arrampicata per sostenerti e motivarti.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <!-- CTA centrato per desktop -->
-                            <div class="therapy-cta-desktop">
-                                <a href="#servizi" data-page="servizi" class="button bg-indigo-600 hover:bg-indigo-700 text-white">
-                                    Scopri i miei servizi
-                                </a>
+                            <!-- Cards orizzontali -->
+                            <div class="therapy-cards-grid">
+                                <div class="grid grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
+                                    <!-- Card Come ti aiuto -->
+                                    <div class="help-card-new">
+                                        <h3 class="font-bold text-xl mb-4 text-indigo-700 text-center">Come ti aiuto</h3>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start space-x-3">
+                                                <span class="text-green-500 font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
+                                                <span class="text-gray-700">Modificare pensieri disfunzionali</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <span class="text-green-500 font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
+                                                <span class="text-gray-700">Costruire narrazioni più funzionali</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <span class="text-green-500 font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
+                                                <span class="text-gray-700">Gestire ansia e stress con strategie concrete</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Card Cosa otterrai -->
+                                    <div class="benefits-card-new">
+                                        <h3 class="font-bold text-xl mb-4 text-emerald-700 text-center">Cosa otterrai</h3>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start space-x-3">
+                                                <span class="text-yellow-500 font-bold text-lg mt-0.5 flex-shrink-0">★</span>
+                                                <span class="text-gray-700">Maggiore consapevolezza di te stesso</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <span class="text-yellow-500 font-bold text-lg mt-0.5 flex-shrink-0">★</span>
+                                                <span class="text-gray-700">Strumenti pratici per il quotidiano</span>
+                                            </li>
+                                            <li class="flex items-start space-x-3">
+                                                <span class="text-yellow-500 font-bold text-lg mt-0.5 flex-shrink-0">★</span>
+                                                <span class="text-gray-700">Crescita personale duratura</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA centrato -->
+                            <div class="therapy-cta-new">
+                                <div class="text-center">
+                                    <a href="#servizi" data-page="servizi" class="button bg-indigo-600 hover:bg-indigo-700 text-white text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                                        Scopri i miei servizi
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

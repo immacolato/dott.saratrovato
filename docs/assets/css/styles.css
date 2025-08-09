@@ -2413,83 +2413,58 @@ body.menu-open-blur #mobile-menu-overlay {
         margin-bottom: 2rem !important;
     }
     
-    /* Grid layout ottimizzato per desktop */
-    .therapy-grid-desktop {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr; /* Colonna destra leggermente più grande */
-        gap: 2.5rem;
-        align-items: start;
-        grid-auto-rows: min-content; /* Consente righe compatte per migliore allineamento */
-        max-width: 1400px;
+    /* NUOVO LAYOUT DESKTOP - Design Centrato e Compatto */
+    .therapy-new-layout {
+        max-width: 1000px;
         margin: 0 auto;
+        padding: 2rem;
     }
     
-    /* Colonna sinistra - Testo principale */
-    .therapy-left-column {
-        padding-right: 1.5rem;
-    }
-    
-    .therapy-left-column h1 {
-        font-size: 2.25rem !important;
-        line-height: 1.2 !important;
-        margin-bottom: 1.5rem !important;
-        color: #1f2937;
+    .therapy-header h1 {
+        font-size: 2.5rem !important;
         font-weight: 700;
-    }
-    
-    .therapy-left-column .subtitle {
-        font-size: 1.125rem !important;
-        line-height: 1.5 !important;
-        margin-bottom: 1.5rem !important;
-        color: #4b5563;
-        font-weight: 400;
-    }
-    
-    .therapy-left-column .description {
-        font-size: 1.05rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 1.75rem !important;
-        color: #374151;
-    }
-    
-    /* Citazione decorata */
-    .therapy-quote-desktop {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.08));
-        border-left: 4px solid #6366f1;
-        padding: 1.5rem;
-        border-radius: 1rem;
-        margin: 1.5rem 0;
-        position: relative;
-    }
-    
-    .therapy-quote-desktop::before {
-        content: '"';
-        font-size: 2.5rem;
-        color: #6366f1;
-        position: absolute;
-        top: -0.25rem;
-        left: 0.5rem;
-        font-family: Georgia, serif;
-        opacity: 0.2;
-        z-index: 0;
-    }
-    
-    .therapy-quote-desktop p {
-        font-size: 1.075rem !important;
-        line-height: 1.5 !important;
-        font-style: italic;
         color: #1f2937;
-        margin: 0;
-        position: relative;
-        z-index: 1;
-        padding-left: 1rem;
+        line-height: 1.2;
     }
     
-    /* Colonna destra - Contenuti interattivi */
-    .therapy-right-column {
-        padding-left: 1.5rem;
-        align-self: start; /* Forza l'allineamento all'inizio della riga */
+    .therapy-header p {
+        font-size: 1.125rem !important;
+        color: #4b5563;
+        line-height: 1.6;
     }
+    
+    .therapy-main-content p {
+        font-size: 1rem !important;
+        color: #374151;
+        line-height: 1.7;
+    }
+    
+    /* Cards orizzontali */
+    .help-card-new, .benefits-card-new {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.08));
+        border: 1px solid rgba(99, 102, 241, 0.15);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
+        transition: all 0.3s ease;
+    }
+    
+    .benefits-card-new {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.08));
+        border-color: rgba(16, 185, 129, 0.15);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.08);
+    }
+    
+    .help-card-new:hover, .benefits-card-new:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+    }
+    
+    .benefits-card-new:hover {
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+    }
+    
+    /* Box interattivi per tablet rimangono invariati */
     
     /* Box "Come ti aiuto" migliorato */
     .help-box-desktop {
@@ -2977,5 +2952,46 @@ section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer * {
 @media (min-width: 1024px) {
     .contact-map {
         height: 16rem;
+    }
+}
+
+/* Media queries specifiche per iPad e breakpoint intermedi */
+
+/* iPad in portrait (768px - 834px) */
+@media (min-width: 768px) and (max-width: 834px) {
+    .therapy-grid-desktop {
+        max-width: 750px;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+    
+    .therapy-left-column h1 {
+        font-size: 2.2rem !important;
+    }
+    
+    .therapy-left-column .subtitle {
+        font-size: 1.15rem !important;
+    }
+}
+
+/* iPad Pro 11" in landscape e iPad 13" in portrait (1024px - 1194px) */
+@media (min-width: 1024px) and (max-width: 1194px) {
+    .therapy-grid-desktop {
+        max-width: 950px;
+        gap: 2.5rem;
+        padding: 0 1.5rem;
+    }
+    
+    .therapy-left-column h1 {
+        font-size: 2.3rem !important;
+    }
+}
+
+/* Large desktop (1200px+) - ottimizzazioni finali */
+@media (min-width: 1200px) {
+    .therapy-grid-desktop {
+        max-width: 1100px;
+        gap: 3rem;
+        padding: 0 2rem;
     }
 }
