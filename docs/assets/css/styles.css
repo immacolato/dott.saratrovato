@@ -198,44 +198,6 @@ img {
     }
     
     /* === ICONE MIGLIORATE PER MOBILE === */
-    /* Liste con icone check per "Come ti aiuto" */
-    .bg-gradient-to-br.from-indigo-50.to-blue-50 li {
-        position: relative;
-        padding-left: 2rem !important;
-        font-size: 1rem !important;
-        line-height: 1.5 !important;
-    }
-    
-    .bg-gradient-to-br.from-indigo-50.to-blue-50 li::before {
-        content: '✓';
-        position: absolute;
-        left: 0.25rem;
-        top: 0;
-        color: #059669 !important;
-        font-size: 1.1rem !important;
-        font-weight: bold;
-        line-height: 1.5;
-    }
-    
-    /* Liste con icone stelle per "Cosa otterrai" */
-    .bg-gradient-to-br.from-green-50.to-emerald-50 li {
-        position: relative;
-        padding-left: 2rem !important;
-        font-size: 1rem !important;
-        line-height: 1.5 !important;
-    }
-    
-    .bg-gradient-to-br.from-green-50.to-emerald-50 li::before {
-        content: '★';
-        position: absolute;
-        left: 0.25rem;
-        top: 0;
-        color: #f59e0b !important;
-        font-size: 1.1rem !important;
-        font-weight: bold;
-        line-height: 1.5;
-    }
-    
     /* Rimuovi i pallini di default dalle liste su mobile */
     .bg-gradient-to-br li {
         list-style: none !important;
@@ -267,7 +229,7 @@ img {
         font-size: 0.9rem !important;
         line-height: 1.4 !important;
         margin: 0 !important;
-        margin-left: 3.5rem !important; /* Allineato con il testo del titolo */
+        margin-left: 3rem !important; /* Aggiornato: 2.25rem (pallino) + 0.75rem (margin-right) = 3rem */
     }
     
     .timeline-item-mobile .w-10.h-10 {
@@ -1916,11 +1878,6 @@ body.menu-open-blur #mobile-menu-overlay {
     .timeline-item-mobile .flex.items-center {
         margin-bottom: 0.5rem !important; /* Ridotto da mb-4 (1rem) */
     }
-    
-    /* Riduci il margine sinistro del testo */
-    .timeline-item-mobile .ml-14 {
-        margin-left: 2.75rem !important; /* Ridotto da 3.5rem */
-    }
 }
 
 /* Stili per le citazioni su desktop */
@@ -2365,16 +2322,24 @@ body.menu-open-blur #mobile-menu-overlay {
         text-align: center;
     }
     
-    /* === LAYOUT DESKTOP GRANDE (≥1200px) - Grid a 2 colonne === */
-    
-    /* NUOVO LAYOUT DESKTOP - Design Centrato e Compatto */
-    .therapy-new-layout {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 2rem;
+/* === LAYOUT DESKTOP GRANDE (≥1200px) - Grid a 2 colonne === */
+
+/* NUOVO LAYOUT DESKTOP - Design Centrato e Compatto */
+.therapy-new-layout {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Fix allineamento check verdi su desktop */
+@media (min-width: 768px) {
+    .text-green-500.font-bold.text-lg.mt-0\.5.flex-shrink-0,
+    .text-yellow-500.font-bold.text-lg.mt-0\.5.flex-shrink-0 {
+        margin-top: 0 !important; /* Rimuove il margin-top su desktop per perfetto allineamento */
+        align-self: flex-start; /* Assicura allineamento con la prima riga del testo */
+        line-height: 1.5; /* Allinea con il line-height del testo */
     }
-    
-    .therapy-header h1 {
+}    .therapy-header h1 {
         font-size: 2.5rem !important;
         font-weight: 700;
         color: #1f2937;
@@ -2807,5 +2772,14 @@ section#faq-page .max-w-4xl .mx-auto div.faq-item div.faq-answer * {
     .therapy-new-layout {
         max-width: 1100px;
         padding: 2.5rem;
+    }
+}
+
+/* Desktop alignment fixes */
+@media (min-width: 768px) {
+    /* Fix desktop green check vertical alignment */
+    .text-green-600 {
+        vertical-align: middle;
+        margin-top: -2px;
     }
 }
