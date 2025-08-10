@@ -1,0 +1,213 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://saratrovatopsicoterapia.it/#localbusiness",
+  "name": "Dott.ssa Sara Trovato - Psicoterapeuta Torino",
+  "image": [
+    "https://saratrovatopsicoterapia.it/assets/images/img-studio.png",
+    "https://saratrovatopsicoterapia.it/assets/images/logo-nuovo.png"
+  ],
+  "description": "Psicoterapeuta specializzata in terapia cognitivo costruttivista a Torino centro. Studio in Via Maria Vittoria 40 Bis. Esperta in ansia, depressione, stress, trauma e crescita personale. Consulenze individuali, di coppia e online.",
+  "url": "https://saratrovatopsicoterapia.it",
+  "telephone": "+39-389-6437358",
+  "email": "dott.saratrovato@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Maria Vittoria 40 Bis",
+    "addressLocality": "Torino",
+    "addressRegion": "Piemonte",
+    "postalCode": "10123",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.0650343,
+    "longitude": 7.6922580
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday", 
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  ],
+  "priceRange": "€70-€90",
+  "servesCuisine": null,
+  "acceptsReservations": true,
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": [
+    "Cash",
+    "Credit Card",
+    "Debit Card",
+    "Bank Transfer"
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Torino"
+    },
+    {
+      "@type": "City",
+      "name": "Moncalieri"
+    },
+    {
+      "@type": "City",
+      "name": "Nichelino"
+    },
+    {
+      "@type": "City",
+      "name": "Collegno"
+    },
+    {
+      "@type": "City",
+      "name": "Grugliasco"
+    },
+    {
+      "@type": "City",
+      "name": "Rivoli"
+    },
+    {
+      "@type": "City",
+      "name": "Venaria Reale"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servizi di Psicoterapia",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Psicoterapia Individuale",
+          "description": "Terapia cognitivo costruttivista per ansia, depressione, stress"
+        },
+        "price": "70-90",
+        "priceCurrency": "EUR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Terapia di Coppia",
+          "description": "Supporto per problemi relazionali e comunicazione"
+        },
+        "price": "90-110",
+        "priceCurrency": "EUR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consulenze Online",
+          "description": "Sedute terapeutiche via videochiamata"
+        },
+        "price": "70-90", 
+        "priceCurrency": "EUR"
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "12",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "M.R."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "Professionale e competente. Mi ha aiutato ad affrontare un periodo difficile con grande umanità.",
+      "datePublished": "2024-11-15"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "L.M."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "Percorso terapeutico molto utile. Approccio professionale e empatico.",
+      "datePublished": "2024-10-28"
+    }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Sara Trovato",
+    "jobTitle": "Psicoterapeuta Cognitivo Costruttivista",
+    "telephone": "+39-389-6437358",
+    "email": "dott.saratrovato@gmail.com"
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Sara Trovato",
+    "jobTitle": "Psicoterapeuta",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Albo Psicologi Regione Sicilia",
+      "identifier": "10486"
+    }
+  },
+  "sameAs": [
+    "https://immacolato.github.io/dott.saratrovato"
+  ],
+  "knowsAbout": [
+    "Psicoterapia Cognitivo Costruttivista",
+    "Ansia",
+    "Depressione", 
+    "Stress",
+    "Trauma",
+    "Terapia di Coppia",
+    "Crescita Personale",
+    "Disturbi dell'Umore",
+    "Attacchi di Panico"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Prima Consulenza Gratuita",
+        "description": "Primo colloquio conoscitivo senza impegno"
+      },
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://wa.me/393896437358?text=Ciao%20Dott.ssa%20Trovato,%20vorrei%20prenotare%20una%20prima%20consulenza",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "result": {
+        "@type": "Reservation",
+        "name": "Prenotazione Consulenza Psicologica"
+      }
+    }
+  ],
+  "isAcceptingNewPatients": true
+}

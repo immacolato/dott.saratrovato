@@ -49,9 +49,33 @@
     <!-- Sezione Blog - Se presente -->
     <url>
         <loc>https://saratrovatopsicoterapia.it/#blog</loc>
-        <lastmod>2025-08-06</lastmod>
+        <lastmod>2025-08-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <!-- Guida Locale Psicoterapeuta Torino - Importante per Local SEO -->
+    <url>
+        <loc>https://saratrovatopsicoterapia.it/psicoterapeuta-torino-local.html</loc>
+        <lastmod>2025-08-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Guida Generale Psicoterapeuta Torino -->
+    <url>
+        <loc>https://saratrovatopsicoterapia.it/guida-psicoterapeuta-torino.html</loc>
+        <lastmod>2025-08-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- FAQ AI Ottimizzate -->
+    <url>
+        <loc>https://saratrovatopsicoterapia.it/faq-ai.html</loc>
+        <lastmod>2025-08-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 
 </urlset>
